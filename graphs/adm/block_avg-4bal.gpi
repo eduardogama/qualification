@@ -1,0 +1,24 @@
+set term pdfcairo enhanced color dashed font "Times" rounded size 4,3 linewidth 3
+set encoding utf8
+set xtic 50
+set xlabel "Number of UEs"
+set xrange [50:450]
+set ytic 5
+set yrange [0:20]
+set ylabel "Block ratio (%)"
+set mytics
+set style data lines
+set key top left box
+set style line 90 lc rgb '#000000' lt 1
+set border 3 back ls 90
+set key width 1
+set tics nomirror
+set style line 91 lc rgb'#303030' lt 0 lw 0.5
+set grid back ls 91
+set pointsize 0.5
+set style line 15 lc rgb'#AA0000' lt 8 pt 8 ps 0.7   # SPO
+set style line 25 lc rgb'#AA0000' lt 1               # SPO
+set style line 16 lc rgb'#00AA00' lt 10 pt 12 ps 0.8 # SPF
+set style line 26 lc rgb'#00AA00' lt 1               # SPF
+set output 'block_avg-4bal.pdf'
+plot "block_avg-4bal.dat" using 1:2 title "Shortest Path Only" with linespoints ls 15, "block_avg-4bal.dat" using 1:2:3 notitle with yerrorbars ls 25, "block_avg-4bal.dat" using 1:4 title "Shortest Path First" with linespoints ls 16, "block_avg-4bal.dat" using 1:4:5 notitle with yerrorbars ls 26

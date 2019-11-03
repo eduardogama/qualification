@@ -1,0 +1,23 @@
+set term pdfcairo enhanced color dashed font "Times" rounded size 4,3 linewidth 3
+set encoding utf8
+set ytic 20
+set yrange [0:100]
+set ylabel "Routing distribution (%)"
+set mytics
+set style data lines
+set key outside bottom center horizontal opaque box
+set style fill solid 1 border
+set style line 91 lc rgb'#303030' lt 0 lw 0.5
+set grid back ls 91
+set datafile separator ";"
+set boxwidth 0.9 relative
+set style fill solid 1.0 border -1
+set style histogram rowstack gap 2
+set style data histograms
+set bars 0.9
+set style line 12 lc rgb'#99FF99' lt 1
+set style line 13 lc rgb'#CC6600' lt 1
+set style line 14 lc rgb'#101010' lt 1
+set xtics offset 0,0.3 center
+set output 'enb-routing-4bal-250.pdf'
+plot newhistogram "Shortest Path Only",      "enb-routing-4bal-spo-250.dat" using 2:xticlabels(1) notitle ls 12,      "enb-routing-4bal-spo-250.dat" using 3:xticlabels(1) notitle ls 13,      "enb-routing-4bal-spo-250.dat" using 4:xticlabels(1) notitle ls 14,      newhistogram "Shortest Path First",      "enb-routing-4bal-spf-250.dat" using 2:xticlabels(1) title "Shortest path" ls 12,      "enb-routing-4bal-spf-250.dat" using 3:xticlabels(1) title "Inverted path" ls 13,      "enb-routing-4bal-spf-250.dat" using 4:xticlabels(1) title "Blocked" ls 14

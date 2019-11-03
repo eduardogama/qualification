@@ -1,0 +1,26 @@
+\section{Trabalhos Relacionados}
+\label{sec:related-work}
+
+Está seção busca mostrar os principais trabalhos relacionados a soluções em sistemas CDN e as tecnologias usadas para transmissão de conteúdo multimidia
+
+
+% CDN-as-a-Service Provision Over a Telecom Operator’s Cloud
+% Managing QoS Constraints in a P2P-Cloud Video on Demand System.
+% OpenCache: A Software-defined Content Caching Platform.
+
+% [ICC'15] Joint Content-Resource Allocation in Software Defined Virtual CDNs
+% [CLCN'17] Optimal and Cost Efficient Algorithm for Virtual CDN Orchestration
+% [CLCN'16] Scalable and Cost Efficient Algorithms for Virtual CDN Migration
+% [ComNet'17] OPAC: An optimal placement algorithm for virtual CDN
+Hatem \textit{et al.} [1][2][3][4] destaca os princípios de Rede Definida por Software (\textit{Software Defined Network} - SDN) e Virtualização de Função de Rede (\textit{Network Function Virtualization} - NFV) na nuvem. A abordagem baseada em SDN/NFV permite funções específicas de virtualização em servidores remotos. Dessa forma, as migrações de serviços CDN podem ser virtualizadas em diferentes \textit{datacenters}. Hatem et al. aborda o problema de orquestramento e cache, seu trabalho desenvolve um algoritmo exato para decidir os locais ideais para colocar as funções do serviço CDN. O algoritmo proposto, incluindo o cache de conteúdo e o redirecionamento de solicitações, é introduzido com algumas restrições de QoE, rede e sistema operacional. Portanto, o gerenciamento do CDN é feito de maneira centralizada e usar o usuário final como alvo para fazer a comunicação Dispositivo para dispositivo, mas não explora a mobilidade. As solicitações de usuários finais serão redirecionadas para um local de nuvem de borda ideal, sem dispositivos de borda de nível de várias camadas diferentes. Llorca \textit {et al.} [ICC'15] propõem uma rede de cache virtual implementada totalmente em software através de uma infraestrutura de rede em nuvem distribuída programável que pode ser consumida e otimizada elasticamente usando informações globais sobre condições de rede e requisitos de serviço chamados SDvCDN. Esta abordagem aborda os problemas de posicionamento (localização da instalação), roteamento (rede de fluxo) e alocação de recursos (design de rede).
+
+
+% [SENSORS'18] Service Migration from Cloud to Multi-tier Fog Nodes for Multimedia Dissemination with QoE Support
+Rosario \textit{et al.} [1] apresenta uma arquitetura para servicos de migração ao vivo de VM da nuvem para multiniveis da fog. O cenario experimental a nuvem distribui o conteudo de video para os diferentes niveis da fog. A arquitetura é baseada no paradigma sdn para, distribuição de video com suporte a QoE. 
+The work split the multi-tier fog in three tier in order to their cover, storage, upload and download capacity. Important aspects could be tailored to support generic content and IoT environments, besides work with both private and public clouds. A divisão da nuvem em multiniveis se dá pelas caracteristicas do  dispositivos conectado a nuvem, e não por qualquer interconexão entre esses aparelhos. The paper tem como focus prover tecnologias capazes de tornar este ambiente factivel, e melhorar o provisionamento de conteudo de servicos de stream de video.
+
+
+% [ICC'17] Content Delivery Network Slicing: QoE and Cost Awareness
+Retal \textit{et al.} [ICC'17] propõe uma plataforma de \textit{CDN as a Service (CDNaaS)} onde os usuário podem criar um \textit{slice} de CDN incluindo cache, transcodificador e \textit{streamers}, em ordem de gerenciar uma quantidade de videos para seus usuários. (Aborda CDN na nuvem)
+% [JSAC'18] Optimal VNFs placement in CDN Slicing over Multi-Cloud Environment
+Benkacem \textit{et al.} [JSAC'18] introduzir uma plataforma CDNaaS na qual um usuário pode criar uma fatia CDN definida como um conjunto de rede distribuída isolada de servidores de borda em domínios com várias nuvens, em que um servidor de borda hospeda um único VNF, como cache virtual, transcodificador virtual, streamer virtual e CDN- coordenador específico de fatia para o gerenciamento do ciclo de vida dos recursos de fatia e também para gerenciar vídeos e assinantes enviados. Essa plataforma foi projetada para ter o nível máximo de flexibilidade para reduzir uma fatia de CDN no topo de diferentes IaaS (Infraestrutura como Serviço) públicas e privadas, como Amazon AWS service, Microsoft Azure, Rackspace e nuvem gerenciada OpenStack. Além disso, a plataforma emprega mecanismos e algoritmos que criam fatias de CDN com reconhecimento de QoE com boa relação custo-benefício, envolvendo uma colocação ideal levando em conta o nível de QoE desejado. Portanto, o objetivo deste trabalho é encontrar um custo eficiente de CDN, respeitando, por um lado, os requisitos do proprietário da CDN em termos de QoE e, por outro lado, a infraestrutura em nuvem e seu custo.

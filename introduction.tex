@@ -1,0 +1,58 @@
+\section{Introduction}
+\label{ch:introduction}
+
+%******* Introduction of the Dash technology and Cloud/Fog networks****
+
+
+% ----------------------------------------------------------------------------
+% What is the current context in mobile network in terms of traffic and users? 
+% ----------------------------------------------------------------------------
+Os serviços de streaming de vídeo representam a maior parte do tráfego da Internet. De acordo com as previsões da Cisco~\footnote{Visual Networking Index: atualização global de previsão de tráfego de dados móveis. Link:~\url{http://shorturl.at/hjAZ1}. Acesso em: 29 de julho de 2019.}, em 2021, 70\% de todo o tráfego da Internet será dominado por streaming de vídeo. Isso inclui os serviços de vídeo atuais, bem como serviços inovadores de jogos na nuvem e futuros consoles~(por exemplo, Google Stadia), enquanto para dispositivos móveis essa estimativa representa 78\% de todo o tráfego de dados móveis. A Fig. 1 Mostra ao longo de cada anoo o crescimento no consumo de banda, estes tipos de cenários impõem significantes desafios para a distribuição de vídeo sobre as futuras gerações da Internet.
+
+% ----------------------------------------------------------------------------
+% What carries have been doing to address the increasing traffic?
+% ----------------------------------------------------------------------------
+
+Os serviços de transmissão de vídeo têem seu bitrate adaptados dinâmicamente através de streams adaptativos HTTP~(HAS). As soluções HAS utilizam os protocolos HTTP na aplicação e TCP na camada de transporte como ilustrados na figura 1b. 
+
+em Streaming Adaptativo Dinâmico sobre HTTP~(DASH) são amplamente adotado por provedores de vídeo como Google, Netflix, Akamai HD e outros, nos quais o player de vídeo do cliente pode escolher dinamicamente o nível de taxa de bits de acordo com a largura de banda disponível percebida.
+
+HAS uses HTTP as the application and TCP as the transport-layer protocol as il-lustrated in Figures 1.2b and 1.3, and clients pull the data from an HTTP server. HAS solutions employ dynamic adaptation with respect to varying network conditions to pro-vide a seamless (or at least smoother) streaming experience. Once a media file (or stream)is ready from a source, it is prepared for streaming before it is published to a standard, off-the-shelf HTTP server. The original file/stream is partitioned into segments (also calledchunks) of equi-length playback time, and multiple versions (also called representations)of each segment are generated that vary in bitrate/resolution/quality using an encoder ora transcoder (i.e., H.264, H.265, etc.). Moreover, the server generates an index file, whichis a manifest that lists the available representations including HTTP uniform resourcelocators (URLs) to identify the segments along with their availability times. During atypical HAS session, the client first receives the manifest that contains the metadata forthe video, audio, subtitles, etc., and then constantly measures certain parameters such asthe available network bandwidth, buffer status, and battery and CPU levels. According tothese parameters, the HAS client repeatedly fetches the most suitable next segment amongthe available representations from the server. Table 1.1 compares the main characteristicsof the traditional streaming and HAS systems.
+
+% ----------------------------------------------------------------------------
+% What are the problems with existing networks?
+% ----------------------------------------------------------------------------
+
+Currently, the traditional VoD services are designed to distribute multimedia content by large data centers at the cloud. These systems usually use a set of servers where the traffic passes through the core network, beyond that, the devices connection are made by static end-users and Internet links stable [?]. This way, the inception of these systems at cloud-level partially solves the scalability, availability, and interoperability issues, but at the same time, introduces new ones (e.g., higher latency and core network congestion) [?].
+
+% ----------------------------------------------------------------------------
+% Which technologies can be used to improve future networks?
+% ----------------------------------------------------------------------------
+
+
+
+% ----------------------------------------------------------------------------
+% How the SDN parading is contributing to current networks?
+% ----------------------------------------------------------------------------
+
+% ----------------------------------------------------------------------------
+% Why and how are we contributing in this topic?
+% ----------------------------------------------------------------------------
+
+In an attempt to answer above questions, this ongoing doctoral research project discusses how the \ac{SDN} paradigm and the OpenFlow protocol can be integrated to the existing 4G \ac{LTE} networks to provide new solutions for some of the aforementioned problems. As contributions already developed, this project first ...
+
+Para melhorar os serviços de vídeo, é de suma importância distribuir adequadamente os fluxos de vídeo de acordo com seus requisitos: uma infraestrutura de jogos em nuvem é um serviço interativo que precisa de atrasos reduzidos~(alguns milissegundos), enquanto uma entrega de VoD não interativa pode tolerar maior atrasos sem prejudicar a qualidade da experiência. Um gerenciamento e orquestração adequados da entrega de vídeo pela Internet é essencial para a coexistência suave de serviços de vídeo heterogêneos. 
+
+% ----------------------------------------------------------------------------
+% How is this document organized?
+% ----------------------------------------------------------------------------
+This document is organized as follows: \autoref{ch:background} presents some
+background concepts on \ac{SDN} and \ac{LTE} architectures. Then,
+\autoref{ch:integration} gives an overview of several proposals for \ac{SDMN}.
+It focuses on the use of \ac{SDN} solutions in the backhaul and core network,
+comparing some related works and highlighting major open challenges in the
+topic. \autoref{ch:developed} brings the work carried out so far, which will
+assist the development of the proposed contributions that are detailed in
+\autoref{ch:proposal}. Finally, \autoref{ch:remarks} closes the document with
+some final remarks.
+

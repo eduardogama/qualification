@@ -1,0 +1,120 @@
+# Terminal
+set term pdfcairo enhanced color dashed font "Times" rounded size 4,3 linewidth 3
+set encoding utf8
+
+# Ajuste do eixo X
+set xtic 100,40,380
+set xlabel "Number of UEs"
+set xrange [90:390]
+set mxtics
+
+# Ajuste do eixo Y
+set ytic 0,20
+set mytics
+
+# Ajuste da legenda
+set style data lines
+set key top left box
+set style fill solid 1 border
+
+# Definindo eixos
+set style line 90 lc rgb '#000000' lt 1
+set border 3 back ls 90
+set key width 1
+set tics nomirror
+
+# Gridlines 
+set style line 91 lc rgb'#303030' lt 0 lw 0.5
+set grid back ls 91
+
+# Line styles
+set pointsize 0.5
+set style line 12 lc rgb'#202020' lt 1 pt 3  # GBR reserved
+set style line 22 lc rgb'#202020' lt 1       # GBR reserved
+set style line 13 lc rgb'#003366' lt 4 pt 5  # GBR traffic
+set style line 23 lc rgb'#003366' lt 1       # GBR traffic error bar
+set style line 14 lc rgb'#994C00' lt 7       # Non-GBR traffic
+set style line 24 lc rgb'#994C00' lt 1       # Non-GBR traffic error bar
+set style line 15 lc rgb'#AA0000' lt 8 pt 8 ps 0.7   # Coexistence OFF
+set style line 25 lc rgb'#AA0000' lt 1               # Coexistence OFF
+set style line 16 lc rgb'#00AA00' lt 10 pt 12 ps 0.8 # Coexistence ON
+set style line 26 lc rgb'#00AA00' lt 1               # Coexistence ON
+set style line 17 lc rgb'#FF8000' lt 4 pt 7          # VoIP
+set style line 27 lc rgb'#FF8000' lt 1               # VoIP
+
+
+set yrange [0:140]
+set key bottom right
+set ylabel "Bandwidth (Mbps)"
+#set title "Reserved bandwidth and network throuhput for GBR bearers" font "Times,14"
+set output 'coex-problem-thp.pdf'
+plot "r10-bal-spf-nonGbr_avg_agg_thp.dat" using 1:2 title "Non-GBR traffic" with linespoints ls 14, \
+     "r10-bal-spf-nonGbr_avg_agg_thp.dat" using 1:2:3 notitle with yerrorbars ls 24, \
+     "r10-bal-spf-gbr_avg_agg_thp.dat" using 1:2 title "GBR traffic" with linespoints ls 13, \
+     "r10-bal-spf-gbr_avg_agg_thp.dat" using 1:2:3 notitle with yerrorbars ls 23, \
+     "r10-bal-spf-net_avg_gbr_res.dat" using 1:2 title "GBR reserved" with linespoints ls 12, \
+     "r10-bal-spf-net_avg_gbr_res.dat" using 1:2:3 notitle with yerrorbars ls 22
+
+set output 'coex-thp-comp.pdf'
+set key bottom right
+plot "r10-bal-spf-gbr_avg_agg_thp.dat" using 1:2 title "GBR Coex. OFF" with linespoints ls 15, \
+     "r10-bal-spf-gbr_avg_agg_thp.dat" using 1:2:3 notitle with yerrorbars ls 25, \
+     "r10-bal-spf-gbr_avg_agg_thp.dat" using 1:4 title "GBR Coex. ON" with linespoints ls 16, \
+     "r10-bal-spf-gbr_avg_agg_thp.dat" using 1:4:5 notitle with yerrorbars ls 26, \
+     "r10-bal-spf-net_avg_gbr_res.dat" using 1:2 title "GBR reserved" with linespoints ls 12, \
+     "r10-bal-spf-net_avg_gbr_res.dat" using 1:2:3 notitle with yerrorbars ls 22
+
+set output 'coex-thp.pdf'
+set key bottom right
+plot "r10-bal-spf-nonGbr_avg_agg_thp.dat" using 1:4 title "Non-GBR traffic" with linespoints ls 14, \
+     "r10-bal-spf-nonGbr_avg_agg_thp.dat" using 1:4:5 notitle with yerrorbars ls 24, \
+     "r10-bal-spf-gbr_avg_agg_thp.dat" using 1:4 title "GBR traffic" with linespoints ls 13, \
+     "r10-bal-spf-gbr_avg_agg_thp.dat" using 1:4:5 notitle with yerrorbars ls 23, \
+     "r10-bal-spf-net_avg_gbr_res.dat" using 1:2 title "GBR reserved" with linespoints ls 12, \
+     "r10-bal-spf-net_avg_gbr_res.dat" using 1:2:3 notitle with yerrorbars ls 22
+
+set ytic 0,10
+set yrange [0:40]
+set key top left
+set ylabel "Packet loss (%)"
+#set title "Packet loss ratio for GBR bearers" font "Times,14"
+set output 'coex-problem-loss.pdf'
+plot "r10-bal-spf-nonGbr_avg_agg_loss.dat" using 1:2 title "Non-GBR traffic" with linespoints ls 14, \
+     "r10-bal-spf-nonGbr_avg_agg_loss.dat" using 1:2:3 notitle with yerrorbars ls 24, \
+     "r10-bal-spf-gbr_avg_agg_loss.dat" using 1:2 title "GBR traffic" with linespoints ls 13, \
+     "r10-bal-spf-gbr_avg_agg_loss.dat" using 1:2:3 notitle with yerrorbars ls 23
+
+#set title "Packet loss ratio for GBR bearers" font "Times,14"
+set output 'coex-loss.pdf'
+plot "r10-bal-spf-nonGbr_avg_agg_loss.dat" using 1:4 title "Non-GBR traffic" with linespoints ls 14, \
+     "r10-bal-spf-nonGbr_avg_agg_loss.dat" using 1:4:5 notitle with yerrorbars ls 24, \
+     "r10-bal-spf-gbr_avg_agg_loss.dat" using 1:4 title "GBR traffic" with linespoints ls 13, \
+     "r10-bal-spf-gbr_avg_agg_loss.dat" using 1:4:5 notitle with yerrorbars ls 13
+
+set ylabel "Packet drop (%)"
+#set title "Coexistence average aggregated packet meter drop ratio" font "Times,14"
+set output 'coex-drops.pdf'
+plot "r10-bal-spf-nonGbr_avg_agg_drop.dat" using 1:4 title "Non-GBR traffic" with linespoints ls 14, \
+     "r10-bal-spf-nonGbr_avg_agg_drop.dat" using 1:4:5 notitle with yerrorbars ls 24, \
+     "r10-bal-spf-gbr_avg_agg_drop.dat" using 1:4 title "GBR traffic" with linespoints ls 13, \
+     "r10-bal-spf-gbr_avg_agg_drop.dat" using 1:4:5 notitle with yerrorbars ls 13
+
+set ytic 0,1,6     
+set yrange [0:6]
+set ylabel "VoIP average delay (ms)"
+set output 'coex-voip-delay.pdf'
+plot "r10-bal-spf-voip_avg_delay.dat" using 1:2 title "Coex. OFF" with linespoints ls 15, \
+     "r10-bal-spf-voip_avg_delay.dat" using 1:2:3 notitle with yerrorbars ls 25, \
+     "r10-bal-spf-voip_avg_delay.dat" using 1:4 title "Coex. ON" with linespoints ls 16, \
+     "r10-bal-spf-voip_avg_delay.dat" using 1:4:5 notitle with yerrorbars ls 26, \
+     "r10-bal-spf-voip_avg_delay.dat" using 1:6 title "VoIP queues" with linespoints ls 17, \
+     "r10-bal-spf-voip_avg_delay.dat" using 1:6:7 notitle with yerrorbars ls 27
+
+set ylabel "VoIP average jitter (ms)"
+set output 'coex-voip-jitter.pdf'
+plot "r10-bal-spf-voip_avg_jitter.dat" using 1:2 title "Coex. OFF" with linespoints ls 15, \
+     "r10-bal-spf-voip_avg_jitter.dat" using 1:2:3 notitle with yerrorbars ls 25, \
+     "r10-bal-spf-voip_avg_jitter.dat" using 1:4 title "Coex. ON" with linespoints ls 16, \
+     "r10-bal-spf-voip_avg_jitter.dat" using 1:4:5 notitle with yerrorbars ls 26, \
+     "r10-bal-spf-voip_avg_jitter.dat" using 1:6 title "VoIP queues" with linespoints ls 17, \
+     "r10-bal-spf-voip_avg_jitter.dat" using 1:6:7 notitle with yerrorbars ls 27

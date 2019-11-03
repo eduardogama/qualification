@@ -1,0 +1,144 @@
+\documentclass[11pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[in]{fullpage}
+\usepackage[pdftex]{graphicx}
+\graphicspath{{./img/}{./graphs/qos/}{./graphs/adm/}}
+\usepackage{subfig}
+\usepackage{amssymb}
+\usepackage{setspace}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{acronym}
+\usepackage[square,numbers]{natbib}
+\usepackage{logo-ic}
+\usepackage{booktabs}
+
+\definecolor{lightgray}{gray}{0.75}
+
+\usepackage{csquotes}
+
+
+\newcommand{\x}{$\bullet$}
+\newcommand{\m}{$\checkmark$}
+
+% Hyperref configuration
+\hypersetup {
+  pdftitle={Doctoral Qualifying Exam -- Luciano Jerez Chaves},
+  pdfauthor={Luciano Jerez Chaves},
+  pdfcreator={pdfTeX 3.14159265-2.6-1.40.16 (TeX Live 2015)},
+  pdfsubject={Doctoral Qualifying Exam - IC/UNICAMP},
+  pdfkeywords={Software-Defined Networking, OpenFlow protocol, Long Term
+  Evolution, Network Management},
+}
+
+\begin{document}
+
+\def\sectionautorefname{Section}
+\def\subsectionautorefname{Section}
+\def\subsubsectionautorefname{Section}
+\def\figureautorefname{Figure}
+\def\subfigureautorefname{Figure}
+\def\tableautorefname{Table}
+
+\sloppy
+
+\pagenumbering{roman}
+\thispagestyle{empty}
+
+% Logos and names
+\begin{center}
+  \begin{tabular}{ccc}
+    \raisebox{-.5\height}{\includegraphics[width=2.2cm]{logo-unicamp}}
+    &
+    \begin{minipage}{.6\textwidth}
+      \centering
+      \textbf{Universidade Estadual de Campinas} \\
+      \textbf{Instituto de Computação} \\
+    \end{minipage}
+    &
+    \raisebox{-.5\height}{\scalebox{1.11}{\LogoIcUnicampWithName}}
+  \end{tabular}
+\end{center}
+  
+\hrule
+\vspace{2cm}
+
+\begin{center}
+  {\large \textbf{Exame de Qualificação de Doutorado}} \\
+  \vspace{1.5cm}
+  {\Large \textbf{Future Generation Multi-tier Video Delivery for Smart Cities}} \\
+  \vspace{1.5cm}
+      \begin{tabular}{rl}
+          \textbf{Candidate}:  & Eduardo de Souza Gama \\
+          \textbf{Orientador}:    & Luiz Fernando Bittencourt, D.Sc. \\
+          \textbf{Co-orientador}: & Roger Immich, D.Sc. \\
+      \end{tabular}
+  \vspace{0.25cm}
+
+  \begin{abstract}%
+  \onehalfspacing
+
+  The world is witnessing a rapid growth in mobile communication, and network
+  operators have been forced to handle network traffic more resourcefully. Many
+  works point to the use of \ac{SDN} as an enabling technology to overcome
+  current limitations, making possible upcoming 5G networks. This doctoral
+  research project discusses how the \ac{SDN} paradigm and the OpenFlow
+  protocol can be integrated into existing \ac{LTE} networks, going through the
+  state-of-the-art solutions and highlighting some open issues in the area.
+  Some contributions have already been developed, as the new OpenFlow module
+  for \ac{SDN}-based \ac{LTE} networks simulations, and a complete \ac{LTE}
+  \acs{QoS} realization with OpenFlow protocol. Taking into account that future
+  5G heterogeneous networks will become much denser with many more cells,
+  contributions are proposed toward a scalable controller architecture,
+  including a distributed mobility management and algorithms for traffic
+  offloading between different cells, and even between different technologies.
+  Through solutions developed in this research, it is intended to enable more
+  agile and flexible mobile networks, lowering management costs for network
+  operators and improving the experience for users.
+
+  \end{abstract}
+  \vspace{0.5cm}
+  Dezembro, 2019 %\today
+\end{center}
+\newpage
+\mbox{}
+
+\newpage
+\tableofcontents
+\newpage
+\mbox{}
+
+\newpage
+\include{acronym}
+
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\onehalfspacing
+
+\include{introduction}
+\include{background}
+\include{related-work}
+\include{integration}
+\include{developed}
+\include{proposal}
+\include{remarks}
+
+\setlength{\bibsep}{7.5pt}
+\singlespacing
+\footnotesize{
+  \bibliographystyle{apalike}
+  \bibliography{references}
+}
+
+\end{document}
+
+\grid
+\grid
+\grid
+\grid

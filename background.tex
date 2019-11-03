@@ -1,0 +1,53 @@
+\clearpage
+\section{Background and concepts}
+\label{ch:background}
+
+Esta seção descreve brevemente coceitos e background tais como o paradigma SDN e redes 5G.
+%This section briefly introduces background and concepts such as the \acl{SDN} paradigm and the 4G \acl{LTE} networks.
+
+%=============================================================================%
+\subsection{Visão Geral da Computação em Nuvem-Névoa}
+
+A computação em névoa é um paradigma relativamente novo na computação, com o principal objetivo de preencher uma lacuna entre a nuvem e os dispositivos finais. Existem várias definições e terminologias na literatura que abordam este paradigma na literatura. Nesta proposta, vamos adotar a definição, o qual é adotado pelo OpenFogConsortium, publicada pelo \textit{National Institute of Standards and Technology} (NIST) [1]: 
+
+\begin{displayquote}
+
+ "\textit{A computação em névoa é um modelo em camadas para permitir o acesso onipresente a um contínuo compartilhado de recursos de computação escalonáveis. O modelo facilita a implantação de aplicativos e serviços distribuídos com reconhecimento de latência e consiste em nós de névoa (físicos ou virtuais), que residem entre dispositivos finais inteligentes e serviços centralizados (na nuvem)}."
+
+\end{displayquote}
+% https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.500-325.pdf. March 2018
+% https://www.openfogconsortium.org
+
+Os nós dentro da \textit{fog} podem ser organizados em clusters - na vertical (para dar suporte ao isolamento), na horizontal (para suportar a federação) ou na distância de latência dos nós de \textit{fog} aos dispositivos finais inteligentes. A \textit{fog computing} minimiza o tempo de resposta da solicitação de/para aplicativos suportados e fornece, para os dispositivos finais, recursos de computação local e, quando necessário, conectividade de rede para serviços centralizados.
+
+Os nós da \textit{fog} são recursos locais que podem ser quaisquer dispositivos que oferece conexão de rede com fio/sem fio com computação, armazenamento e conectividade de rede, como switches, roteadores, smart phones, tablets, laptops, etc. Um cenário simples é que um shopping center pode implantar muitos nós de névoa em diferentes andares para fornecer Acesso Wi-Fi e entregar alguns serviços envolvidos (ou seja, navegação interior, distribuição de anúncios, coleções de feedback) para seus clientes. No entanto, no tempo de pico, as capacidades desses nós de nevoeiro não podem servir eficientemente os clientes. Enquanto isso, o provedor de névoa, aqui é o centro comercial, pode estender sua infraestrutura, pagando os recursos de computação e armazenamento terceirizados dos nós de nuvem, que pode ser máquina virtual (VM) alugada de provedores de nuvem em uma base de pay-per-use. Todos os nós de processamento distribuídos (nuvem ou névoa) são gerenciados por um corretor de recursos, que é um componente de gerenciamento de recursos e um planejador para os fluxos de trabalho enviados pelos usuários no lado do nevoeiro. Neste caso, uma agenda de tarefas, que pode minimizar o tempo de conclusão do fluxo de trabalho, mas corresponde a uma grande quantidade de custo monetário, não é uma solução ideal para fornecedores da fog. Assim, neste artigo, propomos um algoritmo de escalonamento de tarefas que pode conseguir uma boa compensação entre o tempo de execução do fluxo de trabalho e o custo pelo uso dos recursos da nuvem. Os resultados experimentais mostram o excelente desempenho do nosso método comparado com alguns outros trabalhos.
+
+\begin{figure}[htb]
+  \centering
+  \includegraphics[scale=.5]{arch-multi-lvl}
+  \caption{Main components of an multi-lvl environment.}
+  \label{fig:ofswitch-components}
+\end{figure}
+
+
+%-----------------------------------------------------------------------------%
+\subsection{HTTP Adaptative Streaming and MPEG-DASG standard}
+\label{sec:has-dash}
+
+In this proposal, we focus on video streaming applications based on MPEG-DASH (Dynamic
+Adaptive Streaming over HTTP), a technology that dynamically
+adapts to changing network conditions by requesting content in
+chunks encoded at different bitrates, and which is used by major
+streaming services like Netflix and YouTube.
+
+Benefits
+There are several key benefits in the adaption of this new standard. Due to the fact that several major media companies took part in its development, the new protocol will eliminate technical issues in delivery and compression. In essence, it aims to combine all of the technologies and standards into one, making streaming support seamless on all devices. In turn, it aims to reduce technical headaches and transcoding costs. Content publishers can generate a single set of files for encoding and streaming that should be compatible with as many devices as possible, from mobile to OTT, as well as to the desktop via plug-ins or HTML5. Consumers will not have to worry about whether their devices will be able to play the content they want to watch.
+
+Characteristics
+By parsing the MPD, the DASH client learns about the program timing, media-content availability, media types, resolutions, minimum and maximum bandwidths, and the existence of various encoded alternatives of multimedia components, accessibility features and required digital rights management (DRM), media-component locations on the network, and other content characteristics. 
+
+Out of Scope
+The MPEG-DASH specification only defines the MPD and the segment formats. The delivery of the MPD and the media encoding formats containing the segments, as well as the client behavior for fetching, adaptation heuristics, and playing content, are outside of MPEG-DASH’s scope.
+
+
+\subsection{Aplicação CDN }

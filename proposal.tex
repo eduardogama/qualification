@@ -71,59 +71,6 @@ Dada a arquitetura do modelo de serviço e ambiente de nuvem/borda de várias ca
 \subsubsection{Scalable controller architecture}
 \label{subsec:distributed}
 
-Having a centralized controller is by no means an intrinsic characteristic of
-\ac{SDN}. According to \citet{Kuklinski2014a}, there are obvious benefits on
-the \ac{SDN} centralized network control approach, but the controller appears
-to be a single point of failure and scalability, which raises potential
-performance issues of the control plane in terms of reaction time or volume of
-control traffic. As indicated by \citet{Yeganeh2013}, the central controller
-does not scale as the network grows (increase the number of switches, flows,
-bandwidth, etc.) and will fail to handle all the incoming requests while
-providing the same service guarantees.
-
-Previous research into improving \ac{SDN} scalability are categorized into
-three groups by \citet{Sato2015}: (1) improving the performance of the
-controller itself, (2) reducing the workload of the controller, (3) and
-designing a distributed architecture for the control plane. The first group is
-related to hardware and software improvements, like multi-threads applications
-over dedicated hardware. It is possible to reduce the workload of the
-controller by extending the functionality of switches on the data plane. Using
-pre-installed rules, dividing data flows into classes, and installing
-aggregated matches are examples of improvements in this second group. Finally,
-the third group includes new control plane architectures, increasing the number
-of \ac{SDN} controllers in the management domain.
-
-\citet{Arslan2015} discuss this distributed architecture for the control plane.
-There is a propensity to develop new \ac{SDN}-based architectures that are
-scalable through the hierarchy of controllers. The most efficient management
-approach seems to be hierarchical one in which the network, for the management
-purposes, can be split into smaller geographical domains that are locally
-managed and coordinated by a network management center~\cite{Kuklinski2014a}.
-
-As depicted in \autoref{fig:centralized-controller}, the current centralized
-\ac{EPC} controller architecture introduced in \autoref{sec:controller} has a
-single controller element that is responsible for traffic routing, bearer
-admission control, and \ac{QoS} realization. This single entity manages all
-switches in the infrastructure layer using the OpenFlow southbound interface.
-Also, it communicates with the \ac{MME} element over a non-standardized
-northbound interface.
-\begin{figure}[htb]
-  \centering
-  \includegraphics[scale=0.5]{centralized-controller}
-  \caption{The current centralized \acs{EPC} controller architecture.}
-  \label{fig:centralized-controller}
-\end{figure}
-This centralization issue can be partially solved by splitting the network into
-smaller domains. As nodes in mobile networks are usually geographically
-distributed, \citet{Yeganeh2013} say that it is possible to take advantage of
-the physical distribution of the network to partition it into separate regions;
-each partition can be controlled by an independent controller, and these
-controllers can exchange only the required state changing events, effectively
-hiding most events from external controllers. \citet{Yang2015a} say that there
-is no need to provide a strictly consistent centralized view to each
-controller, which would cause processing overload and additional cost when the
-network expands.
-
 \emph{The goal of this research topic is} to improve the current controller
 model toward a scalable architecture. \autoref{fig:distributed-controller}
 shows a possible distributed \ac{EPC} controller architecture, where the
@@ -152,13 +99,6 @@ admission control software.
   simulator, performing scalability tests with large numbers of \acp{eNB} and
   \acp{UE} in the network.
 \end{itemize}
-
-\begin{figure}[htb]
-  \centering
-  \includegraphics[scale=0.5]{distributed-controller}
-  \caption{A possible distributed \acs{EPC} controller architecture.}
-  \label{fig:distributed-controller}
-\end{figure}
 
 %-----------------------------------------------------------------------------%
 \subsubsection{Traffic offloading in \acsp{HetNet}}

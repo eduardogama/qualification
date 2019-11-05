@@ -36,10 +36,10 @@ Este projeto tem como objetivo projetar uma entrega de vídeo baseada em DASH co
 
 Dada a arquitetura do modelo de serviço e ambiente de nuvem/borda de várias camadas mencionada, este trabalho tem como objetivo abordar algumas das seguintes questões de pesquisa:~\textit{i)} Como determinar as melhores camadas para alocação de serviços de vídeo?~\textit{ii)} Como os pedaços de vídeo não solicitados devem ser distribuídos na hierarquia de borda/nuvem, considerando as informações de localização do usuário e estimativas sobre a localização futura do usuário em tempo real?~\textit{iii)} Como facilitar o streaming de vídeo através de várias fontes simultaneamente?~\textit{iv)} Como os algoritmos de adaptação à taxa de bits podem ser afetados pelo tamanho do pedaço de vídeo em uma arquitetura de várias camadas?
 
-\subsection{Multimedia Delivery System Schemes}
+%\subsection{Multimedia Delivery System Schemes}
 % Selection Algorithms
 
-\subsection{Game Theory Based Adaptative Bit Rate Scheme}
+%\subsection{Game Theory Based Adaptative Bit Rate Scheme}
 
 % This project aims to design a reliable and high-quality DASH-based video delivery to be used in Smart City Environments~\cite{gamaUCC2019, KreuzbergerWorkshop2016}. The proposed scheme will take advantage of several network-related technologies such as Cloud, Fog, and Edge Computing, as well as intelligent service placement and chaining. Figure~\ref{fig:scenario-arch} depicts, on its left-hand side, a multi-tier network architecture, which is composed of a heterogeneous set of devices and applications using distributed computing resources through a multi-access communication technology, such as 5G and WiFi. This project proposes to extend DASH video streaming to support simultaneous multipath connectivity~\cite{poliakovPHD2018, Velasquez2018}.
 
@@ -64,7 +64,7 @@ Dada a arquitetura do modelo de serviço e ambiente de nuvem/borda de várias ca
 % \textbf{Modelagem de propriedades de balanceamento de carga e desempenho de cache em sistemas de Névoa-Nuvem multicamadas.}
 
 %-----------------------------------------------------------------------------%
-\subsection{Medidas objetivas}
+%\subsection{Medidas objetivas}
 
 
 %-----------------------------------------------------------------------------%
@@ -187,75 +187,6 @@ management prone to several performance limitations such as suboptimal
 routing, low scalability, potential single point of failure and the lack of
 granularity for the mobility management service.
 
-Nowadays, \acf{DMM} is considered as a promising solution to solve these above
-challenges. Several proposals tried to redesign mobile network architecture by
-leveraging \ac{SDN} and OpenFlow with the support of \ac{DMM}.
-\citet{Karimzadeh2014} discuss the \ac{DMM} in \ac{LTE} systems composed of
-virtual gateways running on the cloud. \citet{Kuklinski2014b} discuss the
-evolution of mobility management mechanisms in mobile networks and how \ac{SDN}
-can be applied to efficiently handle mobility in the context of future 5G
-networks. In the CROWD architecture~\cite{Ahmad2013a}, a \ac{DMM} gateway
-replaces current anchor points, and mobility management functions are executed
-by control applications. \citet{Gurusanthosh2013} propose the \acf{SDMA} in
-\ac{LTE} backhaul access networks, including detailed handover procedure with
-dynamic anchor element choice, which is based on \ac{UE} location and path
-changes during handover. \citet{Mahmoodi2014} introduce a distributed \ac{SDN}
-control plane with mobility management as an example where the controller
-becomes responsible for handover procedures, reducing the power consumption of
-the \ac{UE} and the signaling message overhead between entities at the backhaul
-side.
-
-Besides, mobility management may no longer be exclusively triggered by radio
-quality, but also by network management decisions~\cite{Rost2014}. Several
-redesigned handover procedures are proposed by \citet{Zhang2015b} for 5G ultra
-dense networks. They take advantage of control and user-plane separation,
-taking into consideration of mobility, stability, energy efficiency and
-realizability.
-
-Particularly, handover performance can severely impact the \ac{QoS} in
-\acp{HetNet}. The increasing number of small nodes bring cells closer and there
-is no more obvious boundary between them, enhancing the capacity per area by
-the space division multiplexing. \citet{Sun2015} propose intelligent schemes
-to handle the dynamic environment of \acp{HetNet}. The authors identify some
-key problems in 5G \acp{HetNet} as traffic control, load balancing, density
-prediction, and resource allocation. Then, they develop a number of smart
-schemes to overcome these challenges.
-
-\emph{The goal of this research topic is} to distribute the mobility management
-computation intensive task among the \ac{MME} and a number of controllers nodes
-in the network, avoiding a centralized operation. The handover processing can
-also be assisted by a sophisticated software application. With this approach,
-it is possible to reduce signaling overhead over backhaul and core network and
-speed up handover procedures. The development of such distributed solution will
-be guided by group handover in heterogeneous environments, when a group of
-users may change the access networks simultaneously or within short
-time~\cite{Chowdhury2012}.
-
-Another opportunity is to explore \ac{SDN} flexibility and move the anchor
-point to the OpenFlow backhaul network, considering that when a \ac{UE} is
-handed over to a new access point, in most cases a large part of the path that
-the traffic takes in the backhaul network would be the same before and after
-the handover. \autoref{fig:lte-handover} shows how \ac{GTP} tunnels are handled
-during a normal handover procedure in \ac{LTE} networks, and
-\autoref{fig:dmm-proposal} exemplifies how the proposed distributed mobility
-management solution can handle the \ac{GTP} tunnels, following some ideas from
-the \ac{SDMA}. Nonetheless, while \ac{SDMA} demands changes in the standard
-procedures with no backward compatibility, the proposed solution must be
-designed to offer interoperability with existing networks.
-
-\begin{figure}[htb]
-  \centering
-    \subfloat[Centralized anchor.]
-    {\includegraphics[width=.25\textwidth]{lte-handover}
-    \label{fig:lte-handover}}
-  \hfil \hspace{1cm}
-    \subfloat[Distributed anchor.]
-    {\includegraphics[width=.25\textwidth]{dmm-proposal}
-    \label{fig:dmm-proposal}}
-  \caption{\acs{SDN}-enabled \acs{LTE} network topology.}
-  \label{fig:dmm}
-\end{figure}
-
 \emph{The objectives for this research topic are:}
 \begin{itemize}
   \item Detailed study of \ac{LTE} handover procedures to propose a suitable
@@ -291,9 +222,9 @@ already developed are identified by the symbol~\,\m. Meanwhile, the symbol
 
 \begin{enumerate}
 	\itemsep0pt
-  \item Detailed study on \ac{SDN} and \ac{LTE} integration;
+  \item Detailed study on \ac{DASH} and \ac{LTE} integration;
   \item Evaluation of available software tools for performance analysis;
-  \item Development of the OpenFlow 1.3 module for \ac{ns-3};
+  \item Development of the libdash module for \ac{ns-3};
   \item Proposal of the \ac{SDN}-enabled \ac{LTE} network;
   \item OpenFlow \ac{EPC} controller for traffic routing and bearer admission
         control;

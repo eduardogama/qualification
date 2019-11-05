@@ -12,7 +12,7 @@ A computação em névoa é um paradigma relativamente novo na computação, com
 
 \begin{displayquote}
 
- "\textit{A computação em névoa é um modelo em camadas para permitir o acesso onipresente a um contínuo compartilhado de recursos de computação escalonáveis. O modelo facilita a implantação de aplicativos e serviços distribuídos com reconhecimento de latência e consiste em nós de névoa (físicos ou virtuais), que residem entre dispositivos finais inteligentes e serviços centralizados (na nuvem)}."
+"\textit{A computação em névoa é um modelo em camadas para permitir o acesso onipresente a um contínuo compartilhado de recursos de computação escalonáveis. O modelo facilita a implantação de aplicativos e serviços distribuídos com reconhecimento de latência e consiste em nós de névoa (físicos ou virtuais), que residem entre dispositivos finais inteligentes e serviços centralizados (na nuvem)}."
 
 \end{displayquote}
 % https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.500-325.pdf. March 2018
@@ -33,7 +33,52 @@ Para fazer isso, primeiro apresentamos uma arquitetura de rede de várias camada
   \label{fig:arch-multi-lvl}
 \end{figure}
 
-Um cenário simples é que um shopping center pode implantar muitos nós de névoa em diferentes andares para fornecer Acesso Wi-Fi e entregar alguns serviços envolvidos (ou seja, navegação interior, distribuição de anúncios, coleções de feedback) para seus clientes. No entanto, no tempo de pico, as capacidades desses nós de nevoeiro não podem servir eficientemente os clientes. Enquanto isso, o provedor de névoa, aqui é o centro comercial, pode estender sua infraestrutura, pagando os recursos de computação e armazenamento terceirizados dos nós de nuvem, que pode ser máquina virtual (VM) alugada de provedores de nuvem em uma base de pay-per-use. Todos os nós de processamento distribuídos (nuvem ou névoa) são gerenciados por um corretor de recursos, que é um componente de gerenciamento de recursos e um planejador para os fluxos de trabalho enviados pelos usuários no lado do nevoeiro. Neste caso, uma agenda de tarefas, que pode minimizar o tempo de conclusão do fluxo de trabalho, mas corresponde a uma grande quantidade de custo monetário, não é uma solução ideal para fornecedores da fog. Assim, neste artigo, propomos um algoritmo de escalonamento de tarefas que pode conseguir uma boa compensação entre o tempo de execução do fluxo de trabalho e o custo pelo uso dos recursos da nuvem. Os resultados experimentais mostram o excelente desempenho do nosso método comparado com alguns outros trabalhos.
+Um cenário simples é que um shopping center pode implantar muitos nós de névoa em diferentes andares para fornecer Acesso Wi-Fi e entregar alguns serviços envolvidos (ou seja, navegação interior, distribuição de anúncios, coleções de feedback) para seus clientes. No entanto, no tempo de pico, as capacidades desses nós de nevoeiro não podem servir eficientemente os clientes. Enquanto isso, o provedor de névoa, aqui é o centro comercial, pode estender sua infraestrutura, pagando os recursos de computação e armazenamento terceirizados dos nós de nuvem, que pode ser máquina virtual (VM) alugada de provedores de nuvem em uma base de pay-per-use. Todos os nós de processamento distribuídos (nuvem ou névoa) são gerenciados por um corretor de recursos, que é um componente de gerenciamento de recursos e um planejador para os fluxos de trabalho enviados pelos usuários no lado do nevoeiro. Neste caso, uma agenda de tarefas, que pode minimizar o tempo de conclusão do fluxo de trabalho, mas corresponde a uma grande quantidade de custo monetário, não é uma solução ideal para fornecedores da fog. Assim, neste artigo, propomos um algoritmo de escalonamento de tarefas que pode conseguir uma boa compensação entre o tempo de execução do fluxo de trabalho e o custo pelo uso dos recursos da nuvem. Os resultados experimentais mostram o excelente desempenho do nosso método comparado com alguns outros trabalhos.	
+
+
+
+%-----------------------------------------------------------------------------%
+\subsubsection{Arquitetura Hierarquica para Bitrate Schemes}
+\label{subsec:bitrate-schemes}
+
+Each ABR scheme proposes many criteria for bitrate decisions, where they work only under
+indirect or implicit assumptions and specific scenarios, and focuses on a specific deployment or
+different network characteristics. Currently, there is a lack of a general consistent framework
+that can formally evaluate and compare different bitrate adaptation schemes, and test and
+verify the efficiency of their components. To the best of our knowledge, only a few algorithms
+formally describe what objective they want to optimize, and thus, it is challenging to make
+an effective comparison.
+
+Implementing a multi-tier architecture has a dual purpose: to deal efficiently with the amount
+of data that needs to be processed and to extract meaningful data to create more intelligence at
+each level. Moreover, the number of tiers varies according to the requirements of each application,
+including:
+
+In this part, we provide a feature comparison between various state-of-the-art bitrate
+adaptation schemes, and are available in terms os the following aspects:
+
+\begin{itemize}
+
+\item Heurisic:
+
+\item Fairness:
+
+\item \ac{QoE}:
+
+\item \ac{QoE} optimization:
+
+\item Number of Clients:
+
+\item Content type:
+
+\item Heterogeneity:
+
+\item SVC support: Does the adaptation algorithm support the streaming of SVC-encoded video?
+
+\item BG Traffic: Does the paper include background traffic in their experimental tests?
+
+\end{itemize}
+
 
 %-----------------------------------------------------------------------------%
 \subsection{HTTP Adaptative Streaming and MPEG-DASG standard}

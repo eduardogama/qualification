@@ -1,19 +1,26 @@
 \section{Trabalhos Relacionados}
-\label{sec:related-work}
+\label{ch:related-work}
 
-Está seção busca mostrar os principais trabalhos relacionados a soluções em sistemas CDN e as tecnologias usadas para transmissão de conteúdo multimidia
+Está seção busca mostrar os principais trabalhos relacionados a soluções em sistemas CDN e as tecnologias usadas para transmissão de conteúdo multimidia. 
+Os projetos de arquitetura estão diretamente relacionados ao paradigma da computação em névoa para aplicativos de baixa latência. A disseminação de conteúdo concentra-se em reduzir a redundância da transmissão de dados nos nós de borda.
+%The architecture designs directly related to fog computing paradigm for low latency applications. Content dissemination focus on reduce redundancy of data transmission on edge nodes.
 
 
 % CDN-as-a-Service Provision Over a Telecom Operator’s Cloud
 % Managing QoS Constraints in a P2P-Cloud Video on Demand System.
 % OpenCache: A Software-defined Content Caching Platform.
 
+\subsection{Arquiteturas Nuvem-Névoa}
+\label{subsec:arch-cloud-fog}
 % [ICC'15] Joint Content-Resource Allocation in Software Defined Virtual CDNs
 % [CLCN'17] Optimal and Cost Efficient Algorithm for Virtual CDN Orchestration
 % [CLCN'16] Scalable and Cost Efficient Algorithms for Virtual CDN Migration
 % [ComNet'17] OPAC: An optimal placement algorithm for virtual CDN
-Hatem \textit{et al.} [1][2][3][4] destaca os princípios de Rede Definida por Software (\textit{Software Defined Network} - SDN) e Virtualização de Função de Rede (\textit{Network Function Virtualization} - NFV) na nuvem. A abordagem baseada em SDN/NFV permite funções específicas de virtualização em servidores remotos. Dessa forma, as migrações de serviços CDN podem ser virtualizadas em diferentes \textit{datacenters}. Hatem et al. aborda o problema de orquestramento e cache, seu trabalho desenvolve um algoritmo exato para decidir os locais ideais para colocar as funções do serviço CDN. O algoritmo proposto, incluindo o cache de conteúdo e o redirecionamento de solicitações, é introduzido com algumas restrições de QoE, rede e sistema operacional. Portanto, o gerenciamento do CDN é feito de maneira centralizada e usar o usuário final como alvo para fazer a comunicação Dispositivo para dispositivo, mas não explora a mobilidade. As solicitações de usuários finais serão redirecionadas para um local de nuvem de borda ideal, sem dispositivos de borda de nível de várias camadas diferentes. Llorca \textit {et al.} [ICC'15] propõem uma rede de cache virtual implementada totalmente em software através de uma infraestrutura de rede em nuvem distribuída programável que pode ser consumida e otimizada elasticamente usando informações globais sobre condições de rede e requisitos de serviço chamados SDvCDN. Esta abordagem aborda os problemas de posicionamento (localização da instalação), roteamento (rede de fluxo) e alocação de recursos (design de rede).
 
+Hatem \textit{et al.} [1][2][3][4] destaca os princípios de Rede Definida por Software~(SDN) e Virtualização de Função de Rede~(NFV). A abordagem baseada em SDN/NFV permite funções específicas de virtualização em servidores remotos. Dessa forma, as migrações de serviços de conteudo multimidia podem ser virtualizadas em diferentes \textit{datacenters}. Os problemas de orquestramento e cache são abordados, seu trabalho desenvolve um algoritmo exato para decidir os locais ideais para alocação do serviço. O algoritmo proposto, incluindo o cache de conteúdo e o redirecionamento de solicitações, é introduzido com algumas restrições de QoE, de rede e sistema operacional. 
+Desta forma, o gerenciamento do CDN é feito de maneira centralizada e utiliza o usuário final como alvo para fazer a comunicação Dispositivo para dispositivo, mas não explora a mobilidade. As solicitações de usuários finais serão redirecionadas para um local de nuvem de borda ideal, sem dispositivos de borda de nível com diferentes lantências. 
+
+Llorca \textit {et al.} [ICC'15] propõem uma rede de cache virtual implementada totalmente em software através de uma infraestrutura de rede em nuvem distribuída programável que pode ser consumida e otimizada elasticamente usando informações globais sobre condições de rede e requisitos de serviço chamados SDvCDN. Esta abordagem aborda os problemas de posicionamento (localização da instalação), roteamento~(rede de fluxo) e alocação de recursos~(design de rede).
 
 % [SENSORS'18] Service Migration from Cloud to Multi-tier Fog Nodes for Multimedia Dissemination with QoE Support
 Rosario \textit{et al.} [1] apresenta uma arquitetura para servicos de migração ao vivo de VM da nuvem para multiniveis da fog. O cenario experimental a nuvem distribui o conteudo de video para os diferentes niveis da fog. A arquitetura é baseada no paradigma sdn para, distribuição de video com suporte a QoE. 
@@ -24,3 +31,141 @@ The work split the multi-tier fog in three tier in order to their cover, storage
 Retal \textit{et al.} [ICC'17] propõe uma plataforma de \textit{CDN as a Service (CDNaaS)} onde os usuário podem criar um \textit{slice} de CDN incluindo cache, transcodificador e \textit{streamers}, em ordem de gerenciar uma quantidade de videos para seus usuários. (Aborda CDN na nuvem)
 % [JSAC'18] Optimal VNFs placement in CDN Slicing over Multi-Cloud Environment
 Benkacem \textit{et al.} [JSAC'18] introduzir uma plataforma CDNaaS na qual um usuário pode criar uma fatia CDN definida como um conjunto de rede distribuída isolada de servidores de borda em domínios com várias nuvens, em que um servidor de borda hospeda um único VNF, como cache virtual, transcodificador virtual, streamer virtual e CDN- coordenador específico de fatia para o gerenciamento do ciclo de vida dos recursos de fatia e também para gerenciar vídeos e assinantes enviados. Essa plataforma foi projetada para ter o nível máximo de flexibilidade para reduzir uma fatia de CDN no topo de diferentes IaaS (Infraestrutura como Serviço) públicas e privadas, como Amazon AWS service, Microsoft Azure, Rackspace e nuvem gerenciada OpenStack. Além disso, a plataforma emprega mecanismos e algoritmos que criam fatias de CDN com reconhecimento de QoE com boa relação custo-benefício, envolvendo uma colocação ideal levando em conta o nível de QoE desejado. Portanto, o objetivo deste trabalho é encontrar um custo eficiente de CDN, respeitando, por um lado, os requisitos do proprietário da CDN em termos de QoE e, por outro lado, a infraestrutura em nuvem e seu custo.
+
+% Adaptive Video Streaming with Network Coding Enabled Named Data Networking
+Saltarin \textit{et al.} propõe uma arquitetura adaptável de streaming de vídeo pela NDN que usa codificação de rede para permitir o streaming ideal de vídeo com vários caminhos. Assim, o uso de vários caminhos para conectar os clientes às fontes aumenta a largura de banda vista pelos clientes, permitindo que os mecanismos de adaptação de qualidade do DASH convergam para melhores qualidades de vídeo do que com o uso de um único caminho de comunicação. Os clientes podem transmitir interesses por todas as suas interfaces de rede (por exemplo, LTE e Wi-Fi) para recuperar os pacotes de dados que compõem o conteúdo solicitado.
+%Fig. 1. Devices retrieving Data packets over LTE and Wi-Fi: (a) multi-source unicast; (b) single-source multicast; (c) multi-source multicast (butterfly network).
+
+%Shen \textit{et al.} [6] works with a set of cache proxy services to analyze the cache miss occurrences. This work implements a reactive approach where cache proxies download the chunks of multimedia content when requested.
+Shen \textit{et al.} trabalha com um conjunto de serviçosde cache, afim de analisar as ocorrências de falta de cache em servidores proxy. Este trabalho implementa uma abordagem reativa na qual os proxies de cache baixam os blocos de conteúdo multimídia apenas quando solicitados. Utilizando teoria da probabilidade para deduzir os valores mais adequados dos parâmetros críticos e fornecer orientações significativas para a seleção de valores para melhorar o QoE dos usuários.
+
+\subsection{Serviços de Video Streaming Adaptativos}
+
+% [1] QoE-fair Resource Allocation for DASH Video Delivery Systems
+Cicco~\textit{et al.}~[1] aborda implementa uma estratégia de alocação de recursos justa. Para melhorar o QoE dos usuários, técnicas de engenharia de tráfego baseadas em slincing rede foram utilizadas. Ele mostra que a estrutura de otimização do Problema do Fluxo de Multi-Commodities~(MCFP) pode ser uma metodologia adequada para impor justiça em relação ao QoE dos usuários. Este artigo, em particular, primeiro mostra como converter nosso problema de alocação justa de recursos de QoE para um MCFP e, em seguida, propõe uma abordagem de agrupamento de tráfego para reduzir sensivelmente o número de fatias de rede e tornar o problema resultante tratável para distribuição de vídeo plataformas que atendem a um grande público. Essa abordagem de agrupamento atribui sessões de vídeo com base em uma métrica de similaridade proposta que depende da qualidade do vídeo.
+
+% Want to Play DASH? A Game Theoretic Approach for Adaptive Streaming over HTTP
+Bentaleb~\textit{et al.} desenvolve um Algoritmo de Teoria dos Jogos, um novo esquema de ABR orientado ao cliente que se esforça para selecionar a melhor taxa de bits baseada na moderna teoria dos jogos (GT) [13, 25]. Nossa solução permite uma colaboração eficiente entre diferentes entidades do DASH de maneira distribuída, sem sobrecarga explícita de comunicação, respeitando os requisitos de decisão dos players existentes do DASH e considerando o tráfego cruzado e as diferentes condições da rede. O GTA tem como objetivo alcançar um QoE de visualizador alto e estável.
+
+
+% Client-Server Cooperative and Fair DASH Video Streaming
+Altamimi \textit{et al.} 
+
+%Google proposal
+Zhang \textit{et al.} [5] concentra-se no lado do usuário, executando o nível médio de taxa de bits pelo algoritmo de adaptação à taxa de bits e a influência da variação do tamanho de segmentos para melhorar a QoE, enquanto que 
+
+Poliakov~\textit{et al.} [3] implanta um streaming de vídeo DASH com várias fontes. O player do DASH-client pode baixar multiplos segmentos, ao mesmo tempo, através de diferentes conexões na nuvem. 
+
+Archer \textit{et al.} [8] propõe um algoritmo para lidar com as réplicas de cache para provisionamento de vídeo com largura de banda flash, o que é um gargalo crítico.
+
+\subsubsection{Comparação entre trabalhos relacionados}
+\label{subsec:applications}
+
+As abordagens mencionadas em \autoref{subsec:arch-cloud-fog} podem diminuir a carga de tráfego 
+e melhorar a QoE. No entanto, também existem armadilhas devido ao comportamento egoísta totalmente isolado (ou seja, essas soluções estão funcionando independentemente, sem coordenação) dos players do HAS.
+
+Os trabalhos de streaming de video na seção 3.2 consegue este tipo de problema, surgem problemas nos cenários da Cidade Inteligente: mobilidade do usuário, esquemas de cache colaborativo em multiplos níveis, quantidade de usuários durante multidões de flash não são totalmente considerados. Neste projeto, pretendemos projetar um sistema de entrega de vídeo que considere esses problemas para melhorar a qualidade da experiência para uma variedade de necessidades de streaming de vídeo, incluindo requisitos de baixa latência.
+
+%The aforementioned approaches could decrease the traffic load and improve QoE, but more
+%issues arise in Smart City scenarios: user mobility, collaborative cache schemes over multi-edge,
+%the amount of users during flash crowds, and interactive streaming requirements are not fully
+%considered. In this project we aim to design a video delivery system that considers such issues
+%to improve quality of experience for a range of video streaming needs, including low latency
+%requirements.
+
+Nesta parte, fornecemos uma comparação entre os trabalhos discutidos acima.
+%de recursos entre vários esquemas de adaptação de taxa de bits de ponta em cada categoria. 
+A Tabela~\ref{tab:comparison} resume essa comparação para cada artigo pesquisado em termos dos seguintes aspectos:
+
+\begin{itemize}
+
+\item Escalabilidade: O trabalho leva em consideração a escalabilidade apresentada em ambientes de cidades inteligentes? O número de usuários pode variar de acordo com o tempo e a mobilidade dos usuários.
+
+\item \# de usuários: Quantos clientes estão incluídos nos experimentos? Único indica apenas um cliente, vários (poucos) indicam menos de 10 clientes e múltiplos (muitos) indicam mais de 10 clientes.
+
+\item Heteregeneidade: O trabalho leva em consideração dispositivos com diferentes resoluções em seus experimentos?
+
+\item Justiça: o trabalho leva em consideração a justiça entre vários clientes que compartilham a rede? Algumas soluções compartilham igualmente a largura de banda entre os clientes, indicados pelo BW, outros compartilham a largura de banda com base na qualidade perceptiva ou no QoE, indicados por QT e QoE, respectivamente.
+
+\end{itemize}
+
+
+\begin{table}[htb]
+  \caption{Comparação com trabalhos relacionados.}
+  \label{tab:comparison}
+  \centering
+  \scriptsize
+  \begin{tabular}{p{3.6cm}p{2cm}p{2cm}p{2.2cm}p{2cm}p{2cm}}
+    \toprule
+    \textbf{Reference} &
+    \textbf{Esquemas ABR} &
+    \textbf{Escalabilidade} &
+    \textbf{Mobilidade} &
+    \textbf{\# de \newline usuários} &
+    \textbf{Aproximação \newline Cooperativa} \\
+    \midrule
+
+    Hatem~\textit{et al.}~\cite{Ahmad2013a, Ahmad2013b} &
+    Flow-based & Yes & \ac{DMM} gateways & No & No \\
+    \addlinespace
+    \addlinespace
+
+    Llorca~\textit{et al.}~\cite{Banerjee2013} &
+    Tunnel-based & Not discussed & Not discussed & Yes & Test bed \\
+    \addlinespace
+	\addlinespace
+    Rosáio~\textit{et al.}~\cite{Basta2013a, Basta2014} &
+    Tunnel-based & Yes & Not discussed & No & No \\
+    \addlinespace
+	\addlinespace
+    Retal~\textit{et al.} \cite{Cho2014} &
+    Tunnel-based & Not discussed & Aware & Yes & Test bed \\
+    \addlinespace
+	\addlinespace
+    Benkacem~\textit{et al.} \cite{CostaRequena2014} &
+    Flow-based & Yes & Aware & No & Test bed \\
+    \addlinespace
+	\addlinespace
+    Saltarin~textit{et al.} \cite{Ghazisaeedi2013} &
+    Tunnel-based & Not discussed & Not discussed & Yes & Simulation \\
+    \addlinespace
+	\addlinespace
+    Shen~\textit{et al.} \cite{Guerzoni2014} &
+    Flow-based & Not discussed & Aware & Yes & No \\
+    \addlinespace
+	\addlinespace
+%-------------------------------------------------------------------------------------
+
+    Cicco~\textit{et al.} \cite{Gurusanthosh2013} &
+    Tag-based & Yes & \ac{DMM} anchors & No & Analytical \\
+    \addlinespace
+	\addlinespace
+	
+    Bentaleb~\textit{et al.} \cite{Hampel2013} &
+    Tunnel-based & Yes & Not discussed & Yes & No \\
+    \addlinespace
+	\addlinespace
+	
+    Altamimi~\textit{et al.} \cite{Jin2013a} &
+    Tag-based & Yes & Aware & No & Test bed \\
+    \addlinespace
+	\addlinespace
+	
+    Zhang~\textit{et al.} \cite{Karimzadeh2014} &
+    N/a & Yes & \ac{DMM} solutions & Not discussed & No \\
+    \addlinespace
+	\addlinespace
+	
+    Polliakov~\textit{et al.} \cite{Kempf2012a} &
+    Tunnel-based & Not discussed & Not discussed & No & Test bed \\
+    \addlinespace
+	\addlinespace
+	
+    Archer~\textit{et al.} \cite{Kuklinski2014b} &
+    N/a & Yes & Main focus & Not discussed & No \\
+    \addlinespace
+	\addlinespace
+	
+    \bottomrule
+  \end{tabular}
+\end{table}

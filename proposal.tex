@@ -1,5 +1,5 @@
 \clearpage
-\section{Research topics to be investigated}
+\section{Tópicos de pesquisa a serem investigados}
 \label{ch:proposal}
 
 This section presents some main ideas for the continuity of this doctoral
@@ -10,16 +10,50 @@ addressed while \autoref{sec:timetable} shows the work plan and timetable.
 \subsection{Research topics}
 \label{sec:topics}
 
-
-Devido ao compartilhamento de ambientes de rede, a natureza do \textit{best-effort} da infraestrutura da Internet, e o comportamento egoísta totalmente isolado dos jogadores da HAS. é difícil para streams de vídeo satisfazer os três objetivos descritos abaixo. Desde de que existam multiplos clientes concorrentemente competindo entre eles um limitado comprimento de onda, as soluções existentes para clientes dirigido a HAS não trabalham vem e sofrem muitos problemas com perda de pacotes, flutação de comprimento de onda, oscilações na qualidado e troca de taxas de bits~(Instabiliddade do vídeo mostrada ba Figura~\TODO{Falta gerar gráfico}), QoE indesejavel e compartilhamento de recursos da rede, recursos da rede inutilizados ou sobrescritos do qual 'will adversely affect the viewer's QoE'. Alem disso, estes problemas tem sido confirmados em experimentos recentas. 
+%Devido ao compartilhamento de ambientes de rede, a natureza do \textit{best-effort} da infraestrutura da Internet, e o comportamento egoísta totalmente isolado dos jogadores da HAS discutidos na seção 3. É difícil para streams de vídeo satisfazer os três objetivos descritos abaixo. Desde de que existam multiplos clientes concorrentemente competindo entre eles um limitado comprimento de onda, as soluções existentes para clientes dirigido a HAS não trabalham vem e sofrem muitos problemas com perda de pacotes, flutação de comprimento de onda, oscilações na qualidado e troca de taxas de bits~(Instabiliddade do vídeo mostrada ba Figura~\TODO{Falta gerar gráfico}), QoE indesejavel e compartilhamento de recursos da rede, recursos da rede inutilizados ou sobrescritos do qual 'will adversely affect the viewer's QoE'.% Alem disso, estes problemas tem sido confirmados em experimentos recentas. 
 
 The research topics to be addressed are divided into three topics, which are
 detailed in Sections~\ref{subsec:distributed} through \ref{subsec:handover}.
 Each topic encompasses the motivation, goals, and objectives.
 
 %-----------------------------------------------------------------------------%
+\subsubsection{Mecanismos Cooperativos para Streaming de Video}
+\label{subsec:video-streaming}
+
+
+A seção x.x.x mostra que a influencia na variação entre diferentes processos de decisão para selecionar o bitrate do proximo segmento entre diferentes usuários. Também existem armadilhas devido ao comportamento egoísta totalmente isolado (ou seja, essas soluções estão funcionando independentemente, sem coordenação) dos jogadores do HAS. Em particular, a presença de vários players HAS simultâneos que competem pelos recursos de rede compartilhados causa problemas de escalabilidade do HAS, incluindo (i) instabilidade de video devido à troca de taxa de bits frequente, como mostra a Figura 1.5, na qual cinco players dash.js competem por um link de gargalo de 25 Mbps em um ambiente de rede compartilhado e oscilações de qualidade; (ii) injustiça de QoE; e (iii) subutilização ou subscrição excessiva de recursos de rede. Esses problemas são agravados ainda mais quando o número de jogadores aumenta e no caso de ambientes heterogêneos. Esses problemas continuam sendo uma preocupação séria para os operadores de rede e provedores de conteúdo.
+
+Neste contexto, é desejado ter um mecanismos computacionais que identifiquem automaticamente o processo de decisão do HAS de cada video antes de escalonar os videos.
+
+
+O objetivo neeste topico de pesquisa é implementar mecanismos cooperativos capazes de identificar eficientemente o prcesso de decisão de cada cliente. Alem disso, esses mecanismos podem facilitar a coopereção de download e upload de um mesmo conteudo entre os usuários de uma mesma rede. Para isso, será implementado utilizando Teoria dos Jogos~(GT) composto por três estágios principais: entrada, processamento e saída. Os requisitos de QoE do video constituirão as entradas do sistema. Essas entradas serão mapeadas para as funções apropriadas de associação e valores de verdade.
+
+
+%-----------------------------------------------------------------------------%
 \subsubsection{Scalable controller architecture}
-\label{subsec:}
+\label{subsec:sca}
+
+Com a melhoria de largura de banda que foi feita nos links de acesso e nas redes de backbone, os usuários finais agora esperam que aplicativos de vídeo de alta qualidade funcionem em qualquer lugar e em uma variedade de dispositivos heterogêneos. Recentemente, como uma das novas arquiteturas de rede evolutiva, a Rede Centrada na Informação~(ICN)~[337] foi proposta para facilitar aplicativos como disseminação de conteúdo e serviços de streaming de alta qualidade (por exemplo, aplicativos de streaming de vídeo multicast baseados em HAS, etc.). No entanto, vários desafios, incluindo a cooperação com o cache na rede, o encaminhamento de múltiplos caminhos e o controle de qualidade ou congestionamento, ainda precisam ser enfrentados antes da implantação do serviço na Internet. De fato, a maioria dos trabalhos relacionados é baseado em várias suposições nas quais, por exemplo, aplicativos de destino são apenas aplicativos não em tempo real, a rede de destino deve ser uma pequena rede de gerenciamento ou uma rede com fio~(ou sem fio) e assim por diante. 
+
+
+\vspace{0.8cm}
+\begin{figure*}[htpb]
+	\centering
+	\includegraphics[width=0.75\textwidth]{img/exp-multi-lvl}
+% 	\vspace{-1cm}
+	\caption{DASH-based Adaptive Multimedia Delivery System for Cloud/Fog Nodes.}
+	\label{fig:scenario-arch}
+\end{figure*}
+
+
+Paralelamente, a rede definida por software e a virtualização de funções de rede (SDN/NFV) são tecnologias notáveis para controlar não apenas os fluxos de comunicação, mas também as funções de serviço nas redes. Eles foram desenvolvidos recentemente por fornecedores internacionais e implantados no mercado. No entanto, como são basicamente projetados para funcionar com as redes IP ponto a ponto tradicionais, geralmente limitadas a um único sistema autônomo, elas requerem algumas extensões para permitir o streaming de vídeo de alta qualidade a um grande número de usuários heterogêneos na ampla Internet. 
+Além disso, a tendência para a computação de borda e neblina deve ser integrada às abordagens de gerenciamento de tráfego de vídeo. Os recursos de borda dos ISPs ou usuários finais podem ser utilizados para hospedar o conteúdo de vídeo na proximidade dos usuários finais, reduzindo a latência e mitigando a carga nas redes principais e nos data centers. Isso será útil para o cenário de transmissão ao vivo que requer uma latência baixa. Além disso, a integração de serviços baseados em HAS em tais mecanismos de comunicação requer uma avaliação rigorosa em bancos de testes realistas antes da implantação. O principal objetivo é analisar e investigar a integração da entrega de vídeo baseada em HAS nas redes futuras, onde:
+
+
+%-----------------------------------------------------------------------------%
+\subsubsection{Scalable controller architecture}
+\label{subsec:sca-contrl-arch}
+
 
 Este projeto tem como objetivo projetar uma entrega de vídeo baseada em DASH confiável e de alta qualidade para ser usada em ambientes de cidades inteligentes~\cite{gamaUCC2019, KreuzbergerWorkshop2016}. O esquema proposto aproveitará várias tecnologias relacionadas à rede, como Cloud, Fog e Edge Computing, além de posicionamento e encadeamento inteligente de serviços.% A Figura~\ref{fig:scenario-arch} descreve, no lado esquerdo, uma arquitetura de rede de várias camadas, composta por um conjunto heterogêneo de dispositivos e aplicativos que utilizam recursos de computação distribuídos por meio de uma tecnologia de comunicação de acesso múltiplo, como 5G e WiFi. Este projeto propõe estender o streaming de vídeo DASH para suportar conectividade simultânea de caminhos múltiplos~\cite{poliakovPHD2018, Velasquez2018}.
 
@@ -68,37 +102,37 @@ Dada a arquitetura do modelo de serviço e ambiente de nuvem/borda de várias ca
 
 
 %-----------------------------------------------------------------------------%
-\subsubsection{Scalable controller architecture}
-\label{subsec:distributed}
-
-\emph{The goal of this research topic is} to improve the current controller
-model toward a scalable architecture. \autoref{fig:distributed-controller}
-shows a possible distributed \ac{EPC} controller architecture, where the
-\acp{eNB} are enhanced with a local controller and switch that are used for
-traffic classification purposes at the network edge. A centralized topology
-controller can independently handle topology-related questions (like traffic
-routing) in the backhaul network. Finally, a specialized \ac{QoS} controller
-would be in charge of admission control and \ac{QoS} management, communicating
-with edge and topology controller. Theses controllers can be assisted by
-applications, like network mapper and routing and a more sophisticated
-admission control software. 
-\emph{The objectives for this research topic are:}
-\begin{itemize}
-  \item Determine the controller functionalities that can be performed
-  independently of each other, to effectively proposed a distributed controller
-  architecture;
-
-  \item Model the inter-controller communication for the distributed controller
-  architecture, reducing the amount of information exchanged between
-  controllers;
-
-  \item Evaluate possible standardized east/westbound interfaces for controller
-  interaction;
-
-  \item Implement and evaluate the proposed architecture in the \ac{ns-3}
-  simulator, performing scalability tests with large numbers of \acp{eNB} and
-  \acp{UE} in the network.
-\end{itemize}
+%\subsubsection{Scalable controller architecture}
+%\label{subsec:distributed}
+%
+%\emph{The goal of this research topic is} to improve the current controller
+%model toward a scalable architecture. \autoref{fig:distributed-controller}
+%shows a possible distributed \ac{EPC} controller architecture, where the
+%\acp{eNB} are enhanced with a local controller and switch that are used for
+%traffic classification purposes at the network edge. A centralized topology
+%controller can independently handle topology-related questions (like traffic
+%routing) in the backhaul network. Finally, a specialized \ac{QoS} controller
+%would be in charge of admission control and \ac{QoS} management, communicating
+%with edge and topology controller. Theses controllers can be assisted by
+%applications, like network mapper and routing and a more sophisticated
+%admission control software. 
+%\emph{The objectives for this research topic are:}
+%\begin{itemize}
+%  \item Determine the controller functionalities that can be performed
+%  independently of each other, to effectively proposed a distributed controller
+%  architecture;
+%
+%  \item Model the inter-controller communication for the distributed controller
+%  architecture, reducing the amount of information exchanged between
+%  controllers;
+%
+%  \item Evaluate possible standardized east/westbound interfaces for controller
+%  interaction;
+%
+%  \item Implement and evaluate the proposed architecture in the \ac{ns-3}
+%  simulator, performing scalability tests with large numbers of \acp{eNB} and
+%  \acp{UE} in the network.
+%\end{itemize}
 
 %-----------------------------------------------------------------------------%
 \subsubsection{Traffic offloading in \acsp{HetNet}}
@@ -116,13 +150,6 @@ with a macro cell, some metro and picocells used for relay, some network
 operator deployed low-costs indoor and outdoor small cells, and user deployed
 very low costs for indoor environment.
 
-\begin{figure}[htb]
-  \centering
-  \includegraphics[scale=0.55]{hetnet}
-  \caption{A \acs{HetNet} example scenario~\cite{Qualcomm2014}.}
-  \label{fig:hetnet}
-\end{figure}
-
 The future 5G architecture must provide a communication environment able to
 overcome the infrastructure shortcomings of current networks. Networks will
 become much denser with many more cells with decreasing size as well as direct
@@ -134,27 +161,6 @@ energy efficient communications. In the opinion of \citet{Einsiedler2015}, the
 vision is to provide functional convergence of network control to handle 5G,
 4G, older access technologies, and Wi-Fi; enabling a flexible and efficient
 support and deliver all types of applications.
-
-As claimed by \citet{Tomici2015}, network operators have shown more interest in
-deploying integrated small cell and Wi-Fi accessing networks to accommodate the
-increasing demand for bandwidth caused by widespread wireless data usage.
-However, the 3GPP interworking architecture forces the inter-system handover to
-happen solely at the \ac{P-GW}, which may cause unnecessary burdens on the
-mobile core network, especially with the expected large number of small cell
-and Wi-Fi accessing network deployment.
-
-Within an \ac{SDN} architecture, the user data plane can be distributed to
-allow local offloading of user data traffic, regulated by the (partially)
-logically centralized network controller. An example of traffic offloading
-solution is the one proposed by \citet{Ghazisaeedi2013}, where a switching
-system is used to redirect \ac{HTTP} traffic from \ac{S-GW} to the Internet.
-This technique can decrease the traffic load over the mobile core network. In
-\citet{Tomici2015}, the authors suggest three new \ac{LTE}-\ac{WLAN}
-integration architectures for inter-system handover, which are based on having
-a local integration point. For each of these integrated architectures, the
-authors propose a network-initiated inter-system handover mechanism between the
-\ac{eNB} and \ac{WLAN} \ac{AP}. The handover mechanisms are efficient due to
-limited interaction with the \ac{P-GW} in the core network.
 
 \emph{The goal of this research topic is} to design an algorithm responsible
 for offloading \ac{LTE} traffic over available Wi-Fi networks. Assuming that
@@ -176,6 +182,18 @@ traffic load in the backhaul and core networks.
 %-----------------------------------------------------------------------------%
 \subsubsection{Distributed mobility management}
 \label{subsec:handover}
+
+This project aims to design a reliable and high-quality DASH-based video delivery to be used in
+Smart City Environments [1, 2]. The proposed scheme will take advantage of several network-
+related technologies such as Cloud, Fog, and Edge Computing, as well as intelligent service
+placement and chaining. Figure 1 depicts, on its left-hand side, a multi-tier network architecture,
+which is composed of a heterogeneous set of devices and applications using distributed computing
+resources through a multi-access communication technology, such as 5G and WiFi. This project
+proposes to extend DASH video streaming to support simultaneous multipath connectivity [3, 4].
+
+
+describes part of the parameters that should be assessed to define which video services are needed to be deployed along with the most suitable tier to deploy each of them. Note that the parameters in the bottommost tier for feedback differ from those of other tiers.
+Initially, the assessed parameters considered include the user’s profile, the load of the local cell, the link quality, the motion complexity of the videos, and also smart city details such as the location and the traced route in case of users with mobility. Some of the nodes can be stationary, but others can range from low to high mobility patterns, which can be taken into account to improve quality of video delivery.
 
 Mobility management refers to a set of mechanisms to keep ongoing sessions
 continuity while a mobile user changes its mobility anchor point in the
@@ -298,15 +316,15 @@ already developed are identified by the symbol~\,\m. Meanwhile, the symbol
 4. What is the benefits that edge computing can add in HAS over the future networks?
 5. What is the deployment cost?
 
-
-\section{Problem Statement}
-
-The most of the exiting HAS delivery solutions, and their ABR schemes have four major shortcomings which are summarized as follows:
-
-1. Multi-player problem.
-
-2. Bandwidth fluctuation problem.
-
-3. Quality fairness and heterogeneous system problem.
-
-4. Trade-off between QoE metrics and ABR objectives problem.
+%
+%\section{Problem Statement}
+%
+%The most of the exiting HAS delivery solutions, and their ABR schemes have four major shortcomings which are summarized as follows:
+%
+%1. Multi-player problem.
+%
+%2. Bandwidth fluctuation problem.
+%
+%3. Quality fairness and heterogeneous system problem.
+%
+%4. Trade-off between QoE metrics and ABR objectives problem.

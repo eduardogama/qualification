@@ -6,7 +6,7 @@ Esta seção descreve brevemente coceitos e background tais como o paradigma SDN
 %This section briefly introduces background and concepts such as the \acl{SDN} paradigm and the 4G \acl{LTE} networks.
 
 %=============================================================================%
-\subsection{Arquitetura hierarquica multi-níveis em Nuvem-Névoa}
+\subsection{Computação em Névoa}
 
 A computação em névoa tem como principal objetivo preencher uma lacuna entre a nuvem e os dispositivos finais. Existem várias definições e terminologias na literatura que abordam este paradigma na literatura. Nesta proposta, vamos adotar a definição, o qual é adotado pelo OpenFogConsortium~(OpenFog), publicada pelo \textit{National Institute of Standards and Technology}~(NIST) [1]: 
 
@@ -18,18 +18,19 @@ A computação em névoa tem como principal objetivo preencher uma lacuna entre 
 % https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.500-325.pdf. March 2018
 % https://www.openfogconsortium.org
 
-Os nós podem ser organizados em arquiteturas multi-níveis - na vertical (para dar suporte ao isolamento), na horizontal (para suportar a federação) ou pela latência entre os nós da \textit{fog} e os usuários finais. A \textit{fog computing} minimiza o tempo de resposta das aplicações suportadas e fornece, para os dispositivos finais, recursos de computação local e, quando necessário, conectividade de rede para serviços centralizados. %Os nós da \textit{fog} são recursos locais que podem ser organizados em arquiteturas multi-níveis e podem ser quaisquer dispositivos que oferece conexão de rede com fio/sem fio com computação, armazenamento e conectividade de rede, como switches, roteadores, smart phones, tablets, laptops, etc. 
+Os nós podem ser organizados em arquiteturas multiníveis - na vertical (para dar suporte ao isolamento), na horizontal (para suportar a federação) ou pela latência entre os nós da \textit{fog} e os usuários finais. A \textit{fog computing} minimiza o tempo de resposta das aplicações suportadas e fornece, para os dispositivos finais, recursos de computação local e, quando necessário, conectividade de rede para serviços centralizados. %Os nós da \textit{fog} são recursos locais que podem ser organizados em arquiteturas multi-níveis e podem ser quaisquer dispositivos que oferece conexão de rede com fio/sem fio com computação, armazenamento e conectividade de rede, como switches, roteadores, smart phones, tablets, laptops, etc. 
 
-\subsubsection{Arquitetura Hierarquica}
-Uma arquitetura na névoa verticalmente com N niveis tem como proposito: lidar eficientemente com a quantidade de dados que precisa ser processada e extrair dados significativos para criar mais inteligência em cada nível. Além disso, o número de camadas afeta diretamente o suporte de QoE.
+\subsubsection{Arquitetura hierarquica multiníveis em Nuvem-Névoa}
+Uma arquitetura em névoa verticalmente com N niveis tem como proposito: lidar eficientemente com a quantidade de dados que precisa ser processada e extrair dados significativos para criar mais inteligência em cada nível. Além disso, o número de camadas afeta diretamente o suporte de QoE.
 %to deal efficiently with the amount of data that needs to be processed and to extract meaningful data to create more intelligence at each level. Moreover, the number of tiers impacts direclty in the QoE support.
 %O OpenFog está assumindo a liderança na padronização de névoa e definiu uma arquitetura de referência que consiste em N camadas de nós, como mostra a Figura~\ref{fig:arch-multi-lvl}
 
-Para fazer isso, primeiro apresentamos uma arquitetura de rede de várias camadas, detalhada na Figura~\ref{fig:arch-multi-lvl}. A camada superior é composta pelos servidores em nuvem que podem ser localizados em um setor público ou privado da nuvem. As nuvens podem ser qualquer provedor de Video sbob Demanda~(VoD), por exemplo, Netflix, Amazon, ou Youtube. Estas nuvem operam o conteudo multimidia original sobre redes WANs. Os 3 níveis seguintes representam a rede fog-cloud organizada hierarquicamente. Este  trabalho leva em consideração os nós da borda com serviços de armazenamento e computação, bem como, é ranqueado de acordo com a área de cobertura de comunicação. Nesse ecossistema multicamada, o Core Network Regional Edge pode gerenciar a coordenação em toda a cidade, por exemplo, unidade de banda de base (BBU) ou provedor de serviços de Internet (ISP). Seguido pela rede de borda de acesso, que suporta algumas dezenas a talvez algumas centenas de nós locais no meio do nevoeiro, por exemplo, estação base ou ponto de acesso. Os gateways de borda podem ser distribuídos em nós de neblina locais, por exemplo, computadores pessoais, laptops e smartphones, onde o nó de neblina retransmite o conteúdo do vídeo por meio de comunicação com ou sem fio. Esses dispositivos têm demandas de tráfego altas e similares, podendo cooperar entre si. Isso pode se conectar a algum tipo de rede local (LAN).
+Primeiramente, vamos apresentar uma arquitetura de rede com multiníveis, detalhada na Figura~\ref{fig:arch-multi-lvl}. A camada superior é composta pelos servidores em nuvem que podem ser localizados em um setor público ou privado da nuvem. As nuvens podem ser qualquer provedor do streaming de video, por exemplo, provedor de video (por exemplo, Netflix, Amazon ou Youtube), bem como um usuário local. % Estas nuvem operam o conteudo multimidia original sobre redes WANs.
+Os 3 níveis seguintes representam a rede fog/cloud organizada hierarquicamente. Este  trabalho leva em consideração os nós da borda com serviços de armazenamento e computação, bem como, é ranqueado de acordo com a área de cobertura de comunicação. Nesse ecossistema multinível, o Core Network Regional Edge pode gerenciar a coordenação em toda a cidade, por exemplo, unidade de banda de base (BBU) ou provedor de serviços de Internet~(ISP). Seguido pela rede de borda de acesso, que suporta algumas dezenas a talvez algumas centenas de nós locais no meio da nevoa, por exemplo, estação base ou ponto de acesso. Os gateways de borda podem ser distribuídos em nós de névoa locais, por exemplo, computadores pessoais, laptops e smartphones, onde o nó retransmite o conteúdo do vídeo por meio de comunicação com ou sem fio. Esses dispositivos têm demandas de tráfego altas e similares, podendo cooperar entre si. Essa conexão é feita através de algum tipo de rede local~(LAN).
 
 \begin{figure}[htb]
   \centering
-  \includegraphics[scale=.5]{arch-multi-lvl}
+  \includegraphics[scale=.4]{arch-multi-lvl}
   \caption{Main components of an multi-lvl environment.}
   \label{fig:arch-multi-lvl}
 \end{figure}
@@ -39,83 +40,94 @@ Um cenário simples é que um shopping center pode implantar muitos nós de név
 %Assim, neste artigo, propomos um algoritmo de escalonamento de tarefas que pode conseguir uma boa compensação entre o tempo de execução do fluxo de trabalho e o custo pelo uso dos recursos da nuvem. Os resultados experimentais mostram o excelente desempenho do nosso método comparado com alguns outros trabalhos.	
 
 %-----------------------------------------------------------------------------%
-\subsection{HTTP Adaptative Streaming and MPEG-DASG standard}
+%\subsection{HTTP Adaptative Streaming and MPEG-DASG standard}
+\subsection{Transmissão Adaptativa de vídeo pela Internet}
 \label{sec:has-dash}
 
-As aplicações de video streaming baseadas em MPEG-DASH, a technology that dynamically adapts to changing network conditions by requesting content in chunks encoded at different bitrates, and which is used by major streaming services like Netflix and YouTube.
+A padronização de uma arquitetura HAS prove importantes benefícios sobre sistemas de streaming tradicionais na adaptação deste novo padrão. Devido ao fato de várias empresas importantes de mídia participarem de seu desenvolvimento, o novo protocolo elimina problemas técnicos na entrega e compactação do video. Em essência, o objetivo é combinar todas as tecnologias e padrões em um, tornando o suporte a streaming contínuo em todos os dispositivos. Por sua vez, visa reduzir dores de cabeça técnicas e custos de transcodificação. Os editores de conteúdo podem gerar um único conjunto de arquivos para codificação e streaming que deve ser compatível com o maior número possível de dispositivos, do móvel ao OTT e da área de trabalho por meio de plug-ins ou HTML5. Os consumidores não precisarão se preocupar se seus dispositivos poderão reproduzir o conteúdo que desejam assistir.
+
+O objetivo desses esquemas é garantir um alto QoE para os usuários na presença de flutuações na largura de banda devido a alguns fatores, como congestionamento da rede, intensidade do sinal, eventos de reconvergência da rede e assim por diante. Embora essas flutuações sejam bastante comuns na Internet pública, elas também podem ocorrer em redes mais privadas, como redes domésticas ou mesmo redes gerenciadas, onde geralmente há controle de admissão e diferentes ferramentas de QoS são usadas. Os esquemas de ABR podem levar em consideração fatores como estimativas de largura de banda, plenitude do buffer de reprodução, recursos do dispositivo, preferências do visualizador, recursos de conteúdo, embora com pesos diferentes. Como a QoE do espectador precisa ser determinada em tempo real durante a reprodução, geralmente são usadas métricas objetivas, incluindo o número de paradas de buffer, duração do atraso na inicialização, frequência e quantidade de oscilações de qualidade e instabilidade de vídeo. Por padrão, os padrões para o HAS não exigem nenhum esquema de adaptação específico, deixando aos construtores de sistemas inovar e implementar seu próprio método.
+
+
+% Quality Improvement for HTTP Adaptive Streaming over Mobile Networks Hung Thai Le
+%To deliver videos over the Internet, the MPEG-2 transport stream (M2TS) [74] and ISO Base Media File Format (MP4) [75] are popularly used [22]. In HAS, we only consider transmissions of video segments at the application layer. After obtaining the metadata file, the client issues a series of HTTP requests to download video segments, typically in chronological order, selecting a representation for each ofthem from the set ofavailable representations.
+%Para entregar vídeos pela Internet, o fluxo de transporte MPEG-2 (M2TS) [74] e o formato ISO de arquivo de mídia básico (MP4) [75] são usados popularmente [22]. No HAS, consideramos apenas transmissões de segmentos de vídeo na camada de aplicação. Após obter o arquivo de metadados, o cliente emite uma série de solicitações HTTP para baixar segmentos de vídeo, geralmente em ordem cronológica, selecionando uma representação para cada um deles no conjunto de representações disponíveis.
+%
+%As aplicações de video streaming baseadas em MPEG-DASH, uma tecnologia que se adapta dinamicamente às mudanças nas condições da rede, solicitando conteúdo em segmentos codificados com taxas de bits diferentes e que é usada pelos principais serviços de streaming como Netflix e YouTube.
+%a technology that dynamically adapts to changing network conditions by requesting content in chunks encoded at different bitrates, and which is used by major streaming services like Netflix and YouTube.
 %In this proposal, we focus on video streaming applications based on MPEG-DASH (Dynamic Adaptive Streaming over HTTP), a technology that dynamically adapts to changing network conditions by requesting content in chunks encoded at different bitrates, and which is used by major streaming services like Netflix and YouTube.
-There are several key benefits in the adaption of this new standard. Due to the fact that several major media companies took part in its development, the new protocol will eliminate technical issues in delivery and compression. In essence, it aims to combine all of the technologies and standards into one, making streaming support seamless on all devices. In turn, it aims to reduce technical headaches and transcoding costs. Content publishers can generate a single set of files for encoding and streaming that should be compatible with as many devices as possible, from mobile to OTT, as well as to the desktop via plug-ins or HTML5. Consumers will not have to worry about whether their devices will be able to play the content they want to watch.
+%There are several key benefits in the adaption of this new standard. Due to the fact that several major media companies took part in its development, the new protocol will eliminate technical issues in delivery and compression. In essence, it aims to combine all of the technologies and standards into one, making streaming support seamless on all devices. In turn, it aims to reduce technical headaches and transcoding costs. Content publishers can generate a single set of files for encoding and streaming that should be compatible with as many devices as possible, from mobile to OTT, as well as to the desktop via plug-ins or HTML5. Consumers will not have to worry about whether their devices will be able to play the content they want to watch.
 
 \begin{figure}[htb]
   \centering
-  \includegraphics[scale=.5]{arch-multi-lvl}
-  \caption{Main components of an multi-lvl environment.}
-  \label{fig:arch-multi-lvl}
+  \includegraphics[scale=.5]{has-arch}
+  \caption{Arquitetura de distribuição HAS.}
+  \label{fig:has-arch}
 \end{figure}
 
 
-By parsing the MPD, the DASH client learns about the program timing, media-content availability, media types, resolutions, minimum and maximum bandwidths, and the existence of various encoded alternatives of multimedia components, accessibility features and required digital rights management (DRM), media-component locations on the network, and other content characteristics. 
+%By parsing the MPD, the DASH client learns about the program timing, media-content availability, media types, resolutions, minimum and maximum bandwidths, and the existence of various encoded alternatives of multimedia components, accessibility features and required digital rights management (DRM), media-component locations on the network, and other content characteristics. 
+%Ao analisar o arquivo MPD, o cliente DASH aprende sobre o tempo do programa, disponibilidade de conteúdo de mídia, tipos de mídia, resoluções, larguras de banda mínima e máxima e a existência de várias alternativas codificadas de componentes de multimídia, localizações dos componentes de mídia na rede e outras características do conteúdo
+%
+%Out of Scope
+%The MPEG-DASH specification only defines the MPD and the segment formats. The delivery of the MPD and the media encoding formats containing the segments, as well as the client behavior for fetching, adaptation heuristics, and playing content, are outside of MPEG-DASH’s scope.
 
-Out of Scope
-The MPEG-DASH specification only defines the MPD and the segment formats. The delivery of the MPD and the media encoding formats containing the segments, as well as the client behavior for fetching, adaptation heuristics, and playing content, are outside of MPEG-DASH’s scope.
 
+HAS usa HTTP como aplicativo e TCP como protocolo da camada de transporte, conforme ilustrado nas Figuras~\ref{fig:has-arch}, e os clientes extraem os dados de um servidor HTTP. As soluções HAS empregam adaptação dinâmica em relação às  condições de rede variaveis para fornecer uma experiência de streaming contínua (ou pelo menos mais suave). Depois  que um arquivo de mídia (ou fluxo) estiver pronto a partir de uma fonte, ele será preparado para transmissão em fluxo antes de ser publicado em um servidor HTTP padrão e pronto para uso. O arquivo / fluxo original é particionado em segmentos (também chamados de chunks) de tempo de reprodução equivalente, e são geradas várias versões (também chamadas de representações) de cada segmento que variam em taxa de bits / resolução / qualidade usando um codificador ou um transcodificador (ou seja, H .264, H.265, etc.). Além disso, o servidor gera um arquivo de índice, que é um manifesto que lista as representações disponíveis, incluindo URLs (URLs) para identificar os segmentos e seus tempos de disponibilidade. Durante uma sessão HAS atípica, o cliente recebe primeiro o manifesto que contém os metadados para vídeo, áudio, legendas etc. e depois mede constantemente certos parâmetros, como largura de banda de rede disponível, status do buffer e níveis de bateria e CPU. De acordo com esses parâmetros, o cliente HAS busca repetidamente o próximo segmento mais adequado entre as representações disponíveis do servidor. A Tabela 1.1 compara as principais características dos sistemas tradicionais de streaming e HAS.
 
 %-----------------------------------------------------------------------------%
-\subsubsection{Arquitetura Hierarquica para Bitrate Schemes}
-\label{subsec:bitrate-schemes}
-
-%Implementing a multi-tier architecture has a dual purpose: to deal efficiently with the amount
-%of data that needs to be processed and to extract meaningful data to create more intelligence at
-%each level. Moreover, the number of tiers impacts direclty in the QoE support.
-
-Each ABR scheme proposes many criteria for bitrate decisions, where they work only under
-indirect or implicit assumptions and specific scenarios, and focuses on a specific deployment or
-different network characteristics. Currently, there is a lack of a general consistent framework
-that can formally evaluate and compare different bitrate adaptation schemes, and test and
-verify the efficiency of their components. To the best of our knowledge, only a few algorithms
-formally describe what objective they want to optimize, and thus, it is challenging to make
-an effective comparison.
-
-In this part, we provide a feature comparison between various state-of-the-art bitrate
-adaptation schemes, and are available in terms os the following aspects:
-
-\begin{itemize}
-
-\item Heurisic:	
-
-\item Fairness:
-
-\item \ac{QoE}:
-
-\item \ac{QoE} optimization:
-
-\item Number of Clients:
-
-\item Content type:
-
-\item Heterogeneity:
-
-\item SVC support: Does the adaptation algorithm support the streaming of SVC-encoded video?
-
-\item BG Traffic: Does the paper include background traffic in their experimental tests?
-
-\end{itemize}
+%\subsubsection{Arquitetura Hierarquica para Bitrate Schemes}
+%\label{subsec:bitrate-schemes}
+%
+%%Implementing a multi-tier architecture has a dual purpose: to deal efficiently with the amount
+%%of data that needs to be processed and to extract meaningful data to create more intelligence at
+%%each level. Moreover, the number of tiers impacts direclty in the QoE support.
+%
+%Each ABR scheme proposes many criteria for bitrate decisions, where they work only under
+%indirect or implicit assumptions and specific scenarios, and focuses on a specific deployment or
+%different network characteristics. Currently, there is a lack of a general consistent framework
+%that can formally evaluate and compare different bitrate adaptation schemes, and test and
+%verify the efficiency of their components. To the best of our knowledge, only a few algorithms
+%formally describe what objective they want to optimize, and thus, it is challenging to make
+%an effective comparison.
+%
+%In this part, we provide a feature comparison between various state-of-the-art bitrate
+%adaptation schemes, and are available in terms os the following aspects:
+%
+%\begin{itemize}
+%\item Heurisic:	
+%\item Fairness:
+%\item \ac{QoE}:
+%\item \ac{QoE} optimization:
+%\item Number of Clients:
+%\item Content type:
+%\item Heterogeneity:
+%\item SVC support: Does the adaptation algorithm support the streaming of SVC-encoded video?
+%\item BG Traffic: Does the paper include background traffic in their experimental tests?
+%\end{itemize}
 
 \subsubsection{Fatores de influencia no QoE}
+
+Juntamente com todas as possibilidades trazidas pela computação em nevoa em multiníveis, há uma série de desafios que impedem sua plena realização. 
+Nesta seção, nós discutimos ainda mais fatores que influênciam o QoE do usuário.
 
 % Quality Improvement for HTTP Adaptive Streaming over Mobile Networks Hung Thai Le
 \begin{itemize}
 
-\item Delay inicial
+\item \textit{Delay inicial:} Toda transmissão de video precisa de uma certa quantidade de dados iniciais antes que a decodificação e reprodução possar ser inciada, essa transferencia de dados antes da reprodução do video é chamada de Dlay inicial. Está fase também é conhecida como bufferização inicial. Durante esse delay incial o cliente não precisa preencher seu buffer com uma grande quantidade de dados, pois isso causa um longo atraso inicial. No entanto, um nível maior de buffer ajuda o cliente a evitar eficientemente os fluxos insuficientes de buffer.
 
-\item Interrupçoes duração
+\item \textit{Interrupções:} É o congelamento da reprodução do video devido a um baixo fluxo no buffer. Especificamente, um fluxo insuficiente de buffer é seguido por um período de buffer, onde o cliente precisa armazenar em buffer rapidamente uma quantidade de dados de vídeo para retomar a reprodução. Em alguns serviços de streaming, um rebuffering pode ser tratado de forma semelhante a um buffer inicial. No entanto, os impactos dos dois tipos de tempo de espera são diferentes para os usuários. Ao contrário do buffer inicial, que é o tempo de espera antes do serviço e é bem conhecido, a interrupção ocorre inesperadamente no serviço e, portanto, a percepção para o usuário é muito pior. Em [88], os autores mostram que existe uma relação exponencial entre o número de interrupções e a qualidade do vídeo. Embora achem que os usuários podem tolerar no máximo uma interrupção de alguns segundos durante uma sessão, muitos estudos concordam que as interrupções devem ser evitadas para ter uma boa qualidade de vídeo [22].
 
-\item interrupções frequencia
+\item \textit{Qualidade perceptual:}
+Uma taxa de bits de vídeo mais alta geralmente fornece uma qualidade de vídeo mais alta. O trabalho em [89] observa um forte efeito da qualidade recente do vídeo, ou seja, uma qualidade mais alta no final de uma sessão resulta em maior experiência do usuário.
+Em [90], verificou-se que, além da taxa de bits média do vídeo, o tempo em cada camada individual tem um impacto significativo na qualidade do vídeo.
+A variação da qualidade em uma sessão é determinada pela amplitude de comutação e pela frequência de comutação. Vale ressaltar que cada comutação é representada por uma alteração de qualidade diferente de zero (por exemplo, taxa de bits de vídeo, versão de vídeo etc.) dos dois segmentos de vídeo conservadores. Uma amplitude de chaveamento indica o grau de uma mudança na qualidade, enquanto a frequência de chaveamento pode ser representada por vários interruptores em toda a sessão
+%\item \textit{Amplitude qualidade:}
+%\item \textit{troca de qualidade:}
 
-\item Amplitude qualidade 
-
-\item troca de qualidade
-
-\item latencia ao vivo 
+\item \textit{Latencia ao vivo:} No caso de transmissão ao vivo, um fator de influência de qualidade adicional que desempenha um papel importante é a latência ao vivo (ou o atraso da captura para exibição). Como discutido em [98], os principais componentes de atraso incluem preparação de conteúdo, atraso de segmentação, busca assíncrona de segmentos de mídia, tempo de download HTTP, tempo de buffer no buffer e tempo de decodificação. Entre esses componentes, o tempo de buffer no buffer, que depende do nível atual do buffer, contribui com uma parte significativa para a latência ao vivo, especialmente no streaming sob demanda, onde o tamanho do buffer é de dezenas de segundos
 
 \end{itemize}
+
+No streaming clássico baseado em HTTP (ou seja, streaming progressivo de download), os principais fatores de influência na qualidade do vídeo são atraso inicial, interrupção e amplitude de qualidade [88, 91]. No HAS, o cliente altera a qualidade do vídeo entregue durante uma sessão, o que introduz qualidade
+variação como um fator de influência adicional na qualidade perceptiva [92, 93]. Em [93], verificou-se que os parâmetros relacionados à estratégia de adaptação de vídeo (ou seja, comutadores de representação) devem ser considerados em uma escala de tempo maior (até alguns minutos) e que são mais importantes que os parâmetros relacionados à codificação de vídeo (por exemplo, resolução, taxa de quadros, parâmetro de quantização, etc.), que influenciam apenas na ordem de alguns segundos

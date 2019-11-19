@@ -2,13 +2,14 @@
 \section{Background and concepts}
 \label{ch:background}
 
-Esta seção descreve brevemente coceitos e background tais como o paradigma Nevoa/Nuvem multiníveil e Serviço de Video Streaming.
+Esta seção descreve brevemente conceitos e background tais como o paradigma Névoa/Nuvem multinível e Serviço de Video Streaming.
 %This section briefly introduces background and concepts such as the \acl{SDN} paradigm and the 4G \acl{LTE} networks.
 
 %=============================================================================%
 \subsection{Computação em Névoa}
 
-A computação em névoa tem como principal objetivo preencher uma lacuna entre a nuvem e os dispositivos finais. Existem várias definições e terminologias na literatura que abordam este paradigma na literatura. Nesta proposta, vamos adotar a definição, o qual é adotado pelo OpenFogConsortium~(OpenFog), publicada pelo \textit{National Institute of Standards and Technology}~(NIST)~\cite{NIST2018-FogComputingConceptualModel}: 
+A computação em névoa tem como principal objetivo preencher uma lacuna entre a nuvem e os dispositivos finais. Existem várias definições e terminologias na literatura que abordam este paradigma na literatura. Nesta proposta, vamos adotar a definição, o qual é adotado pelo OpenFogConsortium~(OpenFog), publicada pelo Instituto Nacional da Padrões e Tecnologia%\textit{National Institute of Standards and Technology}
+~(NIST)~\cite{NIST2018-FogComputingConceptualModel}: 
 
 \begin{displayquote}
 
@@ -18,15 +19,17 @@ A computação em névoa tem como principal objetivo preencher uma lacuna entre 
 % https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.500-325.pdf. March 2018
 % https://www.openfogconsortium.org
 
-Os nós podem ser organizados em arquiteturas multiníveis - na vertical (para dar suporte ao isolamento), na horizontal (para suportar a federação) ou pela latência entre os nós da \textit{fog} e os usuários finais. A \textit{fog computing} minimiza o tempo de resposta das aplicações suportadas e fornece, para os dispositivos finais, recursos de computação local e, quando necessário, conectividade de rede para serviços centralizados. %Os nós da \textit{fog} são recursos locais que podem ser organizados em arquiteturas multi-níveis e podem ser quaisquer dispositivos que oferece conexão de rede com fio/sem fio com computação, armazenamento e conectividade de rede, como switches, roteadores, smart phones, tablets, laptops, etc. 
+Os nós podem ser organizados em arquiteturas multiníveis - na vertical (para dar suporte ao isolamento), na horizontal (para suportar a federação) ou pela latência entre os nós da névoa e os usuários finais. A computação em Névoa minimiza o tempo de resposta das aplicações suportadas e fornece, para os dispositivos finais, recursos de computação local e, quando necessário, conectividade de rede para serviços centralizados. %Os nós da \textit{fog} são recursos locais que podem ser organizados em arquiteturas multi-níveis e podem ser quaisquer dispositivos que oferece conexão de rede com fio/sem fio com computação, armazenamento e conectividade de rede, como switches, roteadores, smart phones, tablets, laptops, etc. 
 
-\subsubsection{Arquitetura hierarquica multiníveis em Nuvem-Névoa}
-Uma arquitetura em névoa verticalmente com N niveis tem como proposito: lidar eficientemente com a quantidade de dados que precisa ser processada e extrair dados significativos para criar mais inteligência em cada nível. Além disso, o número de camadas afeta diretamente o suporte de QoE.
+%---------------------------------------------------------------------
+\subsection{Arquitetura hierárquica multiníveis em Nuvem-Névoa}
+
+Uma arquitetura em névoa verticalmente com N níveis tem como proposito: lidar eficientemente com a quantidade de dados que precisa ser processada e extrair dados significativos para criar mais inteligência em cada nível. Além disso, o número de camadas afeta diretamente o suporte de QoE.
 %to deal efficiently with the amount of data that needs to be processed and to extract meaningful data to create more intelligence at each level. Moreover, the number of tiers impacts direclty in the QoE support.
 %O OpenFog está assumindo a liderança na padronização de névoa e definiu uma arquitetura de referência que consiste em N camadas de nós, como mostra a Figura~\ref{fig:arch-multi-lvl}
 
-Primeiramente, vamos apresentar uma arquitetura de rede com multiníveis, detalhada na Figura~\ref{fig:arch-multi-lvl}. A camada superior é composta pelos servidores em nuvem que podem ser localizados em um setor público ou privado da nuvem. As nuvens podem ser qualquer provedor do streaming de video, por exemplo, provedor de video (por exemplo, Netflix, Amazon ou Youtube), bem como um usuário local. % Estas nuvem operam o conteudo multimidia original sobre redes WANs.
-Os 3 níveis seguintes representam a rede fog/cloud organizada hierarquicamente. Este  trabalho leva em consideração os nós da borda com serviços de armazenamento e computação, bem como, é ranqueado de acordo com a área de cobertura de comunicação. Nesse ecossistema multinível, o Core Network Regional Edge pode gerenciar a coordenação em toda a cidade, por exemplo, unidade de banda de base (BBU) ou provedor de serviços de Internet~(ISP). Seguido pela rede de borda de acesso, que suporta algumas dezenas a talvez algumas centenas de nós locais no meio da nevoa, por exemplo, estação base ou ponto de acesso. Os gateways de borda podem ser distribuídos em nós de névoa locais, por exemplo, computadores pessoais, laptops e smartphones, onde o nó retransmite o conteúdo do vídeo por meio de comunicação com ou sem fio. Esses dispositivos têm demandas de tráfego altas e similares, podendo cooperar entre si. Essa conexão é feita através de algum tipo de rede local~(LAN). 
+Primeiramente, vamos apresentar uma arquitetura de rede com multiníveis, detalhada na Figura~\ref{fig:arch-multi-lvl}. O nível superior é composto por servidores em nuvem que podem ser localizados em um setor público ou privado. As nuvens podem ser qualquer provedor do streaming de video, por exemplo, Netflix, Amazon ou Youtube, bem como, um usuário local. % Estas nuvem operam o conteudo multimidia original sobre redes WANs.
+Os 3 níveis seguintes representam a rede névoa/nuvem organizada hierarquicamente. Este  trabalho leva em consideração os nós da borda com serviços de armazenamento e computação, bem como, é ranqueado de acordo com a área de cobertura de comunicação. Nesse ecossistema multinível, o \textit{Core Network Regional Edge} pode gerenciar a coordenação em toda a cidade, por exemplo, unidade de banda de base~(BBU) ou provedor de serviços de Internet~(ISP). Seguido pela \textit{Access Network Edge}, que suporta algumas dezenas a talvez algumas centenas de nós locais no meio da nevoa, por exemplo, estação base ou ponto de acesso. Os \textit{Gateways} de borda podem ser distribuídos em nós de névoa locais, por exemplo, computadores pessoais, laptops e smartphones, onde o nó retransmite o conteúdo do vídeo por meio de comunicação com ou sem fio. Esses dispositivos têm demandas de tráfego altas e similares, podendo cooperar entre si.% Essa conexão é feita através de algum tipo de rede local~(LAN). 
 %É importante notar que em um ambiente multinível os servidores são organizados em uma topologia mesh em arvore.
 \vspace{0.8cm}
 \begin{figure}[htb]
@@ -49,7 +52,7 @@ Os 3 níveis seguintes representam a rede fog/cloud organizada hierarquicamente.
 
 A padronização de uma arquitetura HAS prove importantes benefícios sobre sistemas de streaming tradicionais. Devido ao fato de várias empresas importantes de mídia participarem de seu desenvolvimento, este novo protocolo elimina problemas técnicos na entrega e compactação do video. Em essência, o objetivo é combinar todas as tecnologias e padrões em um, tornando o suporte a streaming contínuo em todos os dispositivos. 
 %Por sua vez, visa reduzir dores de cabeça técnicas e custos de transcodificação. 
-Os editores de conteúdo podem gerar um único conjunto de arquivos para codificação e streaming que deve ser compatível com o maior número possível de dispositivos, do smartphone ao OTT, alem de plug-ins ou HTML5. Os consumidores não precisa se preocupar se seus dispositivos consegue reproduzir o conteúdo que desejam assistir.
+Os editores de conteúdo podem gerar um único conjunto de arquivos para codificação e streaming que deve ser compatível com o maior número possível de dispositivos, do smartphone a nuvem, além de plug-ins ou HTML5. Os consumidores não precisam se preocupar se seus dispositivos conseguem reproduzir o conteúdo que desejam assistir.
 
 O objetivo desses esquemas é garantir um alto QoE para os usuários na presença de flutuações na largura de banda devido a alguns fatores, por exemplo, controle de congestionamento da rede, intensidade do sinal, perda de pacotes e assim por diante. Embora essas flutuações sejam bastante comuns na Internet pública, elas também podem ocorrer em redes mais privadas, como redes domésticas ou mesmo redes gerenciadas, onde geralmente há controle de admissão e diferentes ferramentas de QoS são usadas. 
 
@@ -74,13 +77,13 @@ O objetivo desses esquemas é garantir um alto QoE para os usuários na presenç
 %Out of Scope
 %The MPEG-DASH specification only defines the MPD and the segment formats. The delivery of the MPD and the media encoding formats containing the segments, as well as the client behavior for fetching, adaptation heuristics, and playing content, are outside of MPEG-DASH’s scope.
 
-A Figura~\ref{fig:has-arch}, conforme ilustrado, o cliente e servidor HAS usam HTTP como protocolo na camada da aplicação para realizar todas as requisições/respostas necessárias. 
+Na Figura~\ref{fig:has-arch}, conforme ilustrado, o cliente e servidor HAS usam o protocolo HTTP na camada da aplicação para realizar todas as requisições/respostas necessárias. 
 
 No lado do servidor, assim que um arquivo de mídia~(ou fluxo) estiver pronto, ele será preparado para transmissão antes de ser publicado em um servidor HTTP padrão. O arquivo/fluxo original é particionado em segmentos~(também chamados de \textit{chunks}) de tempo de reprodução equivalente, e são geradas várias versões (também chamadas de representações) de cada segmento que variam em taxa de bits/resolução/qualidade usando um codificador ou um transcodificador. 
 Além disso, o servidor gera um arquivo manifesto chamado de descritor da apresentação na mídia~(MPD), que lista as representações disponíveis, incluindo informações como o tempo do video, disponibilidade de conteúdo, tipos de mídia~(ou seja, H .264, H.265, etc.), resoluções, larguras de banda mínima e máxima e a existência de várias alternativas codificadas de componentes de multimídia, localizações dos segmentos de mídia na rede e outras características do conteúdo.
 %URLs para identificar os segmentos e seus tempos de disponibilidade. 
 
-No lado do cliente HAS, primeiramente, o player solicita o manifesto ao servidor HTTP e analisa as informações citadas acima contidas no arquivo. Desta forma, ele pode começar a solicitar segmentos sequencialmente e adaptar-se às condições da rede dinamicamente usando sua lógica adaptativa de taxa de bits~(ABR). Os esquemas ABR também levam em consideração o buffer de reprodução, recursos do dispositivo, preferências do visualizador, alem de recursos de conteúdo, com pesos diferentes. 
+No lado do cliente HAS, primeiramente, o reprodutor de video solicita o manifesto ao servidor HTTP e analisa as informações citadas acima contidas no arquivo. Desta forma, ele pode começar a solicitar segmentos sequencialmente e adaptar-se às condições da rede dinamicamente usando sua lógica adaptativa de taxa de bits~(ABR). Os esquemas ABR também levam em consideração o buffer de reprodução, recursos do dispositivo, preferências do visualizador, além de recursos de conteúdo, com pesos diferentes. 
 Como a QoE do espectador precisa ser determinado em tempo real durante a reprodução, geralmente, são usadas métricas objetivas, incluindo o número de interrupções, duração do atraso na inicialização, frequência e quantidade de oscilações de qualidade do vídeo. Por padrão, o HAS não exige nenhum esquema de adaptação específico, deixando aos desenvolvedores de sistemas inovar e implementar seu próprio método.
 
 
@@ -123,17 +126,17 @@ Como a QoE do espectador precisa ser determinado em tempo real durante a reprodu
 
 \subsubsection{Fatores de influencia no QoE}
 
-O QoE é uma avaliação da satisfação do usuário com o conteúdo exibido na tela. O QoE é o grau de prazer ou aborrecimento de uma pessoa em relação a um aplicativo, serviço ou sistema. Assim, QoE se refere à percepção da pessoa sobre o conteúdo exibido no dispositivo. Nesta seção, nós discutimos alguns fatores que mais influênciam o QoE do usuário. 
+O QoE é uma avaliação da satisfação do usuário com o conteúdo exibido na tela. O QoE é o grau de prazer ou aborrecimento de uma pessoa em relação a um aplicativo, serviço ou sistema. Assim, QoE se refere à percepção da pessoa sobre o conteúdo exibido no dispositivo. Nesta seção, nós discutimos alguns fatores que mais influenciam o QoE do usuário. 
 
 %Juntamente com todas as possibilidades trazidas pela computação em nevoa em multiníveis, há uma série de desafios que impedem sua plena realização. 
 
 % Quality Improvement for HTTP Adaptive Streaming over Mobile Networks Hung Thai Le
 \begin{itemize}
 
-\item \textit{Delay inicial:} Toda transmissão de video precisa de uma certa quantidade de dados iniciais antes que a decodificação e reprodução possar ser inciada, essa transferencia de dados antes da reprodução do video é chamada de Dlay inicial. Está fase também é conhecida como bufferização inicial. Durante esse delay incial o cliente não precisa preencher seu buffer com uma grande quantidade de dados, isso pode causa um longo atraso inicial. No entanto, um nível maior de buffer ajuda o cliente a evitar eficientemente os fluxos insuficientes no buffer.
+\item \textit{Atraso inicial:} Toda transmissão de video precisa de uma certa quantidade de dados iniciais antes que a decodificação e reprodução possar ser inciada, essa transferência de dados antes da reprodução do video é chamada de atraso inicial. Está fase também é conhecida como bufferização inicial. Durante esse atraso incial o cliente não precisa preencher seu buffer com uma grande quantidade de dados, isso pode causa um longo atraso inicial. No entanto, um nível maior de buffer ajuda o cliente a evitar eficientemente os fluxos insuficientes no buffer.
 
 \item \textit{Interrupções:} É o congelamento da reprodução do video devido ao esvaziamento do buffer. Especificamente, um fluxo insuficiente de buffer é seguido por um período de buffer, onde o cliente precisa armazenar em buffer rapidamente uma quantidade de dados de vídeo para retomar a reprodução. 
-Em alguns serviços de streaming, um rebuffering pode ser tratado de forma semelhante a um buffer inicial. No entanto, os impactos dos dois tipos de tempo de espera são diferentes para os usuários. Ao contrário do delay inicial, que é o tempo de espera antes do serviço e é bem conhecido, a interrupção ocorre inesperadamente no serviço e, portanto, a percepção para o usuário é muito pior. Em [88], os autores mostram que existe uma relação exponencial entre o número de interrupções e a qualidade do vídeo. Embora achem que os usuários podem tolerar no máximo uma interrupção de alguns segundos durante uma sessão.
+Em alguns serviços de streaming, um rebuffering pode ser tratado de forma semelhante a um buffer inicial. No entanto, os impactos dos dois tipos de tempo de espera são diferentes para os usuários. Ao contrário do atraso inicial, que é o tempo de espera antes do serviço e é bem conhecido, a interrupção ocorre inesperadamente no serviço e, portanto, a percepção para o usuário é muito pior. Em [88], os autores mostram que existe uma relação exponencial entre o número de interrupções e a qualidade do vídeo. Embora achem que os usuários podem tolerar no máximo uma interrupção de alguns segundos durante uma sessão.
 
 \item \textit{Qualidade perceptual:}
 Uma taxa de bits de vídeo mais alta geralmente fornece uma qualidade de vídeo melhor. Em [89] observa-se um forte efeito da qualidade recente do vídeo, ou seja, uma qualidade mais alta no final de uma sessão resulta em maior experiência do usuário.

@@ -49,12 +49,41 @@ acrescentar para o provisionamento do conteúdo
 
 Em um ambiente de rede compartilhado, em que muitas entidades do sistema, incluindo players DASH, competem pela largura de banda disponível, várias flutuações repentinas na banda da rede podem ocorrer ao longo do tempo.
 
-A seção~\ref{subsec:evaluation} mostra a influencia na variação entre diferentes processos de decisão para selecionar o bitrate do proximo segmento entre diferentes mecasnismos ABR. Em~\cite{bentaleb:2018:MSys} também mostram armadilhas devido ao comportamento totalmente isolado dos clentes HAS~(ou seja, essas soluções estão funcionando independentemente, sem coordenação). Em particular, a presença de vários clientes HAS simultâneos que competem pelos recursos de rede compartilhados podem cousar problemas de escalabilidade do HAS, incluindo (i) instabilidade de video devido à troca de taxa de bits frequente, na qual cinco players dash.js competem por um link de gargalo de 25 Mbps em um ambiente de rede compartilhado e oscilações de qualidade, como mostra a Figura 1.5; (ii) injustiça de QoE; e (iii) subutilização ou subscrição excessiva de recursos de rede. Esses problemas são agravados ainda mais quando o número de jogadores aumenta e no caso de ambientes heterogêneos. Esses problemas continuam sendo uma preocupação séria para os operadores de rede e provedores de conteúdo.
+A seção~\ref{subsec:evaluation} mostra a influencia na variação entre diferentes processos de decisão para selecionar o bitrate do próximo segmento entre diferentes mecanismos ABR. Em~\cite{bentaleb:2018:MSys} também mostram armadilhas devido ao comportamento totalmente isolado dos clientes HAS~(ou seja, essas soluções estão funcionando independentemente, sem coordenação). Em particular, a presença de vários clientes HAS simultâneos que competem pelos recursos de rede compartilhados podem cousar problemas de escalabilidade do HAS, incluindo (i) instabilidade de video devido à troca de taxa de bits frequente, na qual cinco reprodutores dash.js competem por um link de gargalo de 25 Mbps em um ambiente de rede compartilhado e oscilações de qualidade, como mostra a Figura 1.5; (ii) injustiça de QoE; e (iii) subutilização ou subscrição excessiva de recursos de rede. Esses problemas são agravados ainda mais quando o número de jogadores aumenta e no caso de ambientes heterogêneos. Esses problemas continuam sendo uma preocupação séria para os operadores de rede e provedores de conteúdo. 
+Neste contexto, é desejado ter um mecanismos computacionais que identifiquem automaticamente o processo de decisão do HAS de cada video antes de escalonar os vídeos.
+\textit{Os objetivos para este tópico de pesquisa são:}
 
-Neste contexto, é desejado ter um mecanismos computacionais que identifiquem automaticamente o processo de decisão do HAS de cada video antes de escalonar os videos.
+\begin{itemize}
+    \item Propor mecanismos de cooperativos entre grupos de usuários para auxiliar no processo de decisão do algoritmo ABR. Além disso, esses mecanismos podem facilitar a cooperação de \textit{download} e \textit{upload} de um mesmo conteúdo entre os usuários de uma mesma rede; 
+    \item Implementar e Avaliar as soluções propostas utilizando os ambientes estudados em Cidades Inteligentes.
+\end{itemize}
+
+% \textit{O objetivo neste tópico de pesquisa} é implementar mecanismos cooperativos capazes de identificar eficientemente o processo de decisão de cada cliente. Além disso, esses mecanismos podem facilitar a cooperação de download e upload de um mesmo conteúdo entre os usuários de uma mesma rede. Para isso, será implementado mecanismos que auxiliem o reprodutor podendo-se utilizar de Teoria dos Jogos~(GT) nesta tarefa, composto por três estágios principais: entrada, processamento e saída. Os requisitos de QoE do video podem ser as entradas do sistema. Essas entradas serão mapeadas para as funções apropriadas de associação e valores de verdade.
+
+% As abordagens mencionadas em \autoref{subsec:arch-cloud-fog} podem diminuir a carga de tráfego 
+% e melhorar a QoE. No entanto, também existem armadilhas devido ao comportamento egoísta totalmente isolado (ou seja, essas soluções estão funcionando independentemente, sem coordenação) dos players do HAS, seus esquemas HAS possuem os seguintes quatro grandes problemas:
+% \begin{itemize}
+%     \item Multi-player Problemas: Por padrão, o design do reprodutor de video se esforça individualmente para buscar os segmentos de video com a maior taxa de bits
+% \end{itemize}
 
 
-O objetivo neeste topico de pesquisa é implementar mecanismos cooperativos capazes de identificar eficientemente o prcesso de decisão de cada cliente. Alem disso, esses mecanismos podem facilitar a coopereção de download e upload de um mesmo conteudo entre os usuários de uma mesma rede. Para isso, será implementado utilizando Teoria dos Jogos~(GT) composto por três estágios principais: entrada, processamento e saída. Os requisitos de QoE do video constituirão as entradas do sistema. Essas entradas serão mapeadas para as funções apropriadas de associação e valores de verdade.
+
+%-----------------------------------------------------------------------------%
+\subsubsection{Arquitetura Escalável do Controlador}
+\label{subsec:sca-contrl-arch}
+
+Dada a arquitetura do modelo de serviço e ambiente de nuvem/borda de várias camadas mencionada, este trabalho tem como objetivo abordar algumas das seguintes questões de pesquisa:~\textit{i)} Como determinar as melhores camadas para alocação de serviços de vídeo?~\textit{ii)} Como os pedaços de vídeo não solicitados devem ser distribuídos na hierarquia de borda/nuvem, considerando as informações de localização do usuário e estimativas sobre a localização futura do usuário em tempo real?~\textit{iii)} Como facilitar o streaming de vídeo através de várias fontes simultaneamente?~\textit{iv)} Como os algoritmos de adaptação à taxa de bits podem ser afetados pelo tamanho do pedaço de vídeo em uma arquitetura de várias camadas?
+
+Parta lidar com a escalabilidade necessária em ambientes de cidades inteligentes.
+% Este projeto tem como objetivo considerar ambientes multiníveis que utilizem tecnologia emergentes~(4G, 5G, WiFi) para a entrega do vídeo. Para COm isso, novos desafios surgem nesse processo integração. 
+projetar uma entrega de vídeo baseada em DASH confiável e de alta qualidade para ser usada em ambientes de cidades inteligentes~\cite{gamaUCC2019, KreuzbergerWorkshop2016}. O esquema proposto aproveitará várias tecnologias relacionadas à rede, como Cloud, Fog e Edge Computing, além de posicionamento e encadeamento inteligente de serviços.% A Figura~\ref{fig:scenario-arch} descreve, no lado esquerdo, uma arquitetura de rede de várias camadas, composta por um conjunto heterogêneo de dispositivos e aplicativos que utilizam recursos de computação distribuídos por meio de uma tecnologia de comunicação de acesso múltiplo, como 5G e WiFi. Este projeto propõe estender o streaming de vídeo DASH para suportar conectividade simultânea de caminhos múltiplos~\cite{poliakovPHD2018, Velasquez2018}.
+O objetivo neste tópico de pesquise realizar um estudo e analise de do trafego DASH disponíveis em ambientes de redes WiFi. Assumindo que muitos pontos de acesso WiFi sejam implantados por operadores de celulares em áreas urbanas publicas, o algoritmo foca em decisões baseadas em ambientes multi multiníveis.  
+\begin{itemize}
+    \item Comparar atuais aproximações na literatura para implantação desse tipo de serviço, qual o trade-off entre o custo para as operadoras e aprimoramento do QoE.
+    \item propor mecanismos a nível de provedor de conteúdo para melhorar esse esse processos de decisão estudados.
+    \item Implementar e avaliar a solução proposta em ambientes controlados, para isso o uso do simulador ns-3 integrado a biblioteca libdash podem ser utilizados.   
+\end{itemize}
+%O lado direito da Figura~\ref{fig:scenario-arch} descreve parte dos parâmetros que devem ser avaliados para definir quais serviços de vídeo precisam ser implantados, juntamente com a camada mais adequada para implantar cada um deles. Observe que os parâmetros na camada mais inferior para feedback diferem dos de outras camadas. Inicialmente, os parâmetros avaliados considerados incluem o perfil do usuário, a carga da célula local, a qualidade do link, a complexidade do movimento dos vídeos e também detalhes inteligentes da cidade, como a localização e a rota rastreada no caso de usuários com mobilidade. Alguns dos nós podem ser estacionários, mas outros podem variar de padrões de baixa a alta mobilidade, que podem ser levados em consideração para melhorar a qualidade da entrega de vídeo.
 
 
 %-----------------------------------------------------------------------------%
@@ -66,8 +95,6 @@ Com a melhoria de largura de banda que foi feita nos links de acesso e nas redes
 Paralelamente, a rede definida por software e a virtualização de funções de rede (SDN/NFV) são tecnologias notáveis para controlar não apenas os fluxos de comunicação, mas também as funções de serviço nas redes. Eles foram desenvolvidos recentemente por fornecedores internacionais e implantados no mercado. No entanto, como são basicamente projetados para funcionar com as redes IP ponto a ponto tradicionais, geralmente limitadas a um único sistema autônomo, elas requerem algumas extensões para permitir o streaming de vídeo de alta qualidade a um grande número de usuários heterogêneos na ampla Internet. 
 Além disso, a tendência para a computação de borda e neblina deve ser integrada às abordagens de gerenciamento de tráfego de vídeo. Os recursos de borda dos ISPs ou usuários finais podem ser utilizados para hospedar o conteúdo de vídeo na proximidade dos usuários finais, reduzindo a latência e mitigando a carga nas redes principais e nos data centers. Isso será útil para o cenário de transmissão ao vivo que requer uma latência baixa. Além disso, a integração de serviços baseados em HAS em tais mecanismos de comunicação requer uma avaliação rigorosa em bancos de testes realistas antes da implantação. O principal objetivo é analisar e investigar a integração da entrega de vídeo baseada em HAS nas redes futuras, onde:
 
-
-%
 %\vspace{0.8cm}
 %\begin{figure*}[htpb]
 %	\centering
@@ -78,16 +105,6 @@ Além disso, a tendência para a computação de borda e neblina deve ser integr
 %\end{figure*}
 
 
-%-----------------------------------------------------------------------------%
-\subsubsection{Scalable controller architecture}
-\label{subsec:sca-contrl-arch}
-
-
-Este projeto tem como objetivo projetar uma entrega de vídeo baseada em DASH confiável e de alta qualidade para ser usada em ambientes de cidades inteligentes~\cite{gamaUCC2019, KreuzbergerWorkshop2016}. O esquema proposto aproveitará várias tecnologias relacionadas à rede, como Cloud, Fog e Edge Computing, além de posicionamento e encadeamento inteligente de serviços.% A Figura~\ref{fig:scenario-arch} descreve, no lado esquerdo, uma arquitetura de rede de várias camadas, composta por um conjunto heterogêneo de dispositivos e aplicativos que utilizam recursos de computação distribuídos por meio de uma tecnologia de comunicação de acesso múltiplo, como 5G e WiFi. Este projeto propõe estender o streaming de vídeo DASH para suportar conectividade simultânea de caminhos múltiplos~\cite{poliakovPHD2018, Velasquez2018}.
-
-%O lado direito da Figura~\ref{fig:scenario-arch} descreve parte dos parâmetros que devem ser avaliados para definir quais serviços de vídeo precisam ser implantados, juntamente com a camada mais adequada para implantar cada um deles. Observe que os parâmetros na camada mais inferior para feedback diferem dos de outras camadas. Inicialmente, os parâmetros avaliados considerados incluem o perfil do usuário, a carga da célula local, a qualidade do link, a complexidade do movimento dos vídeos e também detalhes inteligentes da cidade, como a localização e a rota rastreada no caso de usuários com mobilidade. Alguns dos nós podem ser estacionários, mas outros podem variar de padrões de baixa a alta mobilidade, que podem ser levados em consideração para melhorar a qualidade da entrega de vídeo.
-
-\vspace{0.8cm}
 \begin{figure*}[htpb]
 	\centering
 	\includegraphics[width=0.7\textwidth]{img/fig-intro.png}
@@ -96,7 +113,6 @@ Este projeto tem como objetivo projetar uma entrega de vídeo baseada em DASH co
 	\label{fig:scenario-arch}
 \end{figure*}
 
-Dada a arquitetura do modelo de serviço e ambiente de nuvem/borda de várias camadas mencionada, este trabalho tem como objetivo abordar algumas das seguintes questões de pesquisa:~\textit{i)} Como determinar as melhores camadas para alocação de serviços de vídeo?~\textit{ii)} Como os pedaços de vídeo não solicitados devem ser distribuídos na hierarquia de borda/nuvem, considerando as informações de localização do usuário e estimativas sobre a localização futura do usuário em tempo real?~\textit{iii)} Como facilitar o streaming de vídeo através de várias fontes simultaneamente?~\textit{iv)} Como os algoritmos de adaptação à taxa de bits podem ser afetados pelo tamanho do pedaço de vídeo em uma arquitetura de várias camadas?
 
 %\subsection{Multimedia Delivery System Schemes}
 % Selection Algorithms
@@ -123,7 +139,22 @@ Dada a arquitetura do modelo de serviço e ambiente de nuvem/borda de várias ca
 % \textbf{Modelagem de propriedades de balanceamento de carga e desempenho de cache em sistemas de Névoa-Nuvem multicamadas.}
 
 %-----------------------------------------------------------------------------%
-%\subsection{Medidas objetivas}
+% \subsubsection{Modelagem de propriedades de balanceamento de carga e desempenho de cache
+% em sistemas de Névoa-Nuvem multicamadas}
+% \label{subsec:handover}
+% 1. Interesses perspectivas do usuário, provedor de serviços e provedor de rede.
+% 2. Qual a melhor forma de operar problemas de cache em névoa-nuvem? Onde? Quando?
+% Como?
+% 3. Redimensionar recursos necessários para suportar demanda de Acordo com o tempo.
+% 4. Utilizar máquinas virtuais (container, microservices) para atingir a latência minima para
+% acelerar a execução do escalonamento, mas irá implicar em desperdicios de recurso (e
+% dinheiro)? Caso sim, como minimizar este desperdicio?
+% 105. Este trabalho aborda redes heterogêneas, com diferentes tipos de dispositivos. Como
+% cumprir os requisitos de QoS e QoE neste ambiente?
+% 6. Quando um conteúdo é alocado na borda da rede quanto tempo o conteúdo deve perma-
+% necer na cache?
+
+% Given the aforementioned multi-tier edge/cloud environment and service model architecture, this work aims to tackle some of the following research questions:~\textit{i)} How to determine the best tiers for video services placement?~\textit{ii)} How unsolicited video chunks should be distributed in the edge/cloud hierarchy considering user location information and estimates on future user location in real time? ~\textit{iii)} How to facilitate video streaming through multiple sources concurrently?~\textit{iv)} How bitrate adaptation algorithms can be impacted by video chunk size in a multi-tiered architecture?
 
 %-----------------------------------------------------------------------------%
 \subsubsection{Traffic offloading in \acsp{HetNet}}
@@ -169,26 +200,6 @@ traffic load in the backhaul and core networks.
   \item Implement and evaluate the proposed solutions in the \ac{ns-3}
   simulator, performing tests on scenarios with different access networks.
 \end{itemize}
-
-
-\subsubsection{Modelagem de propriedades de balanceamento de carga e desempenho de cache
-em sistemas de Névoa-Nuvem multicamadas}
-\label{subsec:handover}
-
-1. Interesses perspectivas do usuário, provedor de serviços e provedor de rede.
-2. Qual a melhor forma de operar problemas de cache em névoa-nuvem? Onde? Quando?
-Como?
-3. Redimensionar recursos necessários para suportar demanda de Acordo com o tempo.
-4. Utilizar máquinas virtuais (container, microservices) para atingir a latência minima para
-acelerar a execução do escalonamento, mas irá implicar em desperdicios de recurso (e
-dinheiro)? Caso sim, como minimizar este desperdicio?
-105. Este trabalho aborda redes heterogêneas, com diferentes tipos de dispositivos. Como
-cumprir os requisitos de QoS e QoE neste ambiente?
-6. Quando um conteúdo é alocado na borda da rede quanto tempo o conteúdo deve perma-
-necer na cache?
-
-% Given the aforementioned multi-tier edge/cloud environment and service model architecture, this work aims to tackle some of the following research questions:~\textit{i)} How to determine the best tiers for video services placement?~\textit{ii)} How unsolicited video chunks should be distributed in the edge/cloud hierarchy considering user location information and estimates on future user location in real time? ~\textit{iii)} How to facilitate video streaming through multiple sources concurrently?~\textit{iv)} How bitrate adaptation algorithms can be impacted by video chunk size in a multi-tiered architecture?
-
 
 %-----------------------------------------------------------------------------%
 \subsubsection{Gerenciamento de mobilidade distribuída}
@@ -258,11 +269,10 @@ granularity for the mobility management service.
   \acp{eNB}.
 \end{itemize}
 
-
 %=============================================================================%
-\subsection{Plano de trabalho}
+\clearpage
+\section{Plano de trabalho}
 \label{sec:timetable}
-
 
 \autoref{tab:timetable} apresenta o cronograma para este projeto de pesquisa de doutorado. As atividades mencionadas no cronograma estão listadas abaixo e incluem o trabalho desenvolvido apresentado em \autoref{ch:develop} e os tópicos a serem investigados em \autoref{sec:topics}. As atividades já desenvolvidas são identificadas pelo símbolo~\,\m. Enquanto isso, o símbolo \,\x\ identifica o tempo esperado para a realização das atividades planejadas.
 
@@ -274,26 +284,25 @@ granularity for the mobility management service.
 %\,\x\, identifies the expected time for carrying out the planned activities.
 
 \begin{enumerate}
-%	\item cumprimento de créditos de disciplinas;
+	\item cumprimento de créditos de disciplinas;
 %	\item pesquisa bibliografica;
 %	\item desenvolvimento do ambiente de simulação;
 %	\item desenvolvimento do algoritmo base para RCSA;
 %	\item testes de validação dos resultados parciais;
 %	\item análise dos resultados parciais;
 %	\item documentação e publicação dos resultados parciais;
-  
 
-  \item Estudo detalhado sobre a integração em redes multiniveis;
-	\item formalização da metodologia de pesquisa;
-  \item Avaliação de ferramentas de software disponíveis para análise de desempenho;
-  \item Desenvolvimento do módulo libdash para \ac{ns-3};
-  \item Escrita e defesa para exame de qualificação para doutorado;
-  \item Proposta de arquitetura de controlador escalável;
-  \item Offloading de tráfego em redes heterogêneas;
-  \item Soluções de gerenciamento de mobilidade distribuída;
-  	\item testes de validação dos resultados parciais;
-	\item análise dos resultados parciais;
-  \item Redação e defesa de tese.
+    \item Estudo detalhado sobre a integração em redes multiníveis para o provisionamento de Video Streaming;
+    \item formalização da metodologia de pesquisa;
+    \item Avaliação de ferramentas de software disponíveis para análise de desempenho;
+    \item Proposta de arquitetura de controlador escalável;
+    \item Escrita e defesa para exame de qualificação para doutorado;
+    \item Desenvolvimento de um arquitetura de controlador escalável;
+    \item Soluções de gerenciamento de mobilidade distribuída;
+    \item Desenvolvimento de mecanismos cooperativos para usuários HAS;
+    \item testes de validação dos resultados parciais;
+    \item Análise e publicação dos resultados;
+    \item Escrita e defesa de tese.
 
 %  \item Proposal of the \ac{SDN}-enabled \ac{LTE} network;
 %  \item OpenFlow \ac{EPC} controller for traffic routing and bearer admission
@@ -305,23 +314,24 @@ granularity for the mobility management service.
   \renewcommand{\arraystretch}{1.4}
   \caption{The timetable for this doctoral research project.}
   \label{tab:timetable}
-  \tiny
+%   \tiny
+  \scriptsize
   \centering
-  \begin{tabular}{c|c|cccc|cccc|cccccc|c}
+  \begin{tabular}{c|cc|ccc|cccc|cccccc|c}
     \toprule
-    & {\bf 2017}
-    & \multicolumn{4}{c|}{{\bf 2018}}
+    & \multicolumn{2}{c|}{{\bf 2017}}
+    & \multicolumn{3}{c|}{{\bf 2018}}
     & \multicolumn{4}{c|}{{\bf 2019}}
     & \multicolumn{6}{c|}{{\bf 2020}}
     & {\bf 2021} \\
 
-    & {\it Oct} & {\it Jan} & {\it Apr} & {\it Jul} & {\it Oct} & {\it Jan} &
-    {\it Apr} & {\it Jul} & {\it Oct} & {\it Jan} & {\it Mar} & {\it May} &
+    & {\it Mar} & {\it Aug} & {\it Jan} & {\it Aug} & {\it Nov} & {\it Jan} &
+    {\it Apr} & {\it Sep} & {\it Oct} & {\it Jan} & {\it Mar} & {\it May} &
     {\it Jul} & {\it Sep} & {\it Nov} & {\it Jan} \\
 
-    & {\it Dec} & {\it Mar} & {\it Jun} & {\it Sep} & {\it Dec} & {\it Mar} &
-    {\it Jun} & {\it Sep} & {\it Dec} & {\it Feb} & {\it Apr} & {\it Jun} &
-    {\it Aug} & {\it Oct} & {\it Dec} & {\it Feb} \\
+    & {\it Jul} & {\it Dec} & {\it Jul} & {\it Oct} & {\it Dec} & {\it Mar} &
+    {\it Jun} & {\it Dec} & {\it Dec} & {\it Feb} & {\it Apr} & {\it Jun} &
+    {\it Aug} & {\it Oct} & {\it Dec} & {\it May} \\
     \hline % \midrule
     \arrayrulecolor{lightgray}
 
@@ -329,16 +339,17 @@ granularity for the mobility management service.
     %        | 08 | 01   04   07   10 | 01   04   07   10 | 01   03   05   07   09   11 | 01
     %        | 12 | 03   06   09   12 | 03   06   09   12 | 02   04   06   08   10   12 | 02
     {\bf 01} & \m & \m &    &    &    &    &    &    &    &    &    &    &    &    &    &    \\ \hline
-    {\bf 02} &    & \m &    &    &    &    &    &    &    &    &    &    &    &    &    &    \\ \hline
-    {\bf 03} &    & \m & \m & \m & \m &    &    &    &    &    &    &    &    &    &    &    \\ \hline
-    {\bf 04} &    &    &    & \m & \m & \m &    &    &    &    &    &    &    &    &    &    \\ \hline
-    {\bf 05} &    &    &    &    &    & \m & \m & \m &    &    &    &    &    &    &    &    \\ \hline
+    {\bf 02} &    & \m & \m & \m &    &    &    &    &    &    &    &    &    &    &    &    \\ \hline
+    {\bf 03} &    &    & \m & \m & \m & \m &    &    &    &    &    &    &    &    &    &    \\ \hline
+    {\bf 04} &    &    &    &    & \m & \m & \m &    &    &    &    &    &    &    &    &    \\ \hline
+    {\bf 05} &    &    &    &    & \m & \m & \m & \m &    &    &    &    &    &    &    &    \\ \hline
     {\bf 06} &    &    &    &    &    &    &    & \m & \m &    &    &    &    &    &    &    \\ \hline
     {\bf 07} &    &    &    &    &    &    &    &    & \x & \x &    &    &    &    &    &    \\ \hline
     {\bf 08} &    &    &    &    &    &    &    &    & \x & \x & \x &    &    &    &    &    \\ \hline
     {\bf 09} &    &    &    &    &    &    &    &    &    & \x & \x & \x & \x & \x &    &    \\ \hline
     {\bf 10} &    &    &    &    &    &    &    &    &    &    &    & \x & \x & \x & \x &    \\ \hline
-    {\bf 11} &    &    &    &    &    &    &    &    &    &    &    &    &    & \x & \x & \x \\
+    {\bf 11} &    &    &    &    &    &    &    &    &    &    &    &    &    & \x & \x &    \\ \hline
+    {\bf 12} &    &    &    &    &    &    &    &    &    &    &    &    &    & \x & \x & \x \\
 
     \arrayrulecolor{black}
     \bottomrule

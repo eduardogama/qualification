@@ -22,7 +22,7 @@ Guan~\textit{et al.}~\cite{guan:2019:CLC} propõe uma nova política de Admissã
 % [ComNet'17] OPAC: An optimal placement algorithm for virtual CDN
 Khedher~\textit{et al.}~\cite{khedherComNet2017, khedherLCN2017} destaca os princípios de Rede Definida por Software~(SDN) e Virtualização de Função de Rede~(NFV). A abordagem baseada em SDN/NFV permite funções específicas de virtualização em servidores remotos. Dessa forma, as migrações de serviços de conteudo multimidia podem ser virtualizadas em diferentes \textit{datacenters}. seu trabalho desenvolve um algoritmo exato para decidir os locais ideais para alocação do serviço, onde os problemas de orquestramento e cache são abordados. 
 %O algoritmo proposto, incluindo o cache de conteúdo e o redirecionamento de solicitações, é introduzido com algumas restrições de QoE, de rede e sistema operacional. 
-O gerenciamento de cache é feito de maneira centralizada e utiliza o usuário final como alvo para fazer a comunicação Dispositivo para dispositivo, mas não explora a mobilidade. As solicitações de usuários finais são redirecionadas para um local da borda ideal. %, sem dispositivos de borda de nível com diferentes lantências. 
+O gerenciamento de cache é feito de maneira centralizada e utiliza o usuário final como alvo para fazer a comunicação Dispositivo para dispositivo, mas não explora a mobilidade. As solicitações de usuários finais são redirecionadas para um local da borda ideal.%, sem dispositivos de borda de nível com diferentes lantências. 
 
 %um algoritmo de aprendizado por reforço online projetado para extrair os recursos críticos de um enorme espaço de recursos
 %rede de cache virtual implementada totalmente em software através de uma infraestrutura de rede em nuvem distribuída programável que pode ser consumida e otimizada elasticamente usando informações globais sobre condições de rede e requisitos de serviço chamados SDvCDN. Esta abordagem aborda os problemas de posicionamento (localização da instalação), roteamento~(rede de fluxo) e alocação de recursos~(design de rede).
@@ -100,9 +100,11 @@ utiliza aprendizado de máquina chamada MLP~(Multilayer Perceptron) no algoritmo
 \label{subsec:applications}
 
 As abordagens mencionadas em \autoref{subsec:arch-cloud-fog} podem diminuir a carga de tráfego 
-e melhorar a QoE. No entanto, também existem armadilhas devido ao comportamento egoísta totalmente isolado (ou seja, essas soluções estão funcionando independentemente, sem coordenação) dos players do HAS.
-
-Os trabalhos de streaming de video na seção 3.2 consegue este tipo de problema, surgem problemas nos cenários da Cidade Inteligente: mobilidade do usuário, esquemas de cache colaborativo em multiplos níveis, quantidade de usuários durante multidões de flash não são totalmente considerados. Neste projeto, pretendemos projetar um sistema de entrega de vídeo que considere esses problemas para melhorar a qualidade da experiência para uma variedade de necessidades de streaming de vídeo, incluindo requisitos de baixa latência.
+e melhorar a QoE. No entanto, também existem armadilhas devido ao comportamento egoísta totalmente isolado (ou seja, essas soluções estão funcionando independentemente, sem coordenação) dos players do HAS.%, seus esquemas HAS possuem os seguintes quatro grandes problemas:
+% \begin{itemize}
+%     \item Multi-player Problemas: Por padrão, o design do reprodutor de video se esforça individualmente para buscar os segmentos de video com a maior taxa de bits
+% \end{itemize}
+Os trabalhos de streaming de video na seção 3.2 consegue este tipo de problema, surgem problemas nos cenários da Cidade Inteligente: mobilidade do usuário, esquemas de cache colaborativo em múltiplos níveis, quantidade de usuários durante multidões de flash não são totalmente considerados. %Neste projeto, pretendemos projetar um sistema de entrega de vídeo que considere esses problemas para melhorar a qualidade da experiência para uma variedade de necessidades de streaming de vídeo, incluindo requisitos de baixa latência.
 
 %The aforementioned approaches could decrease the traffic load and improve QoE, but more
 %issues arise in Smart City scenarios: user mobility, collaborative cache schemes over multi-edge,
@@ -117,92 +119,92 @@ A Tabela~\ref{tab:comparison} resume essa comparação para cada artigo pesquisa
 
 \begin{itemize}
 
-\item Escalabilidade: O trabalho leva em consideração a escalabilidade apresentada em ambientes de cidades inteligentes? O número de usuários pode variar de acordo com o tempo e a mobilidade dos usuários.
+\item Esquemas ABR: o trabalho leva em consideração a os mecanismos de decisão nos próximos segmentos para os escolher a taxa de bits adequada? Algumas soluções utilizam um estrategia cooperativa entre os clientes, outros utilizam estrategias egoístas já implantadas pelo reprodutor de video.
+
+\item Rede: O trabalho leva em consideração a o número de níveos apresentados nos experimentos? Multinível~(alto) indica dois ou mais níveis na névoa, e múltiplos~(baixo) indica o uso dos níveis na nuvem e névoa.
+
+\item Mobilidade: O trabalho leva em consideração dispositivos ou discute dispositivos moveis com possíveis mudanças de pontos de acesso?
 
 \item \# de usuários: Quantos clientes estão incluídos nos experimentos? Único indica apenas um cliente, vários (poucos) indicam menos de 10 clientes e múltiplos (muitos) indicam mais de 10 clientes.
 
-\item Heteregeneidade: O trabalho leva em consideração dispositivos com diferentes resoluções em seus experimentos?
-
-\item Justiça: o trabalho leva em consideração a justiça entre vários clientes que compartilham a rede? Algumas soluções compartilham igualmente a largura de banda entre os clientes, indicados pelo BW, outros compartilham a largura de banda com base na qualidade perceptiva ou no QoE, indicados por QT e QoE, respectivamente.
+\item Tipo: Qual o tipo de rede o trabalho leva em consideração?
 
 \end{itemize}
-
 
 \begin{table}[htb]
   \caption{Comparação com trabalhos relacionados.}
   \label{tab:comparison}
   \centering
   \scriptsize
-  \begin{tabular}{p{2.8cm}p{2cm}p{2cm}p{2.2cm}p{2cm}p{2cm}}
+  \begin{tabular}{p{2.8cm}p{2cm}p{2.3cm}p{2.2cm}p{2.3cm}p{2cm}}
     \toprule
     \textbf{Reference} &
     \textbf{Esquemas ABR} &
-    \textbf{Escalabilidade} &
+    \textbf{Rede} &
     \textbf{Mobilidade} &
     \textbf{\# de \newline usuários} &
-    \textbf{Rede} \\
+    \textbf{Tipo} \\
     \midrule
 
     Guan~\textit{et al.}~\cite{guan:2019:CLC} &
-    Não discutido & Conciente & Não discutido & multiplos(muito) & Multinível \\
+    Não discutido & Multinível~(alto) & Não discutido & múltiplos~(muito) & CDN \\
     \addlinespace
 	\addlinespace
 
-    Hatem~\textit{et al.}~\cite{khedherComNet2017,khedherLCN2017} &
-    Flow-based & Yes & gateways & No & No \\
+    Khedher~\textit{et al.}~\cite{khedherComNet2017,khedherLCN2017} &
+    Não discutido & Multinível~(baixo) & Não discutido & múltiplos~(muito) & CDN \\
     \addlinespace
     \addlinespace
 
-    Rosáio~\textit{et al.}~\cite{Basta2013a, Basta2014} &
-    Tunnel-based & Yes & Not discussed & No & No \\
+    Rosáio~\textit{et al.}~\cite{rosarioSENSORS2018} &
+    Não discutido & Multinível~(alto) & Sim & Único & Padrão \\
     \addlinespace
 	\addlinespace
-    Retal~\textit{et al.} \cite{Cho2014} &
-    Tunnel-based & Not discussed & Aware & Yes & Test bed \\
+	
+    Retal e Benkacem~\textit{et al.}~\cite{retalICC2017,talebComMag17} &
+    Não discutido & Multinível~(baixo) & Não discutido & múltiplos~(muito) & CDN \\
     \addlinespace
 	\addlinespace
-    Benkacem~\textit{et al.} \cite{CostaRequena2014} &
-    Flow-based & Yes & Aware & No & Test bed \\
+	
+    Saltarin~\textit{et al.}~\cite{saltarinTrans2017} &
+    Não discutido & Multinível~(baixo) & Sim & múltiplos~(muitos) & NDN \\
     \addlinespace
 	\addlinespace
-    Saltarin~\textit{et al.} \cite{Ghazisaeedi2013} &
-    Tunnel-based & Not discussed & Not discussed & Yes & Simulation \\
+
+    Shen~\textit{et al.}~\cite{shenIWQoS19} &
+    Não discutido & Multinível~(baixo) & Não discutido & múltiplos~(muitos) & CDN \\
     \addlinespace
 	\addlinespace
-    Shen~\textit{et al.} \cite{Guerzoni2014} &
-    Flow-based & Not discussed & Aware & Yes & No \\
+	
+    Cicco~\textit{et al.}~\cite{cicco:2019:QRA} &
+    Cooperativo & Não discutido & Não discutido & múltiplos~(muitos) & CDN \\
+    \addlinespace
+	\addlinespace
+	
+    Poliakov~\textit{et al.}~\cite{poliakovPHD2018} &
+    Não discutido & múltiplos~(baixo) & Sim & múlti/plos~(muitos) & CDN \\
     \addlinespace
 	\addlinespace
 
 %-------------------------------------------------------------------------------------
 
-    Cicco~\textit{et al.} \cite{Gurusanthosh2013} &
-    Tag-based & Yes & \ac{DMM} anchors & No & Analytical \\
+    Bentaleb~\textit{et al.}~\cite{bentaleb:2018:MSys} &
+    Cooperativo & Não discutido & Não discutido & múltiplos~(muitos) & Padrão \\
     \addlinespace
 	\addlinespace
 	
-    Bentaleb~\textit{et al.} \cite{Hampel2013} &
-    Tunnel-based & Yes & Not discussed & Yes & No \\
+    Zhang~\textit{et al.}~\cite{zhangINFOCOM17} &
+    Egoista & Não discutido & Não discutido & Único & Padrão \\
     \addlinespace
 	\addlinespace
 	
-    Altamimi~\textit{et al.} \cite{Jin2013a} &
-    Tag-based & Yes & Aware & No & Test bed \\
+    Petrangeli~\textit{et al.}~\cite{petrangeli2019IM} &
+    Cooperativo & Não discutido & Não discutido & múltiplos~(muitos) & Padrão \\
     \addlinespace
 	\addlinespace
 	
-    Zhang~\textit{et al.} \cite{Karimzadeh2014} &
-    N/a & Yes & \ac{DMM} solutions & Not discussed & No \\
-    \addlinespace
-	\addlinespace
-	
-    Polliakov~\textit{et al.} \cite{Kempf2012a} &
-    Tunnel-based & Not discussed & Not discussed & No & Test bed \\
-    \addlinespace
-	\addlinespace
-	
-    Archer~\textit{et al.} \cite{Kuklinski2014b} &
-    N/a & Yes & Main focus & Not discussed & No \\
+    Kim~\textit{et al.}~\cite{Kim2018} &
+    Egoista & múltiplos~(baixo) & Não discutido & Único & Padrão \\
     \addlinespace
 	\addlinespace
 	

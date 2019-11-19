@@ -1,8 +1,8 @@
 \section{Trabalhos Relacionados}
 \label{ch:related-work}
 
-Está seção busca mostrar os principais trabalhos relacionados a soluções em sistemas CDN e as tecnologias usadas para transmissão de conteúdo multimidia. 
-Os projetos de arquitetura estão diretamente relacionados ao paradigma da computação em névoa para aplicativos de baixa latência. A disseminação de conteúdo concentra-se em reduzir a redundância da transmissão de dados nos nós de borda.
+Está seção busca mostrar os principais trabalhos relacionados a soluções em Névoa/Nuvem, bem como sistemas de video streaming DASH. 
+Os projetos de arquitetura multiniveis estão diretamente relacionados ao paradigma da computação em névoa para aplicações de baixa latência. A disseminação de conteúdo concentra-se em reduzir a redundância da transmissão de dados nos nós de borda.
 %The architecture designs directly related to fog computing paradigm for low latency applications. Content dissemination focus on reduce redundancy of data transmission on edge nodes.
 
 
@@ -12,52 +12,91 @@ Os projetos de arquitetura estão diretamente relacionados ao paradigma da compu
 
 \subsection{Arquiteturas Nuvem-Névoa}
 \label{subsec:arch-cloud-fog}
+
+
+Guan~\textit{et al.}~\cite{guan:2019:CLC} propõe uma nova política de Admissão de cache com reconhecimento de conteúdo~(CACA), para cache de video na borda da rede multinível. Esta politica avalia as requisições pelos recursos do vídeo~(por exemplo, categoria, autor ou duração), e não por padrão de requisições. Como os recursos de vídeo representam preferências do usuário que provavelmente são consistentes por um curto período, a popularidade dos recursos de vídeo é mais previsível do que a de um único conteúdo de vídeo. e acordo com os experimentos avaliados, o CACA melhora a taxa de acerto em até 15\% e reduz a taxa de retorno à origem em até 20\% com menos comsumo de memoria.
+
 % [ICC'15] Joint Content-Resource Allocation in Software Defined Virtual CDNs
 % [CLCN'17] Optimal and Cost Efficient Algorithm for Virtual CDN Orchestration
 % [CLCN'16] Scalable and Cost Efficient Algorithms for Virtual CDN Migration
 % [ComNet'17] OPAC: An optimal placement algorithm for virtual CDN
-Khedher~\textit{et al.}~\cite{khedherComNet2017, khedherLCN2017} destaca os princípios de Rede Definida por Software~(SDN) e Virtualização de Função de Rede~(NFV). A abordagem baseada em SDN/NFV permite funções específicas de virtualização em servidores remotos. Dessa forma, as migrações de serviços de conteudo multimidia podem ser virtualizadas em diferentes \textit{datacenters}. Os problemas de orquestramento e cache são abordados, seu trabalho desenvolve um algoritmo exato para decidir os locais ideais para alocação do serviço. O algoritmo proposto, incluindo o cache de conteúdo e o redirecionamento de solicitações, é introduzido com algumas restrições de QoE, de rede e sistema operacional. 
-Desta forma, o gerenciamento do CDN é feito de maneira centralizada e utiliza o usuário final como alvo para fazer a comunicação Dispositivo para dispositivo, mas não explora a mobilidade. As solicitações de usuários finais serão redirecionadas para um local de nuvem de borda ideal, sem dispositivos de borda de nível com diferentes lantências. 
+Khedher~\textit{et al.}~\cite{khedherComNet2017, khedherLCN2017} destaca os princípios de Rede Definida por Software~(SDN) e Virtualização de Função de Rede~(NFV). A abordagem baseada em SDN/NFV permite funções específicas de virtualização em servidores remotos. Dessa forma, as migrações de serviços de conteudo multimidia podem ser virtualizadas em diferentes \textit{datacenters}. seu trabalho desenvolve um algoritmo exato para decidir os locais ideais para alocação do serviço, onde os problemas de orquestramento e cache são abordados. 
+%O algoritmo proposto, incluindo o cache de conteúdo e o redirecionamento de solicitações, é introduzido com algumas restrições de QoE, de rede e sistema operacional. 
+O gerenciamento de cache é feito de maneira centralizada e utiliza o usuário final como alvo para fazer a comunicação Dispositivo para dispositivo, mas não explora a mobilidade. As solicitações de usuários finais são redirecionadas para um local da borda ideal. %, sem dispositivos de borda de nível com diferentes lantências. 
 
-Guan~\textit{et al.}~\cite{guan:2019:CLC} propõe uma rede de cache virtual implementada totalmente em software através de uma infraestrutura de rede em nuvem distribuída programável que pode ser consumida e otimizada elasticamente usando informações globais sobre condições de rede e requisitos de serviço chamados SDvCDN. Esta abordagem aborda os problemas de posicionamento (localização da instalação), roteamento~(rede de fluxo) e alocação de recursos~(design de rede).
+%um algoritmo de aprendizado por reforço online projetado para extrair os recursos críticos de um enorme espaço de recursos
+%rede de cache virtual implementada totalmente em software através de uma infraestrutura de rede em nuvem distribuída programável que pode ser consumida e otimizada elasticamente usando informações globais sobre condições de rede e requisitos de serviço chamados SDvCDN. Esta abordagem aborda os problemas de posicionamento (localização da instalação), roteamento~(rede de fluxo) e alocação de recursos~(design de rede).
+
+%Guan~\textit{et al.}~\cite{guan:2019:CLC} propõe um algoritmo de apredizagem de rede de cache virtual implementada totalmente em software através de uma infraestrutura de rede em nuvem distribuída programável que pode ser consumida e otimizada elasticamente usando informações globais sobre condições de rede e requisitos de serviço chamados SDvCDN. Esta abordagem aborda os problemas de posicionamento (localização da instalação), roteamento~(rede de fluxo) e alocação de recursos~(design de rede).
 
 % [SENSORS'18] Service Migration from Cloud to Multi-tier Fog Nodes for Multimedia Dissemination with QoE Support
-Rosario~\textit{et al.}~\cite{rosarioSENSORS2018} apresenta uma arquitetura para servicos de migração ao vivo de VM da nuvem para multiniveis da fog. O cenario experimental a nuvem distribui o conteudo de video para os diferentes niveis da fog. A arquitetura é baseada no paradigma sdn para, distribuição de video com suporte a QoE. 
-The work split the multi-tier fog in three tier in order to their cover, storage, upload and download capacity. Important aspects could be tailored to support generic content and IoT environments, besides work with both private and public clouds. A divisão da nuvem em multiniveis se dá pelas caracteristicas do  dispositivos conectado a nuvem, e não por qualquer interconexão entre esses aparelhos. The paper tem como focus prover tecnologias capazes de tornar este ambiente factivel, e melhorar o provisionamento de conteudo de servicos de stream de video.
-
+Rosario~\textit{et al.}~\cite{rosarioSENSORS2018} apresenta uma arquitetura para servicos de migração de maquina virtual em tempo real da nuvem para multiniveis da fog. O cenario experimental, a nuvem distribui o conteudo de video para os diferentes niveis da fog. A arquitetura é baseada no paradigma SDN para, distribuição de video com suporte a QoE. O trabalho dividiu o nevoeiro de várias camadas em três, para garantir a capacidade de cobertura, armazenamento, upload e download.
+%The work split the multi-tier fog in three tier in order to their cover, storage, upload and download capacity. Important aspects could be tailored to support generic content and IoT environments, besides work with both private and public clouds. A divisão da nuvem em multiniveis se dá pelas caracteristicas do  dispositivos conectado a nuvem, e não por qualquer interconexão entre esses aparelhos. The paper tem como focus prover tecnologias capazes de tornar este ambiente factivel, e melhorar o provisionamento de conteudo de servicos de stream de video.
 
 % [ICC'17] Content Delivery Network Slicing: QoE and Cost Awareness
-Retal~\textit{et al.}~\cite{retalICC2017} propõe uma plataforma de \textit{CDN as a Service (CDNaaS)} onde os usuário podem criar um \textit{slice} de CDN incluindo cache, transcodificador e \textit{streamers}, em ordem de gerenciar uma quantidade de videos para seus usuários. (Aborda CDN na nuvem)
+Retal e Benkacem~\textit{et al.}~\cite{taleb:JSAC18, retalICC2017} propõe uma Rede de entrega de conteúdo como um serviço~(CDNaaS) onde os usuário podem criar um \textit{slice} de CDN incluindo cache, transcodificador e \textit{streamers}, em ordem de gerenciar uma quantidade de videos para seus usuários.% (Aborda CDN na nuvem)
+O objetivo deste artigo é encontrar um custo eficiente para a criação de um slicing, respeitando, por um lado, os requisitos do administrador da rede em termos de QoE e, por outro lado, o custo de montar a infraestrutura da nuvem.% Duas soluções são propostas para o posicionamento da imagem na nuvem.
+
+
 % [JSAC'18] Optimal VNFs placement in CDN Slicing over Multi-Cloud Environment
-Benkacem \textit{et al.} [JSAC'18] introduzir uma plataforma CDNaaS na qual um usuário pode criar uma fatia CDN definida como um conjunto de rede distribuída isolada de servidores de borda em domínios com várias nuvens, em que um servidor de borda hospeda um único VNF, como cache virtual, transcodificador virtual, streamer virtual e CDN- coordenador específico de fatia para o gerenciamento do ciclo de vida dos recursos de fatia e também para gerenciar vídeos e assinantes enviados. Essa plataforma foi projetada para ter o nível máximo de flexibilidade para reduzir uma fatia de CDN no topo de diferentes IaaS (Infraestrutura como Serviço) públicas e privadas, como Amazon AWS service, Microsoft Azure, Rackspace e nuvem gerenciada OpenStack. Além disso, a plataforma emprega mecanismos e algoritmos que criam fatias de CDN com reconhecimento de QoE com boa relação custo-benefício, envolvendo uma colocação ideal levando em conta o nível de QoE desejado. Portanto, o objetivo deste trabalho é encontrar um custo eficiente de CDN, respeitando, por um lado, os requisitos do proprietário da CDN em termos de QoE e, por outro lado, a infraestrutura em nuvem e seu custo.
+%Benkacem \textit{et al.} [JSAC'18] introduzir uma plataforma CDNaaS na qual um usuário pode criar uma fatia CDN definida como um conjunto de rede distribuída isolada de servidores de borda em domínios com várias nuvens, em que um servidor de borda hospeda um único VNF, como cache virtual, transcodificador virtual, streamer virtual e CDN- coordenador específico de fatia para o gerenciamento do ciclo de vida dos recursos de fatia e também para gerenciar vídeos e assinantes enviados. Essa plataforma foi projetada para ter o nível máximo de flexibilidade para reduzir uma fatia de CDN no topo de diferentes IaaS (Infraestrutura como Serviço) públicas e privadas, como Amazon AWS service, Microsoft Azure, Rackspace e nuvem gerenciada OpenStack. Além disso, a plataforma emprega mecanismos e algoritmos que criam fatias de CDN com reconhecimento de QoE com boa relação custo-benefício, envolvendo uma colocação ideal levando em conta o nível de QoE desejado. Portanto, o objetivo deste trabalho é encontrar um custo eficiente de CDN, respeitando, por um lado, os requisitos do proprietário da CDN em termos de QoE e, por outro lado, a infraestrutura em nuvem e seu custo.
 
 % Adaptive Video Streaming with Network Coding Enabled Named Data Networking
-Saltarin~\textit{et al.}~\cite{saltarinTrans2017} propõe uma arquitetura adaptável de streaming de vídeo pela NDN que usa codificação de rede para permitir o streaming ideal de vídeo com vários caminhos. Assim, o uso de vários caminhos para conectar os clientes às fontes aumenta a largura de banda vista pelos clientes, permitindo que os mecanismos de adaptação de qualidade do DASH convergam para melhores qualidades de vídeo do que com o uso de um único caminho de comunicação. Os clientes podem transmitir interesses por todas as suas interfaces de rede (por exemplo, LTE e Wi-Fi) para recuperar os pacotes de dados que compõem o conteúdo solicitado.
+Saltarin~\textit{et al.}~\cite{saltarinTrans2017} propõe uma arquitetura adaptável de streaming de vídeo em redes de dados nomeada~(NDN), onde utiliza a codificação de rede para permitir o streaming ideal de vídeo por vários caminhos. Assim, observou-se que a largara de banda vista pelos clientes aumentaram,
+%podem se comunicar  uso de vários caminhos para conectar os clientes às fontes aumenta a largura de banda vista pelos clientes, 
+permitindo que mecanismos ABR do DASH resultassem em videos com um QoE maior do que foi apresentado com uma comunicação de caminho únnico.
+%permitindo que os mecanismos de adaptação de qualidade do DASH convergam para melhores qualidades de vídeo do que com o uso de um único caminho de comunicação. 
+Os clientes podem transmitir seus interesses por todas as suas interfaces de rede (por exemplo, LTE e Wi-Fi) para recuperar os pacotes de dados que compõem o conteúdo solicitado.
 %Fig. 1. Devices retrieving Data packets over LTE and Wi-Fi: (a) multi-source unicast; (b) single-source multicast; (c) multi-source multicast (butterfly network).
 
 %Shen \textit{et al.} [6] works with a set of cache proxy services to analyze the cache miss occurrences. This work implements a reactive approach where cache proxies download the chunks of multimedia content when requested.
-Shen~\textit{et al.}~\cite{shenIWQoS19} trabalha com um conjunto de serviçosde cache, afim de analisar as ocorrências de falta de cache em servidores proxy. Este trabalho implementa uma abordagem reativa na qual os proxies de cache baixam os blocos de conteúdo multimídia apenas quando solicitados. Utilizando teoria da probabilidade para deduzir os valores mais adequados dos parâmetros críticos e fornecer orientações significativas para a seleção de valores para melhorar o QoE dos usuários.
+Shen~\textit{et al.}~\cite{shenIWQoS19} trabalha com um conjunto de serviços de cache em Pontos de Presença~(PoPs). Estes são servidores proxy que buscam analisar as ocorrências de cache miss.
+O trabalho implementa uma abordagem reativa na qual os proxies de cache realizam o download dos blocos de conteúdo multimídia apenas quando solicitados por cesso remoto direto à memória~(RDMA). 
+O serviços de cache utilizam teoria da probabilidade 
+para melhorar a eficiência na transferencia de blocos do video correspondêntes na nuvem. Desta forma, eles demonstraram uma melhora no QoE dos usuários.
+%deduzir os valores mais adequados dos parâmetros críticos e fornecer orientações significativas para a seleção de valores para melhorar o QoE dos usuários.
+
+% QoE-fair Resource Allocation for DASH Video Delivery Systems
+Cicco~\textit{et al.}~\cite{cicco:2019:QRA} implementa uma estratégia de alocação de recursos justa. Para melhorar o QoE dos usuários, técnicas de engenharia de tráfego baseadas em slincing rede foram utilizadas. Ele mostra que a estrutura de otimização do Problema do Fluxo de Multi-Commodities~(MCFP) pode ser uma metodologia adequada para impor justiça em relação ao QoE dos usuários. Este artigo, em particular, primeiro mostra como converter o problema de alocação justa de recursos de QoE para um MCFP e, em seguida, propõe uma abordagem de agrupamento de tráfego para reduzir sensivelmente o número de slies da rede e tornar o problema resultante tratável para distribuição de vídeo plataformas que atendem a um grande público. Essa abordagem de agrupamento atribui sessões de vídeo com base em uma métrica de similaridade proposta que depende da qualidade do vídeo.
+
+
+Poliakov~\textit{et al.}~\cite{poliakovPHD2018} 
+% implanta um streaming de vídeo DASH com várias fontes. O player do DASH-client pode baixar multiplos segmentos, ao mesmo tempo, através de diferentes conexões na nuvem. 
+%propor algoritmos de decisão de taxa eficientes que consideram o cache e a popularidade do conteúdo, construindo uma abordagem de otimização baseada em princípios para as diferentes métricas de QoE, sem depender do ICN ou da sinalização adicional de cliente-cache-servidor.
+investiga o interesse ou dano que esses novos pontos operacionais trazem objetivos diferentes (e potencialmente contraditórios) da CDN (maior qualidade do cliente) e do ISP (necessidade de atender serviços novos e mais exigentes, qualidade para todos os serviços, baixo congestionamento): atender da mais alta rede à potencial obtenha largura de banda mais alta ou mais próximo da borda do cliente para diminuir o congestionamento da rede.
+%Modelamos os problemas de otimização de ambos os atores, ISPs e CDN, abstraindo detalhes da implementação para focar nos impactos intrínsecos do MP e da localização do servidor.
+
+%Archer~\textit{et al.}~\cite{archerGoogleJournal2019} propõe um algoritmo para lidar com as réplicas de cache para provisionamento de vídeo com largura de banda flash, o que é um gargalo crítico.
+%O TARS pode ser usado em conjunto com qualquer algoritmo de armazenamento em cache razoável.
 
 \subsection{Serviços de Video Streaming Adaptativos}
 
-% [1] QoE-fair Resource Allocation for DASH Video Delivery Systems
-Cicco~\textit{et al.}~[1] aborda implementa uma estratégia de alocação de recursos justa. Para melhorar o QoE dos usuários, técnicas de engenharia de tráfego baseadas em slincing rede foram utilizadas. Ele mostra que a estrutura de otimização do Problema do Fluxo de Multi-Commodities~(MCFP) pode ser uma metodologia adequada para impor justiça em relação ao QoE dos usuários. Este artigo, em particular, primeiro mostra como converter nosso problema de alocação justa de recursos de QoE para um MCFP e, em seguida, propõe uma abordagem de agrupamento de tráfego para reduzir sensivelmente o número de fatias de rede e tornar o problema resultante tratável para distribuição de vídeo plataformas que atendem a um grande público. Essa abordagem de agrupamento atribui sessões de vídeo com base em uma métrica de similaridade proposta que depende da qualidade do vídeo.
 
 % Want to Play DASH? A Game Theoretic Approach for Adaptive Streaming over HTTP
-Bentaleb~\textit{et al.} desenvolve um Algoritmo de Teoria dos Jogos, um novo esquema de ABR orientado ao cliente que se esforça para selecionar a melhor taxa de bits baseada na moderna teoria dos jogos (GT) [13, 25]. Nossa solução permite uma colaboração eficiente entre diferentes entidades do DASH de maneira distribuída, sem sobrecarga explícita de comunicação, respeitando os requisitos de decisão dos players existentes do DASH e considerando o tráfego cruzado e as diferentes condições da rede. O GTA tem como objetivo alcançar um QoE de visualizador alto e estável.
-
+Bentaleb~\textit{et al.}~\cite{bentaleb:2018:MSys} desenvolve um Algoritmo de Teoria dos Jogos~(GTA), um novo esquema de ABR orientado ao cliente que busca selecionar a melhor taxa de bits.
+Diferente da maioria dos trabalhos em Sistemas Multimídia DASH, no qual os usuários se esforçam para maximizar a QoE do visualizador sem considerar outras entidades da rede, esta solução permite uma colaboração eficiente entre diferentes entidades do DASH. 
+O GTA melhora o QoE dos usuários com destaque na qualidade perceptual de visualizador, sem sobrecarga explícita de comunicação, respeitando os requisitos de decisão dos players existentes do DASH~(esquemas ABR) e considera o tráfego cruzado em diferentes condições da rede. 
 
 % Client-Server Cooperative and Fair DASH Video Streaming
-Altamimi \textit{et al.} 
+Altamimi \textit{et al.}~\cite{KreuzbergerWorkshop2016}
+tem como objetivo maximizar a justiça e a eficiência da QoE dos usuários finais, alcançando um nível de cooperação entre clientes e servidores sem exigir nenhuma modificação no lado do cliente, a fim de manter a compatibilidade com clientes DASH, que não devem ser modificado.
 
 %Google proposal
-Zhang~\textit{et al.}~\cite{zhangINFOCOM17} concentra-se no lado do usuário, executando o nível médio de taxa de bits pelo algoritmo de adaptação à taxa de bits e a influência da variação do tamanho de segmentos para melhorar a QoE, enquanto que 
+Zhang~\textit{et al.}~\cite{zhangINFOCOM17} 
+%analisa a influência da variação do tamanho de segmentos no desempenho do algoritmo ABR na taxa de bits.
+construiu um modelo geral que descreve o processo de evolução do buffer de reprodução, analisando, respectivamente, as duas métricas mais preocupantes - probabilidade de buffer e nível médio de taxa de bits, bem como suas relações com a variação do tamanho do pedaço no algoritmo baseado em taxa amplamente adotado. 
+Além disso, com base em informações, ele propos um conjunto de recomendações e desenvolveram um algoritmo de adaptação simples.
+%Onde extensivas simulações confimaram nossos insights, bem como a eficiência das recomendações propostas.
 
-Poliakov~\textit{et al.}~\cite{poliakovPHD2018} implanta um streaming de vídeo DASH com várias fontes. O player do DASH-client pode baixar multiplos segmentos, ao mesmo tempo, através de diferentes conexões na nuvem. 
+% QoE-Centric Network-Assisted Delivery of Adaptive Video Streaming Services Stefano
+Petrangeli~\textit{et al.}~\cite{petrangeli2019IM}
+propõe uma arquitetura avançada na qual componentes inteligentes adicionais são colocados na rede para dar suporte à entrega do vídeo. Além disso, os componentes de rede projetados visam otimizar parâmetros específicos de QoE que afetam diretamente a experiência de visualização dos usuários, em vez dos parâmetros de QoS, que representam desempenho de rede de baixo nível.
 
-Archer~\textit{et al.}~\cite{archerGoogleJournal2019} propõe um algoritmo para lidar com as réplicas de cache para provisionamento de vídeo com largura de banda flash, o que é um gargalo crítico.
+% A Context-aware adaptive algorithm for ambient intelligence DASH at mobile edge computing
+Kim~\textit{et al.}~\cite{Kim2018}
+utiliza aprendizado de máquina chamada MLP~(Multilayer Perceptron) no algoritmo adaptativo de inteligência ambiental DASH. Mais especificamente, aplicamos o perceptron multicamada em vários algoritmos adaptativos propostos. Primeiro, executamos os algoritmos propostos em diferentes condições de rede para criar um modelo de aprendizado com dados de teste e dados de treinamento. Em segundo lugar, aplicamos o modelo de volta à simulação e comparamos o resultado do resultado com outros algoritmos baseados. Além disso, exploramos o computação de borda móvel~(MEC) em nosso algoritmo de aprendizado. Mais detalhes, reduzimos os recursos computacionais no cliente, localizando o algoritmo no MEC, onde ele pode detectar e deduzir os próximos segmentos de qualidade do cliente com base nas condições da rede
 
-\subsubsection{Comparação entre trabalhos relacionados}
+\subsection{Comparação entre trabalhos relacionados}
 \label{subsec:applications}
 
 As abordagens mencionadas em \autoref{subsec:arch-cloud-fog} podem diminuir a carga de tráfego 
@@ -101,18 +140,19 @@ A Tabela~\ref{tab:comparison} resume essa comparação para cada artigo pesquisa
     \textbf{Escalabilidade} &
     \textbf{Mobilidade} &
     \textbf{\# de \newline usuários} &
-    \textbf{Aproximação \newline Cooperativa} \\
+    \textbf{Rede} \\
     \midrule
 
-    Hatem~\textit{et al.}~\cite{Ahmad2013a, Ahmad2013b} &
-    Flow-based & Yes & \ac{DMM} gateways & No & No \\
+    Guan~\textit{et al.}~\cite{guan:2019:CLC} &
+    Não discutido & Conciente & Não discutido & multiplos(muito) & Multinível \\
+    \addlinespace
+	\addlinespace
+
+    Hatem~\textit{et al.}~\cite{khedherComNet2017,khedherLCN2017} &
+    Flow-based & Yes & gateways & No & No \\
     \addlinespace
     \addlinespace
 
-    Llorca~\textit{et al.}~\cite{Banerjee2013} &
-    Tunnel-based & Not discussed & Not discussed & Yes & Test bed \\
-    \addlinespace
-	\addlinespace
     Rosáio~\textit{et al.}~\cite{Basta2013a, Basta2014} &
     Tunnel-based & Yes & Not discussed & No & No \\
     \addlinespace

@@ -2,60 +2,35 @@
 \section{Tópicos de pesquisa a serem investigados}
 \label{ch:proposal}
 
-This section presents some main ideas for the continuity of this doctoral
-research project. \autoref{sec:topics} brings the research topics to be
-addressed while \autoref{sec:timetable} shows the work plan and timetable.
-
+Esta seção apresenta algumas idéias principais para a continuidade deste doutorado
+projeto de pesquisa. Os tópicos de pesquisa a serem abordados estão divididos em três tópicos, que são
+detalhado em Seções seguintes.
+Cada tópico abrange a motivação e os objetivos.
 %=============================================================================%
-\subsection{Topicos de pesquisa}
-\label{sec:topics}
+%\subsection{Topicos de pesquisa}
+%\label{sec:topics}
 
 %Devido ao compartilhamento de ambientes de rede, a natureza do \textit{best-effort} da infraestrutura da Internet, e o comportamento egoísta totalmente isolado dos jogadores da HAS discutidos na seção 3. É difícil para streams de vídeo satisfazer os três objetivos descritos abaixo. Desde de que existam multiplos clientes concorrentemente competindo entre eles um limitado comprimento de onda, as soluções existentes para clientes dirigido a HAS não trabalham vem e sofrem muitos problemas com perda de pacotes, flutação de comprimento de onda, oscilações na qualidado e troca de taxas de bits~(Instabiliddade do vídeo mostrada ba Figura~\TODO{Falta gerar gráfico}), QoE indesejavel e compartilhamento de recursos da rede, recursos da rede inutilizados ou sobrescritos do qual 'will adversely affect the viewer's QoE'.% Alem disso, estes problemas tem sido confirmados em experimentos recentas. 
 
-The research topics to be addressed are divided into three topics, which are
-detailed in Sections~\ref{subsec:distributed} through \ref{subsec:handover}.
-Each topic encompasses the motivation, goals, and objectives.
+%Os tópicos de pesquisa a serem abordados estão divididos em três tópicos, que são
+%detalhado em Seções seguintes.
+%Cada tópico abrange a motivação e os objetivos.
 
 %-----------------------------------------------------------------------------%
-\subsubsection{Gerenciamento de mobilidade distribuída}
-\label{subsec:handover}
-
-O gerenciamento de mobilidade refere-se a um conjunto de mecanismos para manter a continuidade das sessões em andamento, enquanto um usuário móvel altera seu ponto de ancoragem da mobilidade na rede.
-Na arquitetura DASH, as soluções de gerenciamento de mobilidade dependem de entidades âncoras de mobilidade centralizadas, responsáveis pelo plano de controle relacionado à mobilidade e pelos dados do usuário encaminhamento. 
-%De acordo com~\citet{Valtulina2014}, essa abordagem centralizada torna o gerenciamento de mobilidade propenso a várias limitações de desempenho, como roteamento abaixo do ideal, baixa escalabilidade, potencial ponto único de falha e falta de granularidade para o serviço de gerenciamento de mobilidade.
-
-%item Inicialmente, os parâmetros avaliados considerados incluem o perfil do usuário, a carga da célula local, a qualidade do link, a complexidade do movimento dos vídeos e também detalhes inteligentes da cidade, como a localização e a rota rastreada no caso de usuários com mobilidade. Alguns dos nós podem ser estacionários, mas outros podem variar de padrões de baixa a alta mobilidade, que podem ser levados em consideração para melhorar a qualidade da entrega de vídeo.
-
-\emph{Os objetivos deste tópico de pesquisa são:}
-\begin{itemize}
-
-\item Realizar um estudo detalhado em soluções disponíveis para balanceamento de carga em redes móveis, que podem ser usadas para acionar procedimentos de transferência na arquitetura multinivel;
-
-\item Examinar quais mecanismos existentes que devemos utilizar/desenvolver para lidar com a mobilidade do usuário.
-Como dividir o conteúdo e recursos computacionais;
-
-\item Analise as soluções existentes para transferência vertical em redes multiniveis, cuidando das transferências entre macro sobreposta e células pequenas;
-
-\item Antes de alocar o serviço de streaming de video em DASH, quais serviços é necessário
-acrescentar para o provisionamento do conteúdo
-
-\end{itemize}
-
-
-%-----------------------------------------------------------------------------%
-\subsubsection{Mecanismos Cooperativos para Streaming de Video}
+\subsection{Mecanismos Cooperativos para Streaming de Video}
 \label{subsec:video-streaming}
 
 
 Em um ambiente de rede compartilhado, em que muitas entidades do sistema, incluindo players DASH, competem pela largura de banda disponível, várias flutuações repentinas na banda da rede podem ocorrer ao longo do tempo.
 
-A seção~\ref{subsec:evaluation} mostra a influencia na variação entre diferentes processos de decisão para selecionar o bitrate do próximo segmento entre diferentes mecanismos ABR. Em~\cite{bentaleb:2018:MSys} também mostram armadilhas devido ao comportamento totalmente isolado dos clientes HAS~(ou seja, essas soluções estão funcionando independentemente, sem coordenação). Em particular, a presença de vários clientes HAS simultâneos que competem pelos recursos de rede compartilhados podem cousar problemas de escalabilidade do HAS, incluindo (i) instabilidade de video devido à troca de taxa de bits frequente, na qual cinco reprodutores dash.js competem por um link de gargalo de 25 Mbps em um ambiente de rede compartilhado e oscilações de qualidade, como mostra a Figura 1.5; (ii) injustiça de QoE; e (iii) subutilização ou subscrição excessiva de recursos de rede. Esses problemas são agravados ainda mais quando o número de jogadores aumenta e no caso de ambientes heterogêneos. Esses problemas continuam sendo uma preocupação séria para os operadores de rede e provedores de conteúdo. 
-Neste contexto, é desejado ter um mecanismos computacionais que identifiquem automaticamente o processo de decisão do HAS de cada video antes de escalonar os vídeos.
+A seção~\ref{subsec:evaluation} mostra a influencia na variação entre diferentes processos de decisão para selecionar o bitrate do próximo segmento entre diferentes mecanismos ABR. Além disso, o trabalho~\cite{bentaleb:2018:MSys} também mostra armadilhas devido ao comportamento totalmente isolado dos clientes HAS~(ou seja, essas soluções estão funcionando independentemente, sem coordenação). Em particular, a presença de vários clientes HAS simultâneos que competem pelos recursos de rede compartilhados podem causar problemas de escalabilidade do HAS, incluindo (i) instabilidade de video devido à troca de taxa de bits frequente, no qual os usuários competem por um link de gargalo em um ambiente de rede compartilhado e oscilações de qualidade; (ii) injustiça de QoE; e (iii) subutilização ou subscrição excessiva de recursos de rede. Esses problemas são agravados ainda mais quando o número de usuários aumenta e no caso de ambientes heterogêneos. Esses problemas continuam sendo uma preocupação séria para os operadores de rede e provedores de conteúdo. 
+Neste contexto, é desejado ter mecanismos computacionais que identifiquem automaticamente o processo de decisão do HAS de cada video antes de escalonar-los.
 \textit{Os objetivos para este tópico de pesquisa são:}
 
 \begin{itemize}
     \item Propor mecanismos de cooperativos entre grupos de usuários para auxiliar no processo de decisão do algoritmo ABR. Além disso, esses mecanismos podem facilitar a cooperação de \textit{download} e \textit{upload} de um mesmo conteúdo entre os usuários de uma mesma rede; 
-    \item Implementar e Avaliar as soluções propostas utilizando os ambientes estudados em Cidades Inteligentes.
+    \item Implementar e Avaliar as soluções propostas utilizando os ambientes controlados.
+    \item Inserir trafego cruzado de diferentes entidades e avaliar as soluções propostas.
 \end{itemize}
 
 % \textit{O objetivo neste tópico de pesquisa} é implementar mecanismos cooperativos capazes de identificar eficientemente o processo de decisão de cada cliente. Além disso, esses mecanismos podem facilitar a cooperação de download e upload de um mesmo conteúdo entre os usuários de uma mesma rede. Para isso, será implementado mecanismos que auxiliem o reprodutor podendo-se utilizar de Teoria dos Jogos~(GT) nesta tarefa, composto por três estágios principais: entrada, processamento e saída. Os requisitos de QoE do video podem ser as entradas do sistema. Essas entradas serão mapeadas para as funções apropriadas de associação e valores de verdade.
@@ -69,149 +44,79 @@ Neste contexto, é desejado ter um mecanismos computacionais que identifiquem au
 
 
 %-----------------------------------------------------------------------------%
-\subsubsection{Arquitetura Escalável do Controlador}
+\subsection{Arquitetura de Distribuição de Video Multinível}
 \label{subsec:sca-contrl-arch}
 
-Dada a arquitetura do modelo de serviço e ambiente de nuvem/borda de várias camadas mencionada, este trabalho tem como objetivo abordar algumas das seguintes questões de pesquisa:~\textit{i)} Como determinar as melhores camadas para alocação de serviços de vídeo?~\textit{ii)} Como os pedaços de vídeo não solicitados devem ser distribuídos na hierarquia de borda/nuvem, considerando as informações de localização do usuário e estimativas sobre a localização futura do usuário em tempo real?~\textit{iii)} Como facilitar o streaming de vídeo através de várias fontes simultaneamente?~\textit{iv)} Como os algoritmos de adaptação à taxa de bits podem ser afetados pelo tamanho do pedaço de vídeo em uma arquitetura de várias camadas?
+%Com a melhoria de largura de banda que foi feita nos links de acesso e nas redes de backbone, os usuários finais agora esperam que aplicativos de vídeo de alta qualidade funcionem em qualquer lugar e em uma variedade de dispositivos heterogêneos. Recentemente, como uma das novas arquiteturas de rede evolutiva, a Rede Centrada na Informação~(ICN)~[337] foi proposta para facilitar aplicativos como disseminação de conteúdo e serviços de streaming de alta qualidade (por exemplo, aplicativos de streaming de vídeo multicast baseados em HAS, etc.). No entanto, vários desafios, incluindo a cooperação com o cache na rede, o encaminhamento de múltiplos caminhos e o controle de qualidade ou congestionamento, ainda precisam ser enfrentados antes da implantação do serviço na Internet. De fato, a maioria dos trabalhos relacionados é baseado em várias suposições nas quais, por exemplo, aplicativos de destino são apenas aplicativos não em tempo real, a rede de destino deve ser uma pequena rede de gerenciamento ou uma rede com fio~(ou sem fio) e assim por diante. 
+%
+%Paralelamente, 
+%Os recursos de borda dos ISPs ou usuários finais podem ser utilizados para hospedar o conteúdo de vídeo na proximidade dos usuários finais, reduzindo a latência e mitigando a carga nas redes principais e nos data centers. Isso será útil para o cenário de transmissão ao vivo que requer uma latência baixa. 
+%
+%
+%Além disso, a integração de serviços baseados em HAS em tais mecanismos de comunicação requer uma avaliação rigorosa em bancos de testes realistas antes da implantação. O principal objetivo é analisar e investigar a integração da entrega de vídeo baseada em HAS nas redes futuras, onde:
+%
+%%***********Objectives of the proposal***********
+%1. How to deliver high quality streaming using in-Network coding and caching?
+%2. How to enable the multipath and multicast capabilities for HAS in future networks like ICN?
+%3. What is the impact of these networks on HAS decisions?
+%4. What is the benefits that edge computing can add in HAS over the future networks?
+%5. What is the deployment cost?
 
-Parta lidar com a escalabilidade necessária em ambientes de cidades inteligentes.
-% Este projeto tem como objetivo considerar ambientes multiníveis que utilizem tecnologia emergentes~(4G, 5G, WiFi) para a entrega do vídeo. Para COm isso, novos desafios surgem nesse processo integração. 
-projetar uma entrega de vídeo baseada em DASH confiável e de alta qualidade para ser usada em ambientes de cidades inteligentes~\cite{gamaUCC2019, KreuzbergerWorkshop2016}. O esquema proposto aproveitará várias tecnologias relacionadas à rede, como Cloud, Fog e Edge Computing, além de posicionamento e encadeamento inteligente de serviços.% A Figura~\ref{fig:scenario-arch} descreve, no lado esquerdo, uma arquitetura de rede de várias camadas, composta por um conjunto heterogêneo de dispositivos e aplicativos que utilizam recursos de computação distribuídos por meio de uma tecnologia de comunicação de acesso múltiplo, como 5G e WiFi. Este projeto propõe estender o streaming de vídeo DASH para suportar conectividade simultânea de caminhos múltiplos~\cite{poliakovPHD2018, Velasquez2018}.
-O objetivo neste tópico de pesquise realizar um estudo e analise de do trafego DASH disponíveis em ambientes de redes WiFi. Assumindo que muitos pontos de acesso WiFi sejam implantados por operadores de celulares em áreas urbanas publicas, o algoritmo foca em decisões baseadas em ambientes multi multiníveis.  
+Um ambiente multinivel pode ser composto por mais de um dominio de dispositivos. Por sua vez, 
+os recursos de cada dominio podem ser utilizados para hospedar o conteúdo de vídeo na proximidade dos usuários finais, reduzindo a latência e mitigando a carga nas redes principais na nuvem. Isso será útil para o cenário de transmissão ao vivo que requer baixa latência. Além disso, a integração de serviços baseados em HAS em tais mecanismos de comunicação requer investigar a integração da entrega de vídeo baseada em HAS nas futuras gerações da Internet.
+Assumindo cenários em que a federação entre diferentes provedores de serviços da névoa é necessária.
+
+\emph{Os objetivos para este tópico de pesquisa são: }  
+
 \begin{itemize}
-    \item Comparar atuais aproximações na literatura para implantação desse tipo de serviço, qual o trade-off entre o custo para as operadoras e aprimoramento do QoE.
+	\item realizar um estudo sobre a arquitetura DASH disponíveis com diferentes dominios;
+    \item Analisar atuais aproximações na literatura para implantação desse tipo de serviço, qual o trade-off entre o custo para as operadoras e aprimoramento do QoE.
     \item propor mecanismos a nível de provedor de conteúdo para melhorar esse esse processos de decisão estudados.
     \item Implementar e avaliar a solução proposta em ambientes controlados, para isso o uso do simulador ns-3 integrado a biblioteca libdash podem ser utilizados.   
 \end{itemize}
+%
+%
+%No entanto, é preciso projetar algumas extensões para permitir o streaming de video a um grande número de usuários heterogeneos. 
+%
+%No entanto, como são basicamente projetados para funcionar com as redes IP ponto a ponto tradicionais, geralmente limitadas a um único sistema autônomo, elas requerem algumas extensões para permitir o streaming de vídeo de alta qualidade a um grande número de usuários heterogêneos na ampla Internet. 
+%
+%A tendência para a computação de borda e neblina deve ser integrar às abordagens de gerenciamento de tráfego de vídeo
+%
+%A tendencia entre esses diferentes dominios - diferentes dispositivos podem compor um dominio da névoa. . Os recursos de borda dos ISPs ou usuários finais podem ser utilizados para hospedar o conteúdo de vídeo na proximidade dos usuários finais, reduzindo a latência e mitigando a carga nas redes principais e nos data centers. Isso será útil para o cenário de transmissão ao vivo que requer uma latência baixa. Além disso, a integração de serviços baseados em HAS em tais mecanismos de comunicação requer mais analises e investigar a integração da entrega de vídeo baseada em HAS nas redes futuras
+%
+%Os paradigmas SDN/NFV são tecnologias notáveis para controlar não apenas os fluxos de comunicação, mas também as funções de serviço nas redes. 
+%Além disso, a tendência para a computação de borda e neblina deve ser integrada às 
+%
+%Para integrar uma arquitetura de Multinivel Névoa/Nuvem às abordagens de gerenciamento de tráfego de vídeo, este trabalho tem como objetivo abordar algumas das seguintes questões de pesquisa:~\textit{i)} Como determinar as melhores camadas para alocação de serviços de vídeo?~\textit{ii)} Como os pedaços de vídeo não solicitados devem ser distribuídos na hierarquia de borda/nuvem, considerando as informações de localização do usuário e estimativas sobre a localização futura do usuário em tempo real?~\textit{iii)} Como facilitar o streaming de vídeo através de várias fontes simultaneamente?~\textit{iv)} Como os algoritmos ABR são afetados pela arquitetura proposta?
+%
+%Dada a arquitetura do modelo de serviço e ambiente de nuvem/borda de várias camadas,. Este ambiente Névoa/Nuvem pode ser composto por um mais dominios na Névoa.
+%
+% este trabalho tem como objetivo abordar algumas das seguintes questões de pesquisa:~\textit{i)} Como determinar as melhores camadas para alocação de serviços de vídeo?~\textit{ii)} Como os pedaços de vídeo não solicitados devem ser distribuídos na hierarquia de borda/nuvem, considerando as informações de localização do usuário e estimativas sobre a localização futura do usuário em tempo real?~\textit{iii)} Como facilitar o streaming de vídeo através de várias fontes simultaneamente?~\textit{iv)} Como os algoritmos de adaptação à taxa de bits podem ser afetados pelo tamanho do pedaço de vídeo em uma arquitetura de várias camadas?
+%
+%Parta lidar com a escalabilidade necessária em ambientes de cidades inteligentes.
+%% Este projeto tem como objetivo considerar ambientes multiníveis que utilizem tecnologia emergentes~(4G, 5G, WiFi) para a entrega do vídeo. Para COm isso, novos desafios surgem nesse processo integração. 
+%projetar uma entrega de vídeo com diferentes dominios mantendo garantias de QoE em ambientes de cidades inteligentes~\cite{gamaUCC2019, KreuzbergerWorkshop2016}. O esquema proposto aproveitará de tecnologias emegerntes relacionadas à redes~(como 5G e WiFi).% A Figura~\ref{fig:scenario-arch} descreve, no lado esquerdo, uma arquitetura de rede de várias camadas, composta por um conjunto heterogêneo de dispositivos e aplicativos que utilizam recursos de computação distribuídos por meio de uma tecnologia de comunicação de acesso múltiplo, como 5G e WiFi. Este projeto propõe estender o streaming de vídeo DASH para suportar conectividade simultânea de caminhos múltiplos~\cite{poliakovPHD2018, Velasquez2018}.
+%\emph{O objetivo neste tópico de pesquisa} é realizar um estudo sobre a arquitetura DASH disponíveis com diferentes dominios. 
+%Assumindo cenários em que a federação entre diferentes provedores de serviços da névoa é necessária.
+%
+%\begin{itemize}
+%    \item Analisar atuais aproximações na literatura para implantação desse tipo de serviço, qual o trade-off entre o custo para as operadoras e aprimoramento do QoE.
+%    \item propor mecanismos a nível de provedor de conteúdo para melhorar esse esse processos de decisão estudados.
+%    \item Implementar e avaliar a solução proposta em ambientes controlados, para isso o uso do simulador ns-3 integrado a biblioteca libdash podem ser utilizados.   
+%\end{itemize}
 %O lado direito da Figura~\ref{fig:scenario-arch} descreve parte dos parâmetros que devem ser avaliados para definir quais serviços de vídeo precisam ser implantados, juntamente com a camada mais adequada para implantar cada um deles. Observe que os parâmetros na camada mais inferior para feedback diferem dos de outras camadas. Inicialmente, os parâmetros avaliados considerados incluem o perfil do usuário, a carga da célula local, a qualidade do link, a complexidade do movimento dos vídeos e também detalhes inteligentes da cidade, como a localização e a rota rastreada no caso de usuários com mobilidade. Alguns dos nós podem ser estacionários, mas outros podem variar de padrões de baixa a alta mobilidade, que podem ser levados em consideração para melhorar a qualidade da entrega de vídeo.
 
 
 %-----------------------------------------------------------------------------%
-\subsubsection{Scalable controller architecture}
-\label{subsec:sca}
+\subsection{Gerenciamento de mobilidade distribuída}
+\label{subsec:mobility}
 
-Com a melhoria de largura de banda que foi feita nos links de acesso e nas redes de backbone, os usuários finais agora esperam que aplicativos de vídeo de alta qualidade funcionem em qualquer lugar e em uma variedade de dispositivos heterogêneos. Recentemente, como uma das novas arquiteturas de rede evolutiva, a Rede Centrada na Informação~(ICN)~[337] foi proposta para facilitar aplicativos como disseminação de conteúdo e serviços de streaming de alta qualidade (por exemplo, aplicativos de streaming de vídeo multicast baseados em HAS, etc.). No entanto, vários desafios, incluindo a cooperação com o cache na rede, o encaminhamento de múltiplos caminhos e o controle de qualidade ou congestionamento, ainda precisam ser enfrentados antes da implantação do serviço na Internet. De fato, a maioria dos trabalhos relacionados é baseado em várias suposições nas quais, por exemplo, aplicativos de destino são apenas aplicativos não em tempo real, a rede de destino deve ser uma pequena rede de gerenciamento ou uma rede com fio~(ou sem fio) e assim por diante. 
-
-Paralelamente, a rede definida por software e a virtualização de funções de rede (SDN/NFV) são tecnologias notáveis para controlar não apenas os fluxos de comunicação, mas também as funções de serviço nas redes. Eles foram desenvolvidos recentemente por fornecedores internacionais e implantados no mercado. No entanto, como são basicamente projetados para funcionar com as redes IP ponto a ponto tradicionais, geralmente limitadas a um único sistema autônomo, elas requerem algumas extensões para permitir o streaming de vídeo de alta qualidade a um grande número de usuários heterogêneos na ampla Internet. 
-Além disso, a tendência para a computação de borda e neblina deve ser integrada às abordagens de gerenciamento de tráfego de vídeo. Os recursos de borda dos ISPs ou usuários finais podem ser utilizados para hospedar o conteúdo de vídeo na proximidade dos usuários finais, reduzindo a latência e mitigando a carga nas redes principais e nos data centers. Isso será útil para o cenário de transmissão ao vivo que requer uma latência baixa. Além disso, a integração de serviços baseados em HAS em tais mecanismos de comunicação requer uma avaliação rigorosa em bancos de testes realistas antes da implantação. O principal objetivo é analisar e investigar a integração da entrega de vídeo baseada em HAS nas redes futuras, onde:
-
-%\vspace{0.8cm}
-%\begin{figure*}[htpb]
-%	\centering
-%	\includegraphics[width=0.75\textwidth]{img/exp-multi-lvl}
-%% 	\vspace{-1cm}
-%	\caption{DASH-based Adaptive Multimedia Delivery System for Cloud/Fog Nodes.}
-%	\label{fig:scenario-arch}
-%\end{figure*}
-
-
-\begin{figure*}[htpb]
-	\centering
-	\includegraphics[width=0.7\textwidth]{img/fig-intro.png}
-% 	\vspace{-1cm}
-	\caption{DASH-based Adaptive Multimedia Delivery System for Cloud/Fog Nodes.}
-	\label{fig:scenario-arch}
-\end{figure*}
-
-
-%\subsection{Multimedia Delivery System Schemes}
-% Selection Algorithms
-
-%\subsection{Game Theory Based Adaptative Bit Rate Scheme}
-
-% This project aims to design a reliable and high-quality DASH-based video delivery to be used in Smart City Environments~\cite{gamaUCC2019, KreuzbergerWorkshop2016}. The proposed scheme will take advantage of several network-related technologies such as Cloud, Fog, and Edge Computing, as well as intelligent service placement and chaining. Figure~\ref{fig:scenario-arch} depicts, on its left-hand side, a multi-tier network architecture, which is composed of a heterogeneous set of devices and applications using distributed computing resources through a multi-access communication technology, such as 5G and WiFi. This project proposes to extend DASH video streaming to support simultaneous multipath connectivity~\cite{poliakovPHD2018, Velasquez2018}.
-
-% The right-hand side of Figure~\ref{fig:scenario-arch} describes part of the parameters that should be assessed to define which video services are needed to be deployed along with the most suitable tier to deploy each of them. Note that the parameters in the bottommost tier for feedback differ from those of other tiers. Initially, the assessed parameters considered include the user's profile, the load of the local cell, the link quality, the motion complexity of the videos, and also smart city details such as the location and the traced route in case of users with mobility. Some of the nodes can be stationary, but others can range from low to high mobility patterns, which can be taken into account to improve quality of video delivery.
-
-% \vspace{0.8cm}
-% \begin{figure*}[htpb]
-% 	\centering
-% 	\includegraphics[width=1.0\textwidth]{images/scenario_incomplete}
-% % 	\vspace{-1cm}
-% 	\caption{DASH-based Adaptive Multimedia Delivery System in an Smart City Environment.}
-% 	\label{fig:scenario-arch}
-% \end{figure*}
-
-% Neste trabalho, queremos construir um sistema CDN na fog com o uso de cache e sobreposição de rede para para streaming de video ao vivo, e otimizar sua topologia de forma adaptativa para minimizar a latência de reprodução média e melhorar a entrega do fluxo de forma oportuna. A latência de reprodução é a diferença entre o tempo de reprodução (ponto de reprodução) na origem de mídia e em um nó.
-
-% \vspace{1cm}
-% \noindent
-% \textbf{Modelagem de propriedades de balanceamento de carga e desempenho de cache em sistemas de Névoa-Nuvem multicamadas.}
-
-%-----------------------------------------------------------------------------%
-% \subsubsection{Modelagem de propriedades de balanceamento de carga e desempenho de cache
-% em sistemas de Névoa-Nuvem multicamadas}
-% \label{subsec:handover}
-% 1. Interesses perspectivas do usuário, provedor de serviços e provedor de rede.
-% 2. Qual a melhor forma de operar problemas de cache em névoa-nuvem? Onde? Quando?
-% Como?
-% 3. Redimensionar recursos necessários para suportar demanda de Acordo com o tempo.
-% 4. Utilizar máquinas virtuais (container, microservices) para atingir a latência minima para
-% acelerar a execução do escalonamento, mas irá implicar em desperdicios de recurso (e
-% dinheiro)? Caso sim, como minimizar este desperdicio?
-% 105. Este trabalho aborda redes heterogêneas, com diferentes tipos de dispositivos. Como
-% cumprir os requisitos de QoS e QoE neste ambiente?
-% 6. Quando um conteúdo é alocado na borda da rede quanto tempo o conteúdo deve perma-
-% necer na cache?
-
-% Given the aforementioned multi-tier edge/cloud environment and service model architecture, this work aims to tackle some of the following research questions:~\textit{i)} How to determine the best tiers for video services placement?~\textit{ii)} How unsolicited video chunks should be distributed in the edge/cloud hierarchy considering user location information and estimates on future user location in real time? ~\textit{iii)} How to facilitate video streaming through multiple sources concurrently?~\textit{iv)} How bitrate adaptation algorithms can be impacted by video chunk size in a multi-tiered architecture?
-
-%-----------------------------------------------------------------------------%
-\subsubsection{Traffic offloading in \acsp{HetNet}}
-\label{subsec:heterogeneous}
-
-As the wireless link efficiency is approaching its fundamental limits, further
-improvements in cellular system spectral efficiency are only possible by
-increasing the node deployment density. As observed by \citet{Damnjanovic2011},
-challenges associated with the deployment of traditional macro base stations
-can be overcome by the utilization of base stations with lower transmit power.
-A network that consists of a mix of macro cells and low-power nodes, where some
-may be configured with restricted access and some may lack wired backhaul, is
-referred to as a \acf{HetNet}. \autoref{fig:hetnet} exemplifies a \ac{HetNet}
-with a macro cell, some metro and picocells used for relay, some network
-operator deployed low-costs indoor and outdoor small cells, and user deployed
-very low costs for indoor environment.
-
-The future 5G architecture must provide a communication environment able to
-overcome the infrastructure shortcomings of current networks. Networks will
-become much denser with many more cells with decreasing size as well as direct
-device-to-device communication. Small cells improve capacity and cellular
-coverage with lower cost compared to macrocells, and they are expected to carry
-the majority of traffic. \citet{Pierucci2015} says that while bringing the base
-station closer to the user, it is possible to promote lower power use and more
-energy efficient communications. In the opinion of \citet{Einsiedler2015}, the
-vision is to provide functional convergence of network control to handle 5G,
-4G, older access technologies, and Wi-Fi; enabling a flexible and efficient
-support and deliver all types of applications.
-
-\emph{The goal of this research topic is} to design an algorithm responsible
-for offloading \ac{LTE} traffic over available Wi-Fi networks. Assuming that
-many Wi-Fi hotspots are deployed by the mobile operators in public urban areas,
-the algorithm focus is to trigger offloading decisions based on the current
-traffic load in the backhaul and core networks.
-\emph{The objectives for this research topic are:}
-\begin{itemize}
-  \item Compare current approaches for traffic offloading in mobile networks,
-  identifying the benefits and drawbacks of each solution;
-
-  \item Propose an improved offloading decision solution for \ac{EPC}, using
-  Wi-Fi as enabler technology;
-
-  \item Implement and evaluate the proposed solutions in the \ac{ns-3}
-  simulator, performing tests on scenarios with different access networks.
-\end{itemize}
-
-%-----------------------------------------------------------------------------%
-\subsubsection{Gerenciamento de mobilidade distribuída}
-\label{subsec:handover}
-
-O gerenciamento de mobilidade refere-se a um conjunto de mecanismos para manter a continuidade das sessões em andamento, enquanto um usuário móvel altera seu ponto de ancoragem da mobilidade na rede.
-Na arquitetura DASH, as soluções de gerenciamento de mobilidade dependem de entidades âncoras de mobilidade centralizadas, responsáveis pelo plano de controle relacionado à mobilidade e pelos dados do usuário encaminhamento. 
+O gerenciamento de mobilidade refere-se a um conjunto de mecanismos para manter a continuidade das sessões em andamento, enquanto que um usuário móvel altera seu ponto de acesso à rede.
+Na arquitetura DASH, o manifesto criado pelo servidor pode auxiliar em possiveis soluções no gerenciamento de mobilidade, além de realizar um preprocessamento com informação de controle relacionado à mobilidade e dados dos servidores. 
 %De acordo com~\citet{Valtulina2014}, essa abordagem centralizada torna o gerenciamento de mobilidade propenso a várias limitações de desempenho, como roteamento abaixo do ideal, baixa escalabilidade, potencial ponto único de falha e falta de granularidade para o serviço de gerenciamento de mobilidade.
-
+\emph{Os objetivos deste tópico de pesquisa são:}
 %item Inicialmente, os parâmetros avaliados considerados incluem o perfil do usuário, a carga da célula local, a qualidade do link, a complexidade do movimento dos vídeos e também detalhes inteligentes da cidade, como a localização e a rota rastreada no caso de usuários com mobilidade. Alguns dos nós podem ser estacionários, mas outros podem variar de padrões de baixa a alta mobilidade, que podem ser levados em consideração para melhorar a qualidade da entrega de vídeo.
 
-\emph{Os objetivos deste tópico de pesquisa são:}
 \begin{itemize}
 
 \item Realizar um estudo detalhado em soluções disponíveis para balanceamento de carga em redes móveis, que podem ser usadas para acionar procedimentos de transferência na arquitetura multinivel;
@@ -226,48 +131,6 @@ acrescentar para o provisionamento do conteúdo
 
 \end{itemize}
 
-This project aims to design a reliable and high-quality DASH-based video delivery to be used in
-Smart City Environments [1, 2]. The proposed scheme will take advantage of several network-
-related technologies such as Cloud, Fog, and Edge Computing, as well as intelligent service
-placement and chaining. Figure 1 depicts, on its left-hand side, a multi-tier network architecture,
-which is composed of a heterogeneous set of devices and applications using distributed computing
-resources through a multi-access communication technology, such as 5G and WiFi. This project
-proposes to extend DASH video streaming to support simultaneous multipath connectivity [3, 4].
-
-
-describes part of the parameters that should be assessed to define which video services are needed to be deployed along with the most suitable tier to deploy each of them. Note that the parameters in the bottommost tier for feedback differ from those of other tiers.
-Initially, the assessed parameters considered include the user’s profile, the load of the local cell, the link quality, the motion complexity of the videos, and also smart city details such as the location and the traced route in case of users with mobility. Some of the nodes can be stationary, but others can range from low to high mobility patterns, which can be taken into account to improve quality of video delivery.
-
-Mobility management refers to a set of mechanisms to keep ongoing sessions
-continuity while a mobile user changes its mobility anchor point in the
-network. In the \ac{LTE} architecture, mobility management solutions rely on
-centralized mobility anchor entities (\ac{S-GW} and \ac{P-GW}), which are in
-charge of both mobility-related control plane and user data forwarding.
-According to \citet{Valtulina2014}, this centralized approach makes mobility
-management prone to several performance limitations such as suboptimal
-routing, low scalability, potential single point of failure and the lack of
-granularity for the mobility management service.
-
-\emph{The objectives for this research topic are:}
-\begin{itemize}
-  \item Detailed study of \ac{LTE} handover procedures to propose a suitable
-  distribution among \ac{MME} and available OpenFlow controllers, considering
-  the interoperability with \ac{3GPP} standards;
-
-  \item Examine available solutions for load balancing in mobile networks,
-  which can be used to trigger handover procedures in the distributed
-  architecture;
-
-  \item Analyze existing solutions for vertical handover in \acp{HetNet},
-  taking care of handovers between overlapping macro and small cells;
-
-  \item Assess approaches for rerouting tunnels in OpenFlow backhaul network,
-  looking for an optimal anchor element;
-
-  \item Implement and evaluate the proposed \ac{DMM} in the \ac{ns-3}
-  simulator, performing handover tests with groups of \acp{UE} between
-  \acp{eNB}.
-\end{itemize}
 
 %=============================================================================%
 \clearpage
@@ -284,16 +147,10 @@ granularity for the mobility management service.
 %\,\x\, identifies the expected time for carrying out the planned activities.
 
 \begin{enumerate}
-	\item cumprimento de créditos de disciplinas;
-%	\item pesquisa bibliografica;
-%	\item desenvolvimento do ambiente de simulação;
-%	\item desenvolvimento do algoritmo base para RCSA;
-%	\item testes de validação dos resultados parciais;
-%	\item análise dos resultados parciais;
-%	\item documentação e publicação dos resultados parciais;
-
+	\itemsep0pt
+	\item Cumprimento de créditos de disciplinas;
     \item Estudo detalhado sobre a integração em redes multiníveis para o provisionamento de Video Streaming;
-    \item formalização da metodologia de pesquisa;
+    \item Formalização da metodologia de pesquisa;
     \item Avaliação de ferramentas de software disponíveis para análise de desempenho;
     \item Proposta de arquitetura de controlador escalável;
     \item Escrita e defesa para exame de qualificação para doutorado;
@@ -303,16 +160,11 @@ granularity for the mobility management service.
     \item testes de validação dos resultados parciais;
     \item Análise e publicação dos resultados;
     \item Escrita e defesa de tese.
-
-%  \item Proposal of the \ac{SDN}-enabled \ac{LTE} network;
-%  \item OpenFlow \ac{EPC} controller for traffic routing and bearer admission
-%        control;
-%  \item \ac{LTE} \ac{QoS} realization with OpenFlow protocol;
 \end{enumerate}
 
 \begin{table}[htb]
   \renewcommand{\arraystretch}{1.4}
-  \caption{The timetable for this doctoral research project.}
+  \caption{Cronograma deste projeto de pesquisa de doutorado.}
   \label{tab:timetable}
 %   \tiny
   \scriptsize

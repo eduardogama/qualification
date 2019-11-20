@@ -28,16 +28,35 @@ no projeto de pesquisa de doutorado.
 \subsection{Formulação de Programação Linear Inteira~(ILP)}
 \label{subsec:applications}
 
-Um formulação de programação linear inteira pode ser modelada como um caso simples de balanceamento de carga em uma rede multinível Névoa/Nuvem para streaming de video.
-Suponha que existe $n$ usuários conectados na rede, $m$ servidores de streaming de videos e $c$ streaming de video, nós queremos encontrar um \textit{matching} apropriado entre eles. Um \textit{matching} entre um usuários, servidores e vídeos é dado por uma tripla $(i,j,k)$. Neste caso a tripla pode ser entendida como uma sessão aberta de streaming de video através do protocolo HTTP. O conjunto de usuários, servidores e vídeos são denotados por $U$, $N_{h}$, $V$, respectivamente.
+Em uma arquitetura multinível, os streamings de video tem um QoE diferente de acordo com os seus requisitos~\cite{judyLATINCOM2017}. Por exemplo, streaming em tempo real, como detecção online e streaming armazenado fim-a-fim são sensíveis a atrasos. Portanto, esses streamings devem ser processados o mais próximo possível do usuário final, de preferência em nós localizados no primeiro nível da névoa, enquanto que conteúdos de Vídeo sob Demanda~(VoD) aceitam um atraso maior. Desta forma, vamos identificar cada streaming de video requisitado pelos usuários finais por um identificador, a partir de agora simbolizado por "c".
+Um nível de servidores, indicado por $N_{c}$, é um conjunto de nós que atende o QoE necessário para fornecer serviços de um streaming de video específico, e nós definimos como um intervalo na forma de $N_{c} \in [a, b)$. onde $a_{c} < b_{c}$ e,
+
+\vspace{0.5cm}
+\begin{itemize}
+
+\item  $c \in \{1,...,v\}$
+
+\item  $a_{c} = \{a_{1},a_{2},...,a_{v}\}$
+
+\item  $b_{c} = \{b_{1},b_{2},...,b_{v}\}$
+
+\item  $a_{c},b_{c} \in N_{H}$
+
+\end{itemize}
+\vspace{0.5cm}
+
+
+O balanceamento de carga em uma rede multinível Névoa/Nuvem para streaming de video pode ser formulada através de uma programação linear inteira~(PLI).
+%Um formulação de programação linear inteira pode ser modelada como um caso simples de .
+Suponha que existe $n$ usuários conectados na rede, $m$ servidores e $c$ streaming de video, nós queremos encontrar um \textit{matching} apropriado entre eles. Um \textit{matching} entre um usuários, servidores e vídeos é dado por uma tripla $(i,j,k)$. Neste caso a tripla pode ser entendida como uma sessão aberta de streaming de video através do protocolo HTTP. O conjunto de usuários, servidores e vídeos são denotados por $U$, $N$, $V$, respectivamente.
 Os vértices representam nós de rede e as arestas são os links de rede podendo ser com ou sem fio. Os links podem ser definidos por conexões físicas ou virtuais
 
 \begin{itemize}
-\item $\forall (i,j,k) \in S$, $i \in U$ e $j \in S_{c}$ e $k \in V$.
+\item $\forall (i,j,k) \in S$, $i \in U$ e $j \in N$ e $k \in V$.
 
 \item $\forall i \in U$, exite no máximo um par $(i,j) \in S$.
 
-\item $\forall j \in S_{c}$, exite no máximo uma tripla $(i,j) \in S$.
+\item $\forall j \in N$, exite no máximo uma tripla $(i,j) \in S$.
 
 \item $\forall j \in V$, exite no máximo uma tripla $(i,j) \in S$.
 \end{itemize}
@@ -59,29 +78,12 @@ A programação com reconhecimento de QoS resolve um programa inteiro linear que
 
 \vspace{0.5cm}
 \begin{equation}\label{total_capacity_loss}
-x_{i,j} =
+x_{i,j,k} =
 \left\{\begin{matrix}
 1, & \text{se um video k é requisitado a um usuário \textit{i} no servidor \textit{j}} & \\ 
 0, & \text{Caso contrário} & 
 \end{matrix}\right.
 \end{equation}
-\vspace{0.5cm}
-
-Em uma arquitetura multinível, os streamings de video tem um QoE diferente de acordo com os seus requisitos. Por exemplo, streaming em tempo real, como detecção online e streaming armazenado fim-a-fim, são sensíveis a atrasos. Portanto, esses streamings devem ser processados o mais próximo possível do usuário final, de preferência em nós localizados no primeiro nível da névoa, enquanto que conteúdos de video sob Demanda~(VoD) aceitam um atraso maior. Desta forma, vamos identificar cada streaming de video requisitado pelos usuários finais por um identificador, a partir de agora simbolizado por "c".
-Um nível de servidores, indicado por $S_{c}$, é um conjunto de nós que atende o QoE necessário para fornecer serviços de um streaming de video específico, e nós definimos como um intervalo na forma de $S_{c} \in [a, b)$. onde $a_{c} < b_{c}$ e,
-
-\vspace{0.5cm}
-\begin{itemize}
-
-\item  $c \in \{1,...,v\}$
-
-\item  $a_{c} = \{a_{1},a_{2},...,a_{v}\}$
-
-\item  $b_{c} = \{b_{1},b_{2},...,b_{v}\}$
-
-\item  $a_{c},b_{c} \in N_{H}$
-
-\end{itemize}
 \vspace{0.5cm}
 
 %Para simplificar esta formulação nós estamos considerando que os segmentos de video é requisitado a apenas um servidor fonte, e utiliza um interval de tempo discreto. Assim, $T = {1, ..., T max }$, onde $T_{max}$ é o tempo maximo que o video levaria para executar no nós mais rapido da fog. $T_{max}$ pode ser calculado como 
@@ -109,7 +111,7 @@ Minimizar
 
 \begin{equation}\label{maximize}
 \sum_{i \in U} 
-\sum_{j \in S_{c}}
+\sum_{j \in N_{c}}
 \sum_{k \in V}
 a_{ij} \ast x_{ijk}
 \end{equation}
@@ -118,7 +120,7 @@ Sujeito a
 
 \begin{equation}\label{bound_1}
 %\sum_{\{j | (i,j,k) \in A\}}
-\sum_{ j \in S_{c} }
+\sum_{ j \in N_{c} }
 \sum_{ j \in V}
 x_{ijk} = 1,  \forall i \in U
 \end{equation}
@@ -128,7 +130,7 @@ x_{ijk} = 1,  \forall i \in U
 %\sum_{\{ | (i,j,k) \in A\}}
 \sum_{ j \in U}
 \sum_{ k \in V }
-x_{ijk} \leq 1,  \forall j \in S_{c}
+x_{ijk} \leq 1,  \forall j \in N_{c}
 \end{equation}
 
 \begin{equation}\label{minimize}
@@ -150,11 +152,11 @@ Bw_{j} \geq  0, \forall j \in S_{c}
 Para melhorar o desempenho da rede associamos uma latencia $a_{ij}$, desta forma, nós devemos atribuir todos os usuários aos respectivos streaming de video afim de minimizar a latência total.
 %A função objetivo minimiza o makepan do aplicativo fornecido por um planejamento.
 %Para melhorar a latência da reprodução do video, nós devemos  minimizar a latencia de um nó para todas requisiçoes de segmentos do video. 
-Logo, a função objetivo busca essa minimização. A primeira restrição requer que cada usuário seja atribuído a exatamente um servidor. A segunda restrição garante que cada usuário seja atribuído a no máximo um servidor. Afirma também que, se o número de sessões abertas dentro de um servidor é maior do que o número de usuários atendidos, alguns dos vídeos permanecem sem atribuição. A terceira restrição garante que os slots de download em uma similaridade com a classe de download diferem de segmentos de video requisitados.
+Logo, a função objetivo busca essa minimização. A restrição~(3) requer que cada usuário seja atribuído a exatamente um servidor. A restrição~(4) garante que cada usuário seja atribuído a no máximo um servidor. Afirma também que, se o número de videos dentro de um servidor é maior do que o número de sessões abertas, alguns dos vídeos permanecem sem atribuição.% A terceira restrição garante que os slots de download em uma similaridade com a classe de download diferem de segmentos de video requisitados.
 
-A Restrição (5) estabelece as restrições de capacidade de comprimento de banda que evita a atribuição de mais streaming de video do que a capacidade total disponível para cada nó de névoa.
+A Restrição (5) estabelece as restrições de capacidade de banda disponivel, que evita a atribuição de mais streaming de video do que a capacidade total disponível para cada nó de névoa.
 
-A restrição (6) define o domínio para a variável $x_{i, j, k}$ na formulação. A restrição (6) estabelece que a variável $Bw$ deve ser um número inteiro não negativo.
+A restrição (6) define o domínio para a variável $x_{i, j, k}$ na formulação. A restrição (7) estabelece que a variável $Bw$ deve ser um número inteiro não negativo.
 
 %-----------------------------------------------------------------------------%
 \subsection{Avalização sobre o provisionamento de Video em Diferentes Níveis}
@@ -176,7 +178,7 @@ Cada representação é dividida em segmentos de 2 segundos. Cada experimento fo
 %Primeiro, focamos em um cenário de rede de caminhos múltiplos simples (consulte
 %Fig. 2), onde os usuários estão conectados a quatro repositórios por quatro caminhos não disjuntos. Usuários no nó de acesso exclusivo 
 
-%\vspace{0.8cm}
+\vspace{0.8cm}
 \begin{figure*}[htpb]
 	\centering
 	\includegraphics[width=0.75\textwidth]{img/exp-multi-lvl}

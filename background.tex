@@ -24,7 +24,14 @@ Os nós podem ser organizados em arquiteturas multiníveis - na vertical (para d
 %---------------------------------------------------------------------
 \subsection{Arquitetura hierárquica multiníveis em Nuvem-Névoa}
 
-Uma arquitetura em névoa verticalmente com N níveis tem como proposito: lidar eficientemente com a quantidade de dados que precisa ser processada e extrair dados significativos para criar mais inteligência em cada nível. Além disso, o número de camadas afeta diretamente o suporte de QoE.
+
+Uma arquitetura em névoa verticalmente com N níveis tem como proposito: 
+\textit{i)} Aprimorar o QoE dos usuários, servindo o conteúdo solicitado de borda o mais próximo possível do usuário;
+\textit{ii)} Reduzir o congestionamente no core da rede, pois representa uma sobrecarga operacional para o adiministrador da rede;
+\textit{iii)} lidar eficientemente com a quantidade de dados que precisa ser processada e extrair dados significativos para criar mais inteligência em cada nível. 
+%  (iii) O tráfego enviado entre a origem e a hierarquia de servidores deve ser reduzido, pois incorre em custos para os provedores de conteúdo. 
+%
+%Além disso, o número de camadas afeta diretamente o suporte de QoE.
 %to deal efficiently with the amount of data that needs to be processed and to extract meaningful data to create more intelligence at each level. Moreover, the number of tiers impacts direclty in the QoE support.
 %O OpenFog está assumindo a liderança na padronização de névoa e definiu uma arquitetura de referência que consiste em N camadas de nós, como mostra a Figura~\ref{fig:arch-multi-lvl}
 
@@ -65,12 +72,14 @@ O objetivo desses esquemas é garantir um alto QoE para os usuários na presenç
 %In this proposal, we focus on video streaming applications based on MPEG-DASH (Dynamic Adaptive Streaming over HTTP), a technology that dynamically adapts to changing network conditions by requesting content in chunks encoded at different bitrates, and which is used by major streaming services like Netflix and YouTube.
 %There are several key benefits in the adaption of this new standard. Due to the fact that several major media companies took part in its development, the new protocol will eliminate technical issues in delivery and compression. In essence, it aims to combine all of the technologies and standards into one, making streaming support seamless on all devices. In turn, it aims to reduce technical headaches and transcoding costs. Content publishers can generate a single set of files for encoding and streaming that should be compatible with as many devices as possible, from mobile to OTT, as well as to the desktop via plug-ins or HTML5. Consumers will not have to worry about whether their devices will be able to play the content they want to watch.
 
+\vspace{0.5cm}
 \begin{figure}[htb]
   \centering
   \includegraphics[scale=.5]{has-arch}
   \caption{Arquitetura de distribuição HAS.}
   \label{fig:has-arch}
 \end{figure}
+
 %By parsing the MPD, the DASH client learns about the program timing, media-content availability, media types, resolutions, minimum and maximum bandwidths, and the existence of various encoded alternatives of multimedia components, accessibility features and required digital rights management (DRM), media-component locations on the network, and other content characteristics. 
 %Ao analisar o arquivo MPD, o cliente DASH aprende sobre o tempo do programa, disponibilidade de conteúdo de mídia, tipos de mídia, resoluções, larguras de banda mínima e máxima e a existência de várias alternativas codificadas de componentes de multimídia, localizações dos componentes de mídia na rede e outras características do conteúdo
 %
@@ -124,7 +133,7 @@ Como a QoE do espectador precisa ser determinado em tempo real durante a reprodu
 %\item BG Traffic: Does the paper include background traffic in their experimental tests?
 %\end{itemize}
 
-\subsubsection{Fatores de influencia no QoE}
+\subsection{Fatores de influencia no QoE}
 
 O QoE é uma avaliação da satisfação do usuário com o conteúdo exibido na tela. O QoE é o grau de prazer ou aborrecimento de uma pessoa em relação a um aplicativo, serviço ou sistema. Assim, QoE se refere à percepção da pessoa sobre o conteúdo exibido no dispositivo. Nesta seção, nós discutimos alguns fatores que mais influenciam o QoE do usuário. 
 
@@ -132,20 +141,24 @@ O QoE é uma avaliação da satisfação do usuário com o conteúdo exibido na 
 
 % Quality Improvement for HTTP Adaptive Streaming over Mobile Networks Hung Thai Le
 \begin{itemize}
-
+\vspace{-0.05cm}
 \item \textit{Atraso inicial:} Toda transmissão de video precisa de uma certa quantidade de dados iniciais antes que a decodificação e reprodução possar ser inciada, essa transferência de dados antes da reprodução do video é chamada de atraso inicial. Está fase também é conhecida como bufferização inicial. Durante esse atraso incial o cliente não precisa preencher seu buffer com uma grande quantidade de dados, isso pode causa um longo atraso inicial. No entanto, um nível maior de buffer ajuda o cliente a evitar eficientemente os fluxos insuficientes no buffer.
-
+\vspace{-0.05cm}
 \item \textit{Interrupções:} É o congelamento da reprodução do video devido ao esvaziamento do buffer. Especificamente, um fluxo insuficiente de buffer é seguido por um período de buffer, onde o cliente precisa armazenar em buffer rapidamente uma quantidade de dados de vídeo para retomar a reprodução. 
-Em alguns serviços de streaming, um rebuffering pode ser tratado de forma semelhante a um buffer inicial. No entanto, os impactos dos dois tipos de tempo de espera são diferentes para os usuários. Ao contrário do atraso inicial, que é o tempo de espera antes do serviço e é bem conhecido, a interrupção ocorre inesperadamente no serviço e, portanto, a percepção para o usuário é muito pior. Em [88], os autores mostram que existe uma relação exponencial entre o número de interrupções e a qualidade do vídeo. Embora achem que os usuários podem tolerar no máximo uma interrupção de alguns segundos durante uma sessão.
-
+Em alguns serviços de streaming, um rebuffering pode ser tratado de forma semelhante a um buffer inicial. No entanto, os impactos dos dois tipos de tempo de espera são diferentes para os usuários. Ao contrário do atraso inicial, que é o tempo de espera antes do serviço e é bem conhecido, a interrupção ocorre inesperadamente no serviço e, portanto, a percepção para o usuário é muito pior.% Em [88], os autores mostram que existe uma relação exponencial entre o número de interrupções e a qualidade do vídeo. Embora achem que os usuários podem tolerar no máximo uma interrupção de alguns segundos durante uma sessão.
+\vspace{-0.05cm}
 \item \textit{Qualidade perceptual:}
-Uma taxa de bits de vídeo mais alta geralmente fornece uma qualidade de vídeo melhor. Em [89] observa-se um forte efeito da qualidade recente do vídeo, ou seja, uma qualidade mais alta no final de uma sessão resulta em maior experiência do usuário.
-Em [90], verificou-se que, além da taxa de bits média do vídeo, o tempo em cada camada individual tem um impacto significativo na qualidade do vídeo.
-A variação da qualidade em uma sessão é determinada pela amplitude de comutação e pela frequência de comutação. Vale ressaltar que cada comutação é representada por uma alteração de qualidade diferente de zero (por exemplo, taxa de bits de vídeo, versão de vídeo etc.) dos dois segmentos de vídeo conservadores. Uma amplitude de chaveamento indica o grau de uma mudança na qualidade, enquanto a frequência de chaveamento pode ser representada por vários interruptores em toda a sessão
+Uma taxa de bits de vídeo mais alta geralmente fornece uma qualidade de vídeo melhor. 
+%Em [89] observa-se um forte efeito da qualidade recente do vídeo, ou seja, uma qualidade mais alta no final de uma sessão resulta em maior experiência do usuário.
+No HAS, o usuário altera a qualidade do vídeo durante uma sessão, introduzindo mais um indicador como um fator que influência no QoE do usuário. 
+Em~\cite{HoBfeld2014QoMEX}, verificou-se que o tempo em cada camada individual tem um impacto significativo na qualidade do vídeo.
+A variação da qualidade perceptual de uma sessão é determinada pela amplitude de comutação e pela frequência de comutação entre taxa de bits. 
+%Vale ressaltar que cada comutação é representada por uma alteração de qualidade diferente de zero (por exemplo, taxa de bits de vídeo, versão de vídeo etc.) dos dois segmentos de vídeo conservadores. 
+Uma amplitude de comutação indica o grau de uma mudança na qualidade do video, enquanto que a frequência de comutação pode ser representada pelo número de variações da taxa de bits em toda a sessão.
 %\item \textit{Amplitude qualidade:}
 %\item \textit{troca de qualidade:}
-
-\item \textit{Latencia ao vivo:} No caso de transmissão ao vivo, um fator de influência de qualidade adicional que desempenha um papel importante é a latência ao vivo (ou o atraso da captura para exibição). Como discutido em [98], os principais componentes de atraso incluem preparação de conteúdo, atraso de segmentação, busca assíncrona de segmentos de mídia, tempo de download HTTP, tempo de buffer no buffer e tempo de decodificação. Entre esses componentes, o tempo de buffer no buffer, que depende do nível atual do buffer, contribui com uma parte significativa para a latência ao vivo, especialmente no streaming sob demanda, onde o tamanho do buffer é de dezenas de segundos.
+\vspace{-0.05cm}
+\item \textit{Latência ao vivo:} No caso de transmissão ao vivo, um fator de influência de qualidade adicional que desempenha um papel importante é a latência ao vivo (ou o atraso da captura para exibição). Os principais componentes de atraso incluem preparação de conteúdo, atraso de segmentação, busca assíncrona de segmentos de mídia, tempo de download HTTP, tempo de buffer no buffer e tempo de decodificação. Entre esses componentes, o atraso inicial, que depende do nível atual do buffer, contribui com uma parte significativa para a latência ao vivo, especialmente no streaming sob demanda, onde o tamanho do buffer é de dezenas de segundos.
 
 \end{itemize}
 

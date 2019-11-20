@@ -69,6 +69,12 @@ investiga o interesse ou dano que esses novos pontos operacionais trazem objetiv
 %Archer~\textit{et al.}~\cite{archerGoogleJournal2019} propõe um algoritmo para lidar com as réplicas de cache para provisionamento de vídeo com largura de banda flash, o que é um gargalo crítico.
 %O TARS pode ser usado em conjunto com qualquer algoritmo de armazenamento em cache razoável.
 
+% QoE-Centric Network-Assisted Delivery of Adaptive Video Streaming Services Stefano
+Petrangeli~\textit{et al.}~\cite{petrangeli2019IM}
+propõe uma arquitetura avançada na qual componentes inteligentes adicionais são colocados na rede para dar suporte à entrega do vídeo. Além disso, os componentes de rede projetados visam otimizar parâmetros específicos de QoE que afetam diretamente a experiência de visualização dos usuários, em vez dos parâmetros de QoS, que representam desempenho de rede de baixo nível.
+Essa arquitetura conseguiu reduzir as interrupções de reprodução na reprodução de vídeo de clientes HAS em até 45\%.
+
+
 \subsection{Serviços de Video Streaming Adaptativos}
 
 
@@ -85,16 +91,14 @@ tem como objetivo maximizar a justiça e a eficiência da QoE dos usuários fina
 Zhang~\textit{et al.}~\cite{zhangINFOCOM17} 
 %analisa a influência da variação do tamanho de segmentos no desempenho do algoritmo ABR na taxa de bits.
 construiu um modelo geral que descreve o processo de evolução do buffer de reprodução, analisando, respectivamente, as duas métricas mais preocupantes - probabilidade de buffer e nível médio de taxa de bits, bem como suas relações com a variação do tamanho do pedaço no algoritmo baseado em taxa amplamente adotado. 
-Além disso, com base em informações, ele propos um conjunto de recomendações e desenvolveram um algoritmo de adaptação simples.
+Além disso, com base em informações, ele propos um conjunto de recomendações bem como desenvolveu um algoritmo ABR.
 %Onde extensivas simulações confimaram nossos insights, bem como a eficiência das recomendações propostas.
 
-% QoE-Centric Network-Assisted Delivery of Adaptive Video Streaming Services Stefano
-Petrangeli~\textit{et al.}~\cite{petrangeli2019IM}
-propõe uma arquitetura avançada na qual componentes inteligentes adicionais são colocados na rede para dar suporte à entrega do vídeo. Além disso, os componentes de rede projetados visam otimizar parâmetros específicos de QoE que afetam diretamente a experiência de visualização dos usuários, em vez dos parâmetros de QoS, que representam desempenho de rede de baixo nível.
 
 % A Context-aware adaptive algorithm for ambient intelligence DASH at mobile edge computing
 Kim~\textit{et al.}~\cite{Kim2018}
-utiliza aprendizado de máquina chamada MLP~(Multilayer Perceptron) no algoritmo adaptativo de inteligência ambiental DASH. Mais especificamente, aplicamos o perceptron multicamada em vários algoritmos adaptativos propostos. Primeiro, executamos os algoritmos propostos em diferentes condições de rede para criar um modelo de aprendizado com dados de teste e dados de treinamento. Em segundo lugar, aplicamos o modelo de volta à simulação e comparamos o resultado do resultado com outros algoritmos baseados. Além disso, exploramos o computação de borda móvel~(MEC) em nosso algoritmo de aprendizado. Mais detalhes, reduzimos os recursos computacionais no cliente, localizando o algoritmo no MEC, onde ele pode detectar e deduzir os próximos segmentos de qualidade do cliente com base nas condições da rede
+utiliza aprendizagem de máquina chamada de MLP~(Multilayer Perceptron) no algoritmo ABR de inteligência ambiental DASH. Mais especificamente, aplicamos o perceptron multicamada em vários algoritmos adaptativos~\cite{}. Primeiro, é executado os algoritmos em diferentes condições de rede para criar um modelo de aprendizado com dados de teste e dados de treinamento. 
+Como resultado, a pesquisa proposta reduz a latência da rede e melhora o fluxo de qualidade em comparação com as abordagens existentes.
 
 \subsection{Comparação entre trabalhos relacionados}
 \label{subsec:applications}
@@ -123,7 +127,7 @@ A Tabela~\ref{tab:comparison} resume essa comparação para cada artigo pesquisa
 
 \item Rede: O trabalho leva em consideração a o número de níveos apresentados nos experimentos? Multinível~(alto) indica dois ou mais níveis na névoa, e múltiplos~(baixo) indica o uso dos níveis na nuvem e névoa.
 
-\item Mobilidade: O trabalho leva em consideração dispositivos ou discute dispositivos moveis com possíveis mudanças de pontos de acesso?
+\item Mobilidade: O trabalho leva em consideração dispositivos moveis ou discute possíveis mudanças de pontos de acesso pelos usuários?
 
 \item \# de usuários: Quantos clientes estão incluídos nos experimentos? Único indica apenas um cliente, vários (poucos) indicam menos de 10 clientes e múltiplos (muitos) indicam mais de 10 clientes.
 

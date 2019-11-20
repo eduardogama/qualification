@@ -28,7 +28,7 @@ no projeto de pesquisa de doutorado.
 \subsection{Formulação de Programação Linear Inteira~(ILP)}
 \label{subsec:applications}
 
-Em uma arquitetura multinível, os streamings de video tem um QoE diferente de acordo com os seus requisitos~\cite{judyLATINCOM2017}. Por exemplo, streaming em tempo real, como detecção online e streaming armazenado fim-a-fim são sensíveis a atrasos. Portanto, esses streamings devem ser processados o mais próximo possível do usuário final, de preferência em nós localizados no primeiro nível da névoa, enquanto que conteúdos de Vídeo sob Demanda~(VoD) aceitam um atraso maior. Desta forma, vamos identificar cada streaming de video requisitado pelos usuários finais por um identificador, a partir de agora simbolizado por "c".
+Em uma arquitetura multinível, os streamings de video tem um QoE diferente de acordo com os seus requisitos~\cite{judyLATINCOM2017}. Por exemplo, streaming em tempo real, como detecção online e streaming de armazenado fim-a-fim são sensíveis a atrasos. Portanto, esses streamings devem ser processados o mais próximo possível do usuário final, de preferência em nós localizados no primeiro nível da névoa, enquanto que conteúdos de Vídeo sob Demanda~(VoD) aceitam um atraso maior. Desta forma, vamos identificar cada streaming de video requisitado pelos usuários finais por um identificador, a partir de agora simbolizado por "c".
 Um nível de servidores, indicado por $N_{c}$, é um conjunto de nós que atende o QoE necessário para fornecer serviços de um streaming de video específico, e nós definimos como um intervalo na forma de $N_{c} \in [a, b)$. onde $a_{c} < b_{c}$ e,
 
 \vspace{0.5cm}
@@ -40,26 +40,26 @@ Um nível de servidores, indicado por $N_{c}$, é um conjunto de nós que atende
 
 \item  $b_{c} = \{b_{1},b_{2},...,b_{v}\}$
 
-\item  $a_{c},b_{c} \in N_{H}$
+\item  $a_{c},b_{c} \in N$
 
 \end{itemize}
 \vspace{0.5cm}
 
 
-O balanceamento de carga em uma rede multinível Névoa/Nuvem para streaming de video pode ser formulada através de uma programação linear inteira~(PLI).
+O balanceamento de carga em uma rede multinível Névoa/Nuvem para streaming de video pode ser formulado através de ILP.
 %Um formulação de programação linear inteira pode ser modelada como um caso simples de .
-Suponha que existe $n$ usuários conectados na rede, $m$ servidores e $c$ streaming de video, nós queremos encontrar um \textit{matching} apropriado entre eles. Um \textit{matching} entre um usuários, servidores e vídeos é dado por uma tripla $(i,j,k)$. Neste caso a tripla pode ser entendida como uma sessão aberta de streaming de video através do protocolo HTTP. O conjunto de usuários, servidores e vídeos são denotados por $U$, $N$, $V$, respectivamente.
+Suponha que existe $n$ usuários conectados na rede, $m$ servidores e $q$ streaming de video, nós queremos encontrar um \textit{matching} apropriado entre eles. Um \textit{matching} entre um usuários, servidores e vídeos é dado por uma tripla $(i,j,k)$. Neste caso a tripla pode ser entendida como uma sessão aberta de streaming através do protocolo HTTP. O conjunto de usuários, servidores e vídeos são denotados por $U$, $N$, $V$, respectivamente.
 Os vértices representam nós de rede e as arestas são os links de rede podendo ser com ou sem fio. Os links podem ser definidos por conexões físicas ou virtuais
 
-\begin{itemize}
-\item $\forall (i,j,k) \in S$, $i \in U$ e $j \in N$ e $k \in V$.
+% \begin{itemize}
+% \item $\forall (i,j,k) \in S$, $i \in U$ e $j \in N$ e $k \in V$.
 
-\item $\forall i \in U$, exite no máximo um par $(i,j) \in S$.
+% \item $\forall i \in U$, exite no máximo um tripla $(i,j,k) \in S$.
 
-\item $\forall j \in N$, exite no máximo uma tripla $(i,j) \in S$.
+% \item $\forall j \in N$, exite no máximo uma tripla $(i,j,k) \in S$.
 
-\item $\forall j \in V$, exite no máximo uma tripla $(i,j) \in S$.
-\end{itemize}
+% \item $\forall k \in V$, exite no máximo uma tripla $(i,j,k) \in S$ $\forall i \in M_{U}(i)$, onde o conjunto de download de todos os segmentos .
+% \end{itemize}
 
 %Com $V$ sendo o conjunto de todos os vertices, definimos uma atribuição $S$ como um conjunto de triplas $(i,j,k)$, considerando a arquitetura da Figura~[1]:
 
@@ -73,14 +73,13 @@ Os vértices representam nós de rede e as arestas são os links de rede podendo
 %\item $\forall k \in V$, exite no maximo uma tripla $(i,j,k) \in S$ $\forall i \in M_{D}(i)$.
 %\end{itemize}
  
-A progamaçãpo com o balancemanto de carga   
-A programação com reconhecimento de QoS resolve um programa inteiro linear que busca o valor da variável $x_{i,j,k} (\in (0, 1))$. $x_{i,j}$ é uma variável binária que assume os seguintes valores,
+O balanceamento de carga resolve uma ILP que busca o valor da variável $x_{i,j,k} \in \{0, 1\}$. $x_{i,j,k}$ é uma variável binária que assume os seguintes valores,
 
 \vspace{0.5cm}
 \begin{equation}\label{total_capacity_loss}
 x_{i,j,k} =
 \left\{\begin{matrix}
-1, & \text{se um video k é requisitado a um usuário \textit{i} no servidor \textit{j}} & \\ 
+1, & \text{se um usuário \textit{i} requisita ao servidor \textit{j} um video \textit{k}}& \\ 
 0, & \text{Caso contrário} & 
 \end{matrix}\right.
 \end{equation}
@@ -128,33 +127,33 @@ x_{ijk} = 1,  \forall i \in U
 \begin{equation}\label{bound_1}
 %\sum_{\{j | (i,j,k) \in A\}}
 %\sum_{\{ | (i,j,k) \in A\}}
-\sum_{ j \in U}
+\sum_{ i \in U}
 \sum_{ k \in V }
 x_{ijk} \leq 1,  \forall j \in N_{c}
 \end{equation}
 
 \begin{equation}\label{minimize}
 \sum_{i \in U}
-\sum_{j \in S_{c}}
-bw_{j} x_{ij}
-\leq Bw_{j}
+\sum_{j \in N_{c}}
+bw_{ij} x_{ij}
+\leq Bw_{ij}
 \end{equation}
 
 \begin{equation}\label{minimize}
-x_{ij}  \in  \{0, 1\}, \forall i \in U,j \in S_{c}
+x_{ij}  \in  \{0, 1\}, \forall i \in U,j \in N_{c}
 \end{equation}
 
 \begin{equation}\label{minimize}
-Bw_{j} \geq  0, \forall j \in S_{c}
+Bw_{ij} \geq  0, \forall i \in U,  \forall j \in N_{c}
 \end{equation}
 \vspace{1.2cm}
 
-Para melhorar o desempenho da rede associamos uma latencia $a_{ij}$, desta forma, nós devemos atribuir todos os usuários aos respectivos streaming de video afim de minimizar a latência total.
+Para melhorar o desempenho da rede associamos uma latência $a_{ij}$, desta forma, nós devemos atribuir todos os usuários aos respectivos streaming de video afim de minimizar a latência total.
 %A função objetivo minimiza o makepan do aplicativo fornecido por um planejamento.
 %Para melhorar a latência da reprodução do video, nós devemos  minimizar a latencia de um nó para todas requisiçoes de segmentos do video. 
-Logo, a função objetivo busca essa minimização. A restrição~(3) requer que cada usuário seja atribuído a exatamente um servidor. A restrição~(4) garante que cada usuário seja atribuído a no máximo um servidor. Afirma também que, se o número de videos dentro de um servidor é maior do que o número de sessões abertas, alguns dos vídeos permanecem sem atribuição.% A terceira restrição garante que os slots de download em uma similaridade com a classe de download diferem de segmentos de video requisitados.
+Logo, a função objetivo busca essa minimização. A restrição~(3) requer que cada usuário seja atribuído a exatamente um servidor. A restrição~(4) garante que cada usuário seja atribuído a no máximo um servidor. Afirma também que, se o número de vídeos dentro de um servidor é maior do que o número de sessões abertas, alguns dos vídeos permanecem sem atribuição.% A terceira restrição garante que os slots de download em uma similaridade com a classe de download diferem de segmentos de video requisitados.
 
-A Restrição (5) estabelece as restrições de capacidade de banda disponivel, que evita a atribuição de mais streaming de video do que a capacidade total disponível para cada nó de névoa.
+A Restrição (5) estabelece as restrições de capacidade de banda disponível, que evita a atribuição de mais streaming de video do que a capacidade total disponível para cada nó de névoa.
 
 A restrição (6) define o domínio para a variável $x_{i, j, k}$ na formulação. A restrição (7) estabelece que a variável $Bw$ deve ser um número inteiro não negativo.
 
@@ -162,13 +161,13 @@ A restrição (6) define o domínio para a variável $x_{i, j, k}$ na formulaç�
 \subsection{Avalização sobre o provisionamento de Video em Diferentes Níveis}
 \label{subsec:evaluation}
 
-Algumas simulações foram realizadas para investigar como o as diferenças no algorimos implantados em serviços DASH no lado do cliente se comportam:~\textit{i) Rate}: O controlador ABR solicita a taxa de bits mais alta
-que a rede pode suportar com base na estimativa de largura de banda disponível obtida de segmentos baixados anteriormente;~\textit{ii) Buffer}: O controlador ABR usa a ocupação do buffer de reprodução para selecionar uma taxa de bits adequada para futuros pedaços que mantêm o buffer no nível de ocupação desejado;~\textit{iii) Hybrid}: Esse tipo de controlador ABR combina as duas heurísticas mencionadas acima para decidir qual o nível de taxa de bits do próximo bloco a ser baixado.
+Alguns experimentos foram realizados para investigar como os esquemas de decisão ABR no lado do cliente se comportam. Para esta simulação foram abordados os seguintes algoritmos:~\textit{i) Rate}: O controlador ABR solicita a taxa de bits mais alta
+que a rede pode suportar com base na estimativa de largura de banda disponível obtida de segmentos baixados anteriormente;~\textit{ii) Buffer}: O controlador ABR usa a ocupação do buffer de reprodução para selecionar uma taxa de bits adequada para futuros pedaços que mantêm o buffer no nível de ocupação desejado;~\textit{iii) Hybrid}: Esse tipo de controlador ABR combina as duas heurísticas mencionadas acima para decidir qual o nível de taxa de bits do próximo segmento a ser baixado.
  
 
 %mecanismos de controle podem trabalhar juntos na rede LTE habilitada para SDN.
 
-Para implementar os servidores DASH e os usuários que permitem o streaming de video adaptativo, modificamos o Adaptive Multimedia Streaming com a base de código AMuSt~(AMuSt).
+Para implementar os servidores DASH e os usuários que permitem o streaming de video adaptativo, utilizamos o Adaptive Multimedia Streaming~(AMuSt).
 A estrutura do AMuSt fornece um conjunto de aplicativos para produzir e consumir vídeo adaptável, com base no padrão DASH~\cite{kreuzberger2016amust}. A funcionalidade do DASH é fornecida pela biblioteca libdash~\cite{mueller2013ICMEW}, uma biblioteca de código aberto que fornece uma interface para o padrão DASH. Atualmente, libdash é o software de referência oficial do padrão DASH.
 Consideramos que os usuários estão interessado em um vídeo disponível com dez representações diferentes, de taxa de bits \{235kbps, 375kbps, 560kbps, 560kbps, 750kbps, 1050kbps, 1750kbps, 2350kbps, 3000kbps, 4300kbps, 5800kbps\}, que são um subconjunto usados pela Netflix~\cite{netflix:representation}.
 Cada representação é dividida em segmentos de 2 segundos. Cada experimento foi executado 10 vezes com tempo do execução de 600 segundos.
@@ -183,16 +182,16 @@ Cada representação é dividida em segmentos de 2 segundos. Cada experimento fo
 	\centering
 	\includegraphics[width=0.75\textwidth]{img/exp-multi-lvl}
 % 	\vspace{-1cm}
-	\caption{DASH-based Adaptive Multimedia Delivery System for Cloud/Fog Nodes.}
+	\caption{Cenários de distribuição de streaming de vídeo adaptável para nós multiníveis.}
 	\label{fig:scenario-arch}
 \end{figure*}
 %\vspace{0.8cm}
 
-As Figuras 4(a) e 5(a) mostram a taxa de bits media~(Bandwidth Blocking Ratio) com 20 e 40 usuários, respectivamente. No cenário com 20 usuários~(Figura 4(a)) as três heurísticas ABR apresentam um impacto semelhante. Enquanto que, intuitivamente, o provisionamento do video DASH entre os níveis 1 e 2 apresentam uma diferença estritamente superior, em contrapartida, o nível 3 apresenta uma disparidade significativa em relação aos outros níveis. Para o cenário com 40 usuários a taxa de bits médio entre níveis apresentam uma diferenças semelhantes em ordem de grandeza. 
+As Figuras 4(a) e 5(a) mostram a taxa de bits media com 20 e 40 usuários, respectivamente. No cenário com 20 usuários~(Figura 4(a)) as três heurísticas ABR apresentam um impacto semelhante. Enquanto que, intuitivamente, o provisionamento do video DASH entre os níveis 1 e 2 apresentam uma diferença estritamente superior, em contrapartida, o nível 3 apresenta uma disparidade significativa em relação aos outros níveis. Para o cenário com 40 usuários a taxa de bits médio entre níveis apresentam uma diferenças semelhantes em ordem de grandeza. 
 
-As Figuras 4(b) e 5(b) mostram o tempo de interrupção total~(Bandwidth Blocking Ratio) com 20 e 40 usuários, respectivamente. Ao contrario da taxa de bit media, aqui nós podemos observar uma diferença em relação aos mecanismos ABR no cenário com 20 usuários~(Figura 4(a)), principalmente, quando o video é provisionado por um servidor no nível com mais saltos~(nível 1). Este comportamento é suavizado no cenário com 40 usuários, onde existe uma pequena diferença ente os mecanismos de decisão no nível 2.
+As Figuras 4(b) e 5(b) mostram o tempo de interrupção total com 20 e 40 usuários, respectivamente. Ao contrario da taxa de bit media, aqui nós podemos observar uma diferença em relação aos mecanismos ABR no cenário com 20 usuários~(Figura 4(a)), principalmente, quando o video é provisionado por um servidor no nível com mais saltos~(nível 1). Este comportamento é suavizado no cenário com 40 usuários, onde existe uma pequena diferença ente os mecanismos de decisão no nível 2.
 
-É importante notar que apesar da taxa de bits media entre os mecanismos ABR serem semelhantes, as interrupções que eles podem gerar são significativamente diferentes, o que impacta diretamente no QoE dos usuários. Outro ponto a ser observado é a taxa de bits media entre os diferentes níveis. No cenário com 20 usuários o nível 3 conseguiu atingir o que necessário para obter a representação de maior taxa bits, desta forma, operadores de telefonia podem buscar a implantação de caches durante horários de pico para prover a melhor experiencia ao usuário.
+É importante notar que apesar da taxa de bits media entre os mecanismos ABR serem semelhantes, as interrupções que eles podem gerar são significativamente diferentes, o que impacta diretamente no QoE dos usuários. Outro ponto a ser observado é a taxa de bits media entre diferentes níveis. No cenário com 20 usuários o nível 3 conseguiu atingir o que necessário para obter a maior representação de taxa bits, desta forma, operadores de telefonia podem buscar a implantação de caches durante horários de pico para prover a melhor experiencia ao usuário.
 
 %entre os 
 % diferença de npirveis há o mesmo pode ser observado no segundo cenario co 40 usuários. Uma diferença interessante 
@@ -211,7 +210,7 @@ As Figuras 4(b) e 5(b) mostram o tempo de interrupção total~(Bandwidth Blockin
     \subfloat[Tempo total de interrupções.]
     {\includegraphics[width=.45\textwidth]{graphs/boxplot-avgStalls-10u}
     \label{fig:dmm-proposal}}
-  \caption{Resultados da taxa de bits media e tempo total de interrupções para uma rede com 10 em cada AP.}
+  \caption{Resultados da taxa de bits media e tempo total de interrupções para uma rede com 20 usuários, 10 em cada AP.}
   \label{fig:dmm}
 \end{figure}
 
@@ -224,6 +223,6 @@ As Figuras 4(b) e 5(b) mostram o tempo de interrupção total~(Bandwidth Blockin
     \subfloat[Tempo total de interrupções.]
     {\includegraphics[width=.45\textwidth]{graphs/boxplot-avgStalls-20u}
     \label{fig:dmm-proposal}}
-  \caption{Resultados da taxa de bits media e tempo total de interrupções para uma rede com 10 em cada AP.}
+  \caption{Resultados da taxa de bits media e tempo total de interrupções para uma rede com 40 usuários, 20 usuários em cada AP.}
   \label{fig:dmm}
 \end{figure}

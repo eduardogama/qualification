@@ -21,13 +21,14 @@ Cada tópico abrange a motivação e os objetivos.
 \label{subsec:video-streaming}
 
 
-Em um ambiente de rede compartilhado, em que muitas entidades do sistema, incluindo players DASH, competem pela largura de banda disponível, várias flutuações repentinas na banda da rede podem ocorrer ao longo do tempo.
+Em um ambiente de rede compartilhado, em que muitas entidades do sistema, incluindo os reprodutores DASH, competem pela largura de banda disponível, várias flutuações repentinas na banda da rede podem ocorrer ao longo do tempo.
 
-A seção~\ref{subsec:evaluation} mostra a influencia na variação entre diferentes processos de decisão para selecionar o bitrate do próximo segmento entre diferentes mecanismos ABR. Além disso, o trabalho~\cite{bentaleb:2018:MSys} também mostra armadilhas devido ao comportamento totalmente isolado dos clientes HAS~(ou seja, essas soluções estão funcionando independentemente, sem coordenação). Em particular, a presença de vários clientes HAS simultâneos que competem pelos recursos de rede compartilhados podem causar problemas de escalabilidade do HAS, incluindo (i) instabilidade de video devido à troca de taxa de bits frequente, no qual os usuários competem por um link de gargalo em um ambiente de rede compartilhado e oscilações de qualidade; (ii) injustiça de QoE; e (iii) subutilização ou subscrição excessiva de recursos de rede. Esses problemas são agravados ainda mais quando o número de usuários aumenta e no caso de ambientes heterogêneos. Esses problemas continuam sendo uma preocupação séria para os operadores de rede e provedores de conteúdo. 
+A seção~\ref{subsec:evaluation} mostra a influência dos mecanismos ABR na variação de escolhas em seus processos de decisão para selecionar a taxa de bits do próximo segmento. Além disso, o trabalho~\cite{bentaleb:2018:MSys} também mostra algumas armadilhas que podem ocorres devido ao comportamento totalmente isolado dos clientes HAS~(ou seja, essas soluções estão funcionando independentemente, sem coordenação). Em particular, a presença de vários clientes HAS simultâneos que competem pelos recursos de rede compartilhados podem causar problemas de escalabilidade do HAS, incluindo (i) instabilidade de video devido à troca de taxa de bits frequente, no qual os usuários competem por um link de gargalo em um ambiente de rede compartilhado e oscilações de qualidade perceptual; (ii) injustiça de QoE; e (iii) subutilização ou subscrição excessiva de recursos de rede. Esses problemas são agravados ainda mais quando o número de usuários aumenta e no caso de ambientes heterogêneos. Esses problemas continuam sendo uma preocupação séria para os operadores de rede e provedores de conteúdo. 
 Neste contexto, é desejado ter mecanismos computacionais que identifiquem automaticamente o processo de decisão do HAS de cada video antes de escalonar-los.
 \textit{Os objetivos para este tópico de pesquisa são:}
 
 \begin{itemize}
+    \item Realizar um estudo detalhado sobre os processos de decisão cooperativos existentes;
     \item Propor mecanismos de cooperativos entre grupos de usuários para auxiliar no processo de decisão do algoritmo ABR. Além disso, esses mecanismos podem facilitar a cooperação de \textit{download} e \textit{upload} de um mesmo conteúdo entre os usuários de uma mesma rede; 
     \item Implementar e Avaliar as soluções propostas utilizando os ambientes controlados.
     \item Inserir trafego cruzado de diferentes entidades e avaliar as soluções propostas.
@@ -62,9 +63,9 @@ Neste contexto, é desejado ter mecanismos computacionais que identifiquem autom
 %4. What is the benefits that edge computing can add in HAS over the future networks?
 %5. What is the deployment cost?
 
-Um ambiente multinivel pode ser composto por mais de um dominio de dispositivos. Por sua vez, 
-os recursos de cada dominio podem ser utilizados para hospedar o conteúdo de vídeo na proximidade dos usuários finais, reduzindo a latência e mitigando a carga nas redes principais na nuvem. Isso será útil para o cenário de transmissão ao vivo que requer baixa latência. Além disso, a integração de serviços baseados em HAS em tais mecanismos de comunicação requer investigar a integração da entrega de vídeo baseada em HAS nas futuras gerações da Internet.
-Assumindo cenários em que a federação entre diferentes provedores de serviços da névoa é necessária.
+Um ambiente multinível pode ser composto por mais de um domínio de dispositivos. Por sua vez, 
+os recursos de cada domínio podem ser utilizados para hospedar o conteúdo de vídeo na proximidade dos usuários finais, reduzindo a latência e mitigando a carga nas redes principais na nuvem. Isso será útil para o cenário de transmissão ao vivo que requer baixa latência. Além disso, a integração de serviços baseados em DASH em tais ambientes de comunicação requer a integração de entidades extras para a transmissão do vídeo. %nas futuras gerações da Internet.
+Assumindo cenários em que a federação com domínios diferentes na névoa é necessária.
 
 \emph{Os objetivos para este tópico de pesquisa são: }  
 
@@ -72,7 +73,7 @@ Assumindo cenários em que a federação entre diferentes provedores de serviço
 	\item realizar um estudo sobre a arquitetura DASH disponíveis com diferentes dominios;
     \item Analisar atuais aproximações na literatura para implantação desse tipo de serviço, qual o trade-off entre o custo para as operadoras e aprimoramento do QoE.
     \item propor mecanismos a nível de provedor de conteúdo para melhorar esse esse processos de decisão estudados.
-    \item Implementar e avaliar a solução proposta em ambientes controlados, para isso o uso do simulador ns-3 integrado a biblioteca libdash podem ser utilizados.   
+    \item Implementar e avaliar a solução proposta em ambientes controlados, para isso o uso do simulador integrado a biblioteca libdash pode ser utilizados.   
 \end{itemize}
 %
 %
@@ -112,22 +113,21 @@ Assumindo cenários em que a federação entre diferentes provedores de serviço
 \label{subsec:mobility}
 
 O gerenciamento de mobilidade refere-se a um conjunto de mecanismos para manter a continuidade das sessões em andamento, enquanto que um usuário móvel altera seu ponto de acesso à rede.
-Na arquitetura DASH, o manifesto criado pelo servidor pode auxiliar em possiveis soluções no gerenciamento de mobilidade, além de realizar um preprocessamento com informação de controle relacionado à mobilidade e dados dos servidores. 
+Na arquitetura DASH, o manifesto criado pelo servidor pode auxiliar em possíveis soluções no gerenciamento de mobilidade, além de realizar um preprocessamento com informação de controle relacionado à mobilidade e dados dos servidores. 
 %De acordo com~\citet{Valtulina2014}, essa abordagem centralizada torna o gerenciamento de mobilidade propenso a várias limitações de desempenho, como roteamento abaixo do ideal, baixa escalabilidade, potencial ponto único de falha e falta de granularidade para o serviço de gerenciamento de mobilidade.
 \emph{Os objetivos deste tópico de pesquisa são:}
 %item Inicialmente, os parâmetros avaliados considerados incluem o perfil do usuário, a carga da célula local, a qualidade do link, a complexidade do movimento dos vídeos e também detalhes inteligentes da cidade, como a localização e a rota rastreada no caso de usuários com mobilidade. Alguns dos nós podem ser estacionários, mas outros podem variar de padrões de baixa a alta mobilidade, que podem ser levados em consideração para melhorar a qualidade da entrega de vídeo.
 
 \begin{itemize}
 
-\item Realizar um estudo detalhado em soluções disponíveis para balanceamento de carga em redes móveis, que podem ser usadas para acionar procedimentos de transferência na arquitetura multinivel;
+\item Realizar um estudo detalhado em soluções disponíveis para balanceamento de carga em redes móveis, que podem ser usadas para acionar procedimentos de transferência na arquitetura multinível;
 
-\item Examinar quais mecanismos existentes que devemos utilizar/desenvolver para lidar com a mobilidade do usuário.
+\item Examinar e propor mecanismos que devemos utilizar para lidar com a mobilidade do usuário.
 Como dividir o conteúdo e recursos computacionais;
 
-\item Analise as soluções existentes para transferência vertical em redes multiniveis, cuidando das transferências entre macro sobreposta e células pequenas;
+\item Analisar os mecanismos desenvolvidos para transferência em redes multiníveis, considerando a transferência sessões entre diferentes domínios.
 
-\item Antes de alocar o serviço de streaming de video em DASH, quais serviços é necessário
-acrescentar para o provisionamento do conteúdo
+%\item Antes de alocar o serviço de streaming de video em DASH, quais serviços é necessário acrescentar para o provisionamento do conteúdo
 
 \end{itemize}
 
@@ -137,7 +137,7 @@ acrescentar para o provisionamento do conteúdo
 \section{Plano de trabalho}
 \label{sec:timetable}
 
-\autoref{tab:timetable} apresenta o cronograma para este projeto de pesquisa de doutorado. As atividades mencionadas no cronograma estão listadas abaixo e incluem o trabalho desenvolvido apresentado em \autoref{ch:develop} e os tópicos a serem investigados em \autoref{sec:topics}. As atividades já desenvolvidas são identificadas pelo símbolo~\,\m. Enquanto isso, o símbolo \,\x\ identifica o tempo esperado para a realização das atividades planejadas.
+\autoref{tab:timetable} apresenta o cronograma para este projeto de pesquisa de doutorado. As atividades mencionadas no cronograma estão listadas abaixo e incluem o trabalho desenvolvido apresentado em \autoref{ch:developed} e os tópicos a serem investigados em \autoref{ch:proposal}. As atividades já desenvolvidas são identificadas pelo símbolo~\,\m. Enquanto isso, o símbolo \,\x\ identifica o tempo esperado para a realização das atividades planejadas.
 
 %\autoref{tab:timetable} presents the timetable for this doctoral research
 %project. The activities referenced in the timetable are listed below and
@@ -147,7 +147,7 @@ acrescentar para o provisionamento do conteúdo
 %\,\x\, identifies the expected time for carrying out the planned activities.
 
 \begin{enumerate}
-	\itemsep0pt
+ 	\itemsep0pt
 	\item Cumprimento de créditos de disciplinas;
     \item Estudo detalhado sobre a integração em redes multiníveis para o provisionamento de Video Streaming;
     \item Formalização da metodologia de pesquisa;

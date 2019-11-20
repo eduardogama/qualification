@@ -1,4 +1,4 @@
-\section{Introduction}
+\section{Introdução}
 \label{ch:introduction}
 
 %******* Introduction of the Dash technology and Cloud/Fog networks****
@@ -20,7 +20,7 @@ em 2021, 70\% de todo o tráfego da Internet será dominado por streaming de ví
 
 Os serviços de streaming de vídeo têm requisitos rigorosos, como um canal de comunicação de boa qualidade, bem como um fluxo constante e ininterrupto de informações~\cite{Immich2018WinNet}.
 % A Fig. 1 Mostra ao longo de cada ano o crescimento no consumo de banda, estes tipos de cenários impõem significantes desafios para a distribuição de vídeo sobre as futuras gerações da Internet.
-Para acomadar esta demanda, bem como manter o QoE do usuário, grandes players como Microsoft, Apple, Adobe e Netflix adotam o paradigma de streaming adaptável sobre HTTP~(HAS)~\cite{company:dashs}. Como a maioria das soluções HAS usa a mesma arquitetura, o Grupo de Especialistas em Cinema~(MPEG) propôs um padrão chamado Streaming adaptável dinâmico sobre HTTP~(DASH), no qual o player de vídeo pode escolher dinamicamente a taxa de bits de acordo com a largura de banda disponível percebida.
+Para acomadar esta demanda, bem como manter o QoE do usuário, grandes players como Microsoft, Apple, Adobe e Netflix adotam o paradigma de Streaming Adaptável sobre HTTP~(HAS)~\cite{company:dashs}. Como a maioria das soluções HAS usa a mesma arquitetura, o Grupo de Especialistas em Cinema~(MPEG) propôs um padrão chamado Streaming Adaptável Dinâmico sobre HTTP~(DASH), no qual o reprodutor de vídeo pode escolher dinamicamente a taxa de bits de acordo com a largura de banda disponível percebida.
 %Atualmente, esses conteudos multimidia utilizam serviços de Streaming Adaptativo Dinâmico sobre HTTP~(HAS), este paradigma trata o video multimídia como qualquer outro conteúdo comum da Web e o entrega em pequenos pedaços atraves do protocolo HTTP.
 %Os serviços de transmissão de vídeo têem seu bitrate adaptados dinâmicamente.% As soluções HAS utilizam os protocolos HTTP na aplicação e TCP na camada de transporte como ilustrados na figura 1b. 
 %em Streaming Adaptativo Dinâmico sobre HTTP~(DASH) são amplamente adotado por provedores de vídeo como Google, Netflix, Akamai HD e outros, nos quais o player de vídeo do cliente pode escolher dinamicamente o nível de taxa de bits de acordo com a largura de banda disponível percebida.
@@ -68,7 +68,7 @@ Atualmente, os tradicionais serviços de Streaming de vídeo são projetados par
 
 Embora muitos trabalhos de pesquisa abordem serviços de video streaming em conjunto com a computação em nuvem/névoa, existem aspectos pouco abordados em soluções atuais. Geralmente, as arquiteturas de streaming vídeo buscam diminuir a carga de tráfego e melhorar o QoE da entrega do video.
 %Eles tentam melhorar a migração de máquinas virtuais, adversidades de mobilidade ou fornecer armazenamento em cache inteligente para um tipo específico de conteúdo, além de aprimorar a entrega de vídeo com streaming adaptável e nós Fog. 
-Tais soluções não levam em consideração o comportamento do reprodutor de video usado pelo usuário, assim como aspectos relacionados a mobilidade do usuário nos mecanismos de tomada de decisão em ambientes multiníveis precisam. 
+Tais soluções não levam em consideração o comportamento do reprodutor de video usado pelo usuário, bem como aspectos relacionados a mobilidade do usuário nos mecanismos de tomada de decisão em ambientes multiníveis. 
 
 %na borda da rede podem afetar aspectos relacionado ao comportamento do usuário final pouco abordados, como area de cobertura do nó, modulidade.
 
@@ -104,14 +104,14 @@ Tais soluções não levam em consideração o comportamento do reprodutor de vi
 %In an attempt to answer above questions, this ongoing doctoral research project discusses how the \ac{SDN} paradigm and the OpenFlow protocol can be integrated to the existing 4G \ac{LTE} networks to provide new solutions for some of the aforementioned problems. As contributions already developed, this project first ...
 
 
-A fim de lidar com as questõesa acima, este projeto de pesquisa em andamento tem como objetivo modelar mecanismos de entrega de vídeo em DASH % e de alta qualidade para ser 
-a ser usado em ambientes de cidades inteligentes. Tais mecanismos propostos aproveitarão de tecnologias emergentes relacionadas à redes~(como 5G e WiFi), com o objetivo de auxiliar na tomada de decisão do serviço de streaming de video em uma arquitetura multinível. %A Figura 1 mostra, no lado esquerdo, uma arquitetura de rede de várias camadas, composta por um conjunto heterogêneo de dispositivos e aplicativos usando recursos de computação distribuídos por meio de uma tecnologia de comunicação de acesso múltiplo, como 5G e WiFi. Este projeto propõe estender o streaming de vídeo DASH para oferecer suporte à conectividade multipath simultânea [3, 4].
+Com o objetivo de lidar com as questões acima, este projeto de pesquisa de doutorado tem como objetivo modelar mecanismos de entrega de vídeo em DASH % e de alta qualidade para ser 
+a ser usado em ambientes de cidades inteligentes. Tais mecanismos propostos aproveitarão de tecnologias emergentes relacionadas à redes~(como 5G e WiFi), com o objetivo de auxiliar a tomada de decisão do serviço de streaming de video em uma arquitetura multinível. %A Figura 1 mostra, no lado esquerdo, uma arquitetura de rede de várias camadas, composta por um conjunto heterogêneo de dispositivos e aplicativos usando recursos de computação distribuídos por meio de uma tecnologia de comunicação de acesso múltiplo, como 5G e WiFi. Este projeto propõe estender o streaming de vídeo DASH para oferecer suporte à conectividade multipath simultânea [3, 4].
 
 % ----------------------------------------------------------------------------
 % How is this document organized?
 % ----------------------------------------------------------------------------
 Este documento está organizado da seguinte forma: \autoref{ch:background} apresenta
-alguns conceitos basicos de Video Streaming Adaptativo e arquiteturas de multiníveis na Névoa/Nuvem. Em seguida, \autoref{ch:related-work} fornece uma visão geral dos trabalhos relacionados. Focando em trabalhos de Video Streaming em redes multiníveis utilizando soluções em DASH para melhorar gives an overview of several proposals foro QoE dos usuśarios da rede, comparando alguns trabalhos relacionados, destacando e comparando os principais desafios neste tópico. \autoref{ch:developed} traz o trabalho realizado até o momento, o que ajudará no desenvolvimento das contribuições propostas \autoref{ch:proposal}. Finalmente, \autoref{ch:remarks} fecha o documento com algumas considerações finais.
+alguns conceitos básicos de Video Streaming Adaptativo e arquiteturas de multiníveis na Névoa/Nuvem. Em seguida, \autoref{ch:related-work} fornece uma visão geral dos trabalhos relacionados. Focando em trabalhos de Video Streaming em redes multiníveis utilizando soluções em DASH para melhorar o QoE dos usuários da rede, comparando alguns trabalhos relacionados, destacando e comparando os principais desafios neste tópico. \autoref{ch:developed} traz o trabalho realizado até o momento, o que ajudará no desenvolvimento das contribuições propostas \autoref{ch:proposal}. Finalmente, \autoref{ch:remarks} fecha o documento com algumas considerações finais.
  
 %This document is organized as follows: \autoref{ch:background} presents some
 %background concepts on \ac{SDN} and \ac{LTE} architectures. Then,

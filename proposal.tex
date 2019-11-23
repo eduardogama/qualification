@@ -2,21 +2,21 @@
 \subsection{Tópicos de pesquisa a serem investigados}
 \label{ch:proposal}
 %As Visões atuais da 
-No futuro da Internet, a maior parte do fluxo do tráfego da rede será provido por data centers na borda da rede~\cite{cisco:forecast2017}.
+No futuro da Internet, a maior parte do fluxo do tráfego da rede será provido por nós na borda~\cite{cisco:forecast2017}.
 Dentro desse contexto, 
 %as arquiteturas de rede 5G devem prover um ambiente de comunicação capaz de superar as deficiências de infraestrutura das redes atuais. 
-As redes se tornarão muito mais densas dado a diversidade de células instaladas com tamanho cada vez menor, bem como uma comunicação direta de dispositivo-para-dispositivo. A células pequenas, como, Estações Base (BS) e Femto BS,
+As redes se tornarão muito mais densas dado a diversidade de células instaladas com tamanho cada vez menor, bem como uma comunicação direta de dispositivo-para-dispositivo. As células pequenas, como BS e Femto BS,
 são capazes %de melhorar a cobertura e a capacidade da rede em relação as células maiores, e elas serão capazes de transportar a maior parte do trafego.
 de diminuir a sobrecarga de retorno do tráfego e ajuda prover baixa latência aos serviços de vídeo streaming~\cite{guan:2019:CLC}.
 
-A Figura~\ref{fig:scenario-ex-lte-wifi} exemplifica um cenário interessante a ser estudado, uma rede heterogênea com uma célula macro e algumas células metro e pico são usadas para retransmissão. Através dessas pequenas células internas e externas de baixo custo o usuário implementa ambientes domésticos e privados internos de baixo custo.
+A Figura~\ref{fig:scenario-ex-lte-wifi} exemplifica um cenário interessante a ser estudado, uma rede multinível heterogênea com uma célula macro e algumas células metro e pico são usadas para retransmissão. Através dessas pequenas células internas e externas de baixo custo o usuário pode ser capaz implementar ambientes domésticos e privados internos com baixo custo.
 
 \vspace{0.8cm}
 \begin{figure*}[htpb]
 	\centering
 	\includegraphics[width=0.85\textwidth]{img/hetnet-lte-wifi-v2.png}
 % 	\vspace{-1cm}
-	\caption{Exemplo de cenário de redes heterogêneas~\cite{Qualcomm2013}.}
+	\caption{Exemplo de cenário de redes multinível heterogêneas~\cite{Qualcomm2013}.}
 	\label{fig:scenario-ex-lte-wifi}
 \end{figure*}
 %\vspace{0.8cm}
@@ -38,9 +38,9 @@ detalhado em Seções seguintes. Cada tópico abrange a motivação e objetivos.
 \subsubsection{Mecanismos Cooperativos para Streaming de Video}
 \label{subsec:video-streaming}
 
-Em um ambiente de rede compartilhado, em que muitas entidades do sistema, incluindo os reprodutores DASH, competem pela largura de banda disponível, várias flutuações repentinas na banda da rede podem ocorrer ao longo do tempo.
-
-A seção~\ref{subsec:evaluation} mostra a influência dos mecanismos ABR na variação de escolhas em seus processos de decisão para selecionar a taxa de bits do próximo segmento, onde QoE do usuário estava diretamente relacionado ao mecanismo de decisão que ele  estava utilizando. Além disso, o trabalho~\cite{bentaleb:2018:MSys} também mostra algumas armadilhas que podem ocorres devido ao comportamento totalmente isolado dos clientes HAS~(ou seja, essas soluções estão funcionando independentemente, sem coordenação). Em particular, a presença de vários clientes HAS simultâneos que competem pelos recursos de rede compartilhados podem causar problemas de escalabilidade do HAS, incluindo (i) instabilidade de video devido à troca de taxa de bits frequente, no qual os usuários competem por um link de gargalo em um ambiente de rede compartilhado e oscilações de qualidade perceptual; (ii) injustiça de QoE; e (iii) subutilização ou subscrição excessiva de recursos de rede. Esses problemas são agravados quando o número de usuários aumenta e no caso de ambientes heterogêneos. Esses problemas continuam sendo uma preocupação séria para os operadores de rede e provedores de conteúdo. 
+Dentro do ambiente de rede multinível compartilhado, em que muitos reprodutores DASH competem pela largura de banda disponível, várias flutuações repentinas na banda da rede podem ocorrer ao longo do tempo.
+% 
+A seção~\ref{subsec:evaluation} mostra a influência que os mecanismos ABR têm na variação de escolhas da taxa de bits do próximo segmento, onde o QoE do usuário estava diretamente relacionado ao processo de decisão que ele utiliza. Além disso, o trabalho~\cite{bentaleb:2018:MSys} também mostra algumas armadilhas que podem ocorrer devido ao comportamento totalmente isolado dos clientes HAS~(ou seja, essas soluções estão funcionando independentemente, sem coordenação). Em particular, a presença de vários clientes HAS simultâneos que competem pelos recursos de rede compartilhados podem causar problemas de escalabilidade do HAS, incluindo (i) instabilidade de video devido à troca de taxa de bits frequente, no qual os usuários competem por um link de gargalo em um ambiente de rede compartilhado e oscilações de qualidade perceptual; (ii) injustiça de QoE; e (iii) subutilização ou subscrição excessiva de recursos de rede. Esses problemas são agravados quando o número de usuários aumenta e no caso de ambientes heterogêneos. Esses problemas continuam sendo uma preocupação séria para os operadores de rede e provedores de conteúdo. 
 Neste contexto, é desejavel ter mecanismos computacionais que identifiquem automaticamente o processo de decisão do HAS de cada video antes de escalona-los.
 \emph{Os objetivos para este tópico de pesquisa são:}
 
@@ -82,9 +82,9 @@ Neste contexto, é desejavel ter mecanismos computacionais que identifiquem auto
 
 Um ambiente multinível pode ser composto por mais de um domínio de dispositivos. Por sua vez, 
 os recursos de cada domínio podem ser utilizados para hospedar o conteúdo de vídeo na proximidade dos usuários finais, reduzindo a latência e mitigando a carga nas redes principais da nuvem.
-Para integrar os serviços baseados em DASH em tais ambientes de comunicação, o nó névoa requer a implantação de entidades extras para realizar a transmissão do vídeo.
+Para integrar os serviços DASH em tais ambientes de comunicação, o nó névoa requer a implantação de entidades extras para realizar a transmissão do vídeo.
 Dentro desse contexto, 
-mecanismos para realizar a integração entre esquemas ABR e o streaming do vídeo podem melhorar o QoE em cada nível da rede,\emph{os objetivos para este tópico de pesquisa são: }  
+mecanismos para realizar a integração entre esquemas ABR e o streaming do vídeo podem melhorar o QoE em cada nível da rede, \emph{os objetivos para este tópico de pesquisa são:}  
 
 % algumas características em tais ambiente multiníveis precisam ser mais estudados, como alocação de cache, posicionamento, tomadas de decisões em tempo real. 
 
@@ -146,7 +146,7 @@ mecanismos para realizar a integração entre esquemas ABR e o streaming do víd
 \subsubsection{Redes heterogêneas em larga escala}
 \label{subsec:mobility}
 
-Com a diversidade de dispositivos, tipos de comunicação de rede e tipos de conteúdo. Em redes heterogêneas, a maioria dos usuário possuem mais de uma interface de rede~(e.g., LTE e WiFi) por onde o conteúdo multimídia pode chegar. Atualmente, poucos trabalhos em DASH abordam mecanismos apropriados para realizar a escolha dos tipos de comunicação com seus requisitos específicos.
+Com a diversidade de dispositivos, tipos de comunicação de rede e tipos de conteúdo. Em redes heterogêneas, a maioria dos usuário possuem mais de uma interface de rede~(e.g., 5G e WiFi) por onde o conteúdo multimídia pode chegar. Atualmente, poucos trabalhos em DASH abordam mecanismos apropriados para realizar a escolha dos tipos de comunicação com seus requisitos específicos.
 É importante notar que haverá heterogeneidade na rede e diferentes requisitos de QoE, por exemplo, um smartphone tem um requisito de satisfação menor do que uma Smart TV, bem como os conteúdos de vídeo tem diferentes requisitos.
 
 %Com novas possibilidades sendo criadas para oferecer melhores serviços bem como o funcionamento da internet. Enquanto a rede se torna mais robusta, o problema se torna mais complexo e surgem novos desafios. 

@@ -35,7 +35,7 @@ no projeto de pesquisa de doutorado.
 \label{subsec:applications}
 
 Em uma arquitetura multinível, os streamings de vídeo têm um QoE diferente de acordo com os seus requisitos~\cite{judyLATINCOM2017}. Por exemplo, streaming em tempo real, como detecção online e streaming de armazenado fim-a-fim são sensíveis a atrasos. Portanto, esses streamings devem ser processados o mais próximo possível do usuário final, de preferência em nós localizados no primeiro nível da névoa, enquanto que conteúdos de Vídeo sob Demanda~(VoD) aceitam um atraso maior. Desta forma, vamos identificar cada streaming de video requisitado pelos usuários finais por um identificador, a partir de agora simbolizado por "c".
-Um nível de servidores, indicado por $N_{c}$, é um conjunto de nós que atende o QoE necessário para fornecer serviços de um streaming de vídeo específico, e nós definimos como um intervalo na forma de $N_{c} \in [a_{c}, b_{c})$. onde $a_{c} < b_{c}$ e,
+Um nível de servidores, indicado por $N_{c}$, é um conjunto de nós que atende o QoE necessário para fornecer serviços de um streaming de vídeo específico, é definido como um intervalo $N_{c} \in [a_{c}, b_{c}]$. onde $a_{c} < b_{c}$ e,
 
 \vspace{0.5cm}
 \begin{itemize}
@@ -160,7 +160,7 @@ Para melhorar o desempenho da rede associamos uma latência $l_{a}^{ij}$, desta 
 %Para melhorar a latência da reprodução do video, nós devemos  minimizar a latencia de um nó para todas requisiçoes de segmentos do video. 
 Logo, a função objetivo busca essa minimização. A restrição~(3) requer que cada usuário seja atribuído a exatamente um servidor. A restrição~(4) garante que cada usuário seja atribuído a no máximo um servidor. Afirma também que, se o número de vídeos dentro de um servidor é maior do que o número de sessões abertas, alguns dos vídeos permanecem sem atribuição.% A terceira restrição garante que os slots de download em uma similaridade com a classe de download diferem de segmentos de video requisitados.
 
-A Restrição (5) estabelece as restrições de capacidade de banda disponível, que evita a atribuição de mais streaming de video do que a capacidade total disponível para cada nó de névoa.
+A Restrição (5) estabelece as restrições de capacidade de banda disponível, que evita a atribuição de mais streaming de video do que a capacidade total disponível para cada nó de névoa. $bw_{ij}$ é o custo de banda de um nó $i$ ao nó $j$. 
 
 A restrição (6) define o domínio para as variáveis $x_{i, j, k}$ e $bw_{ij}$ na formulação. A restrição (7) estabelece que a variável $Bw$ deve ser um número inteiro não negativo.
 

@@ -1,5 +1,5 @@
 \clearpage
-\section{Trabalho Desenvolvido}
+\section{Proposta}
 \label{ch:developed}
 
 Esta seção apresenta o trabalho realizado até o momento para auxiliar o desenvolvimento 
@@ -24,12 +24,18 @@ no projeto de pesquisa de doutorado.
 %adaptation schemes in each category from the taxonomy in Figure 3.1. Table 3.1 summarizes
 %this comparison for each surveyed paper in terms of the following aspects:
 
+
 %-----------------------------------------------------------------------------%
-\subsection{Formulação de Programação Linear Inteira~(ILP)}
+\subsection{Trabalho desenvolvido}
 \label{subsec:applications}
 
-Em uma arquitetura multinível, os streamings de video tem um QoE diferente de acordo com os seus requisitos~\cite{judyLATINCOM2017}. Por exemplo, streaming em tempo real, como detecção online e streaming de armazenado fim-a-fim são sensíveis a atrasos. Portanto, esses streamings devem ser processados o mais próximo possível do usuário final, de preferência em nós localizados no primeiro nível da névoa, enquanto que conteúdos de Vídeo sob Demanda~(VoD) aceitam um atraso maior. Desta forma, vamos identificar cada streaming de video requisitado pelos usuários finais por um identificador, a partir de agora simbolizado por "c".
-Um nível de servidores, indicado por $N_{c}$, é um conjunto de nós que atende o QoE necessário para fornecer serviços de um streaming de video específico, e nós definimos como um intervalo na forma de $N_{c} \in [a, b)$. onde $a_{c} < b_{c}$ e,
+
+%-----------------------------------------------------------------------------%
+\subsubsection{Formulação de Programação Linear Inteira~(ILP)}
+\label{subsec:applications}
+
+Em uma arquitetura multinível, os streamings de vídeo têm um QoE diferente de acordo com os seus requisitos~\cite{judyLATINCOM2017}. Por exemplo, streaming em tempo real, como detecção online e streaming de armazenado fim-a-fim são sensíveis a atrasos. Portanto, esses streamings devem ser processados o mais próximo possível do usuário final, de preferência em nós localizados no primeiro nível da névoa, enquanto que conteúdos de Vídeo sob Demanda~(VoD) aceitam um atraso maior. Desta forma, vamos identificar cada streaming de video requisitado pelos usuários finais por um identificador, a partir de agora simbolizado por "c".
+Um nível de servidores, indicado por $N_{c}$, é um conjunto de nós que atende o QoE necessário para fornecer serviços de um streaming de vídeo específico, e nós definimos como um intervalo na forma de $N_{c} \in [a_{c}, b_{c})$. onde $a_{c} < b_{c}$ e,
 
 \vspace{0.5cm}
 \begin{itemize}
@@ -46,10 +52,10 @@ Um nível de servidores, indicado por $N_{c}$, é um conjunto de nós que atende
 \vspace{0.5cm}
 
 
-O balanceamento de carga em uma rede multinível Névoa/Nuvem para streaming de video pode ser formulado através de ILP.
+O balanceamento de carga em uma rede multinível Névoa/Nuvem para streaming de vídeo pode ser formulado através de ILP.
 %Um formulação de programação linear inteira pode ser modelada como um caso simples de .
-Suponha que existe $n$ usuários conectados na rede, $m$ servidores e $q$ streaming de video, nós queremos encontrar um \textit{matching} apropriado entre eles. Um \textit{matching} entre um usuários, servidores e vídeos é dado por uma tripla $(i,j,k)$. Neste caso a tripla pode ser entendida como uma sessão aberta de streaming através do protocolo HTTP. O conjunto de usuários, servidores e vídeos são denotados por $U$, $N$, $V$, respectivamente.
-Os vértices representam nós de rede e as arestas são os links de rede podendo ser com ou sem fio. Os links podem ser definidos por conexões físicas ou virtuais
+Suponha que existem $n$ usuários conectados na rede, $m$ servidores e $q$ fluxos de vídeo. Nós queremos encontrar um \textit{matching} apropriado entre eles. Um \textit{matching} entre um usuários, servidores e vídeos é dado por uma tripla $(i,j,k)$. Neste caso a tripla pode ser entendida como uma sessão aberta de streaming através do protocolo HTTP. O conjunto de usuários, servidores e vídeos são denotados por $U$, $N$, $V$, respectivamente.
+Os vértices representam nós de rede e as arestas são os links de rede, com ou sem fio. Os links podem ser definidos por conexões físicas ou virtuais
 
 % \begin{itemize}
 % \item $\forall (i,j,k) \in S$, $i \in U$ e $j \in N$ e $k \in V$.
@@ -86,14 +92,14 @@ x_{i,j,k} =
 \vspace{0.5cm}
 
 %Para simplificar esta formulação nós estamos considerando que os segmentos de video é requisitado a apenas um servidor fonte, e utiliza um interval de tempo discreto. Assim, $T = {1, ..., T max }$, onde $T_{max}$ é o tempo maximo que o video levaria para executar no nós mais rapido da fog. $T_{max}$ pode ser calculado como 
-%
+
 %\begin{equation}\label{minimize}
 %T_{max} = \sum^{m}_{k} min(TI_{k | k \in N_{H}})
 %\end{equation}
 
 %Para melhor a latência da reprodução do video, nós devemos  minimizar a latencia de um nó para todas requisiçoes de segmentos do video. 
 
-Para simplificar esta formulação nós estamos considerando que os segmentos de video são requisitados a apenas um servidor fonte, bem como o serviço de video streaming já está em execução em seus respectivos servidores. Colocando as limitações abaixo:% An initial approach to the QoS-aware schedule is given by the following optimization problem:
+Para simplificar esta formulação nós estamos considerando que os segmentos de video são requisitados a apenas um servidor fonte, bem como o serviço de video streaming já está em execução em seus respectivos servidores. Colocando as restrições abaixo:% An initial approach to the QoS-aware schedule is given by the following optimization problem:
 
 
 \vspace{0.5cm}
@@ -112,7 +118,7 @@ Minimizar
 \sum_{i \in U} 
 \sum_{j \in N_{c}}
 \sum_{k \in V}
-a_{ij} \ast x_{ijk}
+l_{a}^{ij} \ast x_{ijk}
 \end{equation}
 
 Sujeito a
@@ -140,7 +146,8 @@ bw_{ij} x_{ij}
 \end{equation}
 
 \begin{equation}\label{minimize}
-x_{ij}  \in  \{0, 1\}, \forall i \in U,j \in N_{c}
+bw_{ij} \geq 0, 
+x_{ij}  \in  \{0, 1\} \mid \forall i \in U,\forall j \in N_{c}
 \end{equation}
 
 \begin{equation}\label{minimize}
@@ -148,29 +155,29 @@ Bw_{ij} \geq  0, \forall i \in U,  \forall j \in N_{c}
 \end{equation}
 \vspace{1.2cm}
 
-Para melhorar o desempenho da rede associamos uma latência $a_{ij}$, desta forma, nós devemos atribuir todos os usuários aos respectivos streaming de video afim de minimizar a latência total.
+Para melhorar o desempenho da rede associamos uma latência $l_{a}^{ij}$, desta forma, nós devemos atribuir todos os usuários aos respectivos streaming de video a fim de minimizar a latência total.
 %A função objetivo minimiza o makepan do aplicativo fornecido por um planejamento.
 %Para melhorar a latência da reprodução do video, nós devemos  minimizar a latencia de um nó para todas requisiçoes de segmentos do video. 
 Logo, a função objetivo busca essa minimização. A restrição~(3) requer que cada usuário seja atribuído a exatamente um servidor. A restrição~(4) garante que cada usuário seja atribuído a no máximo um servidor. Afirma também que, se o número de vídeos dentro de um servidor é maior do que o número de sessões abertas, alguns dos vídeos permanecem sem atribuição.% A terceira restrição garante que os slots de download em uma similaridade com a classe de download diferem de segmentos de video requisitados.
 
 A Restrição (5) estabelece as restrições de capacidade de banda disponível, que evita a atribuição de mais streaming de video do que a capacidade total disponível para cada nó de névoa.
 
-A restrição (6) define o domínio para a variável $x_{i, j, k}$ na formulação. A restrição (7) estabelece que a variável $Bw$ deve ser um número inteiro não negativo.
+A restrição (6) define o domínio para as variáveis $x_{i, j, k}$ e $bw_{ij}$ na formulação. A restrição (7) estabelece que a variável $Bw$ deve ser um número inteiro não negativo.
 
 %-----------------------------------------------------------------------------%
-\subsection{Avalização sobre o provisionamento de Video em Diferentes Níveis}
+\subsubsection{Avaliação sobre o provisionamento de Video em Diferentes Níveis}
 \label{subsec:evaluation}
 
 Alguns experimentos foram realizados para investigar como os esquemas de decisão ABR no lado do cliente se comportam. Para esta simulação foram abordados os seguintes algoritmos:~\textit{i) Rate}: O controlador ABR solicita a taxa de bits mais alta
 que a rede pode suportar com base na estimativa de largura de banda disponível obtida de segmentos baixados anteriormente;~\textit{ii) Buffer}: O controlador ABR usa a ocupação do buffer de reprodução para selecionar uma taxa de bits adequada para futuros pedaços que mantêm o buffer no nível de ocupação desejado;~\textit{iii) Hybrid}: Esse tipo de controlador ABR combina as duas heurísticas mencionadas acima para decidir qual o nível de taxa de bits do próximo segmento a ser baixado.
- 
 
 %mecanismos de controle podem trabalhar juntos na rede LTE habilitada para SDN.
+% A topologia NSF (Figura 3(a)) e USA (Figura 3(b)) foram utilizadas. Na figura 3 mostra-se as distancias entre os nós.
 
 Para implementar os servidores DASH e os usuários que permitem o streaming de video adaptativo, utilizamos o Adaptive Multimedia Streaming~(AMuSt).
 A estrutura do AMuSt fornece um conjunto de aplicativos para produzir e consumir vídeo adaptável, com base no padrão DASH~\cite{kreuzberger2016amust}. A funcionalidade do DASH é fornecida pela biblioteca libdash~\cite{mueller2013ICMEW}, uma biblioteca de código aberto que fornece uma interface para o padrão DASH. Atualmente, libdash é o software de referência oficial do padrão DASH.
 Consideramos que os usuários estão interessado em um vídeo disponível com dez representações diferentes, de taxa de bits \{235kbps, 375kbps, 560kbps, 560kbps, 750kbps, 1050kbps, 1750kbps, 2350kbps, 3000kbps, 4300kbps, 5800kbps\}, que são um subconjunto usados pela Netflix~\cite{netflix:representation}.
-Cada representação é dividida em segmentos de 2 segundos. Cada experimento foi executado 10 vezes com tempo do execução de 600 segundos.
+Cada representação é dividida em segmentos de 2 segundos. Cada experimento foi executado 10 vezes com tempo do execução de 600 segundos. A Figura~3 mostra a topologia com três níveis usada nos experimentos, cada nível \{1, 2 e 3\} está representado como um cenário.  
 
 %We consider that the end-users are interested in a video available in three different representations, Q = \{480p, 720p, 1080p\} with bitrates \{1750kbps, 3000kbps, 5800kbps\}, respectively, that are a subset of the ones used by Netflix in the past [11]. Each representation is divided into a set of 50 segments, each of a duration of 2 seconds.
 
@@ -187,42 +194,135 @@ Cada representação é dividida em segmentos de 2 segundos. Cada experimento fo
 \end{figure*}
 %\vspace{0.8cm}
 
-As Figuras 4(a) e 5(a) mostram a taxa de bits media com 20 e 40 usuários, respectivamente. No cenário com 20 usuários~(Figura 4(a)) as três heurísticas ABR apresentam um impacto semelhante. Enquanto que, intuitivamente, o provisionamento do video DASH entre os níveis 1 e 2 apresentam uma diferença estritamente superior, em contrapartida, o nível 3 apresenta uma disparidade significativa em relação aos outros níveis. Para o cenário com 40 usuários a taxa de bits médio entre níveis apresentam uma diferenças semelhantes em ordem de grandeza. 
+As Figuras 4(a) e 5(a) mostram a taxa de bits media com 20 e 40 usuários, respectivamente. No cenário com 20 usuários~(Figura 4(a)) as três heurísticas ABR apresentam um impacto semelhante. Enquanto que, intuitivamente, o provisionamento do video DASH entre os níveis 1 e 2 apresentam uma diferença estritamente superior, em contrapartida, o nível 3 apresenta uma disparidade significativa em relação aos outros níveis. Para o cenário com 40 usuários a taxa de bits média entre níveis apresentam diferenças semelhantes em ordem de grandeza. 
 
 As Figuras 4(b) e 5(b) mostram o tempo de interrupção total com 20 e 40 usuários, respectivamente. Ao contrario da taxa de bit media, aqui nós podemos observar uma diferença em relação aos mecanismos ABR no cenário com 20 usuários~(Figura 4(a)), principalmente, quando o video é provisionado por um servidor no nível com mais saltos~(nível 1). Este comportamento é suavizado no cenário com 40 usuários, onde existe uma pequena diferença ente os mecanismos de decisão no nível 2.
 
-É importante notar que apesar da taxa de bits media entre os mecanismos ABR serem semelhantes, as interrupções que eles podem gerar são significativamente diferentes, o que impacta diretamente no QoE dos usuários. Outro ponto a ser observado é a taxa de bits media entre diferentes níveis. No cenário com 20 usuários o nível 3 conseguiu atingir o que necessário para obter a maior representação de taxa bits, desta forma, operadores de telefonia podem buscar a implantação de caches durante horários de pico para prover a melhor experiencia ao usuário.
+É importante notar que, apesar das taxas de bits entre os mecanismos ABR serem semelhantes, as interrupções que eles podem gerar são significativamente diferentes, o que impacta diretamente no QoE dos usuários. Outro ponto a ser observado é a taxa de bits media entre diferentes níveis. No cenário com 20 usuários o nível 3 conseguiu atingir o que necessário para obter a maior representação de taxa bits, desta forma, operadores de telefonia podem buscar a implantação de caches durante horários de pico para prover a melhor experiência ao usuário.
 
 %entre os 
 % diferença de npirveis há o mesmo pode ser observado no segundo cenario co 40 usuários. Uma diferença interessante 
-%
-%
+
+
 %Avaliamos o impacto que uma arquitetura multinível de streaming de vídeo adaptativo em uma topologia com tres níveis com um único caminho, apresentada na Fig. 5. Os links possuem comprimento de possui um taxa de dados de 10 MBps e cada AP .
 
+As Figuras~5(a),~5(2) e~5(c) representam os resultados da taxa de bits, tempo de interrupção, ocupação do buffer e representação de 5 usuários do experimento com 20. Cada coluna representa os resultados de cada usuário. Desta forma, nós podemos ver o impacto dos esquemas ABRs com precisão. Como nós podemos ver, devido ao comportamento egoísta apresentado pelos algoritmos ABR 
 
 \vspace{0.8cm}
-\begin{figure}[htb]
-  \centering
-    \subfloat[Taxa de bits medio.]
+\begin{figure*}[htb]
+    \captionsetup{justification=centering}
+    \centering
+    
+    \subfloat[Taxa de bits médio.]
     {\includegraphics[width=.45\textwidth]{graphs/boxplot-avgBt-10u}
     \label{fig:lte-handover}}
-  \hfil \hspace{1cm}
+    \hfil \hspace{1cm}
     \subfloat[Tempo total de interrupções.]
     {\includegraphics[width=.45\textwidth]{graphs/boxplot-avgStalls-10u}
     \label{fig:dmm-proposal}}
-  \caption{Resultados da taxa de bits media e tempo total de interrupções para uma rede com 20 usuários, 10 em cada AP.}
+  \caption{Resultados da taxa de bits média e tempo total de interrupções para uma rede com 20 usuários, 10 em cada AP.}
   \label{fig:dmm}
-\end{figure}
+\end{figure*}
 
-\begin{figure}[htb]
-  \centering
-    \subfloat[Taxa de bits medio.]
+\begin{figure*}[htb]
+    \captionsetup{justification=centering}
+    \centering
+    
+    \subfloat[Taxa de bits médio.]
     {\includegraphics[width=.45\textwidth]{graphs/boxplot-avgBt-20u}
     \label{fig:lte-handover}}
   \hfil \hspace{1cm}
     \subfloat[Tempo total de interrupções.]
     {\includegraphics[width=.45\textwidth]{graphs/boxplot-avgStalls-20u}
     \label{fig:dmm-proposal}}
-  \caption{Resultados da taxa de bits media e tempo total de interrupções para uma rede com 40 usuários, 20 usuários em cada AP.}
+  \caption{Resultados da taxa de bits média e tempo total de interrupções para uma rede com 40 usuários, 20 usuários em cada AP.}
   \label{fig:dmm}
-\end{figure}
+\end{figure*}
+
+
+\begin{figure*}[htpb]
+    \captionsetup{justification=centering}
+    \centering
+    \subfloat[Processo de decisão baseado na largura de banda.]
+    {
+        \noindent\makebox[\textwidth]{
+    	    \includegraphics[width=0.9\paperwidth]{graphs/rate-User10-lvl1}
+        }       
+        \label{fig:lte-handover}
+    }
+    \caption{Resultados da taxa de bits, tempo de interrupção, ocupação do buffer e representação para 5 usuários do experimento com 20 usuários. Esses resultados foram obtidos no cenário do nível 1.}
+\end{figure*}
+\clearpage   
+\begin{figure*}[htb]
+    \captionsetup{justification=centering}
+    \centering
+    {
+    \ContinuedFloat
+    
+        \subfloat[Processo de decisão baseado no buffer.]
+        {
+            \noindent\makebox[\textwidth]{
+        	    \includegraphics[width=0.9\paperwidth]{graphs/buffer-User10-lvl1}
+            }
+            \label{fig:dmm-proposal}
+        }
+        \hfil
+        \clearpage   
+        \subfloat[Processo de decisão Híbrido.]
+        {
+            % \includegraphics[width=\textwidth]{graphs/hybrid-User10-lvl1}
+            \noindent\makebox[\textwidth]{
+        	    \includegraphics[width=0.9\paperwidth]{graphs/hybrid-User10-lvl1}
+            }
+            \label{fig:dmm-proposal}
+        }
+    }
+\end{figure*}
+
+\begin{figure*}
+    \captionsetup{justification=centering}
+    \centering
+    \caption{Resultados da taxa de bits, tempo de interrupção, ocupação do buffer e representação para 5 usuários do experimento com 20 usuários. Esses resultados foram obtidos no cenário do nível 1.}
+    \label{fig:user-lvl1}
+\end{figure*}
+
+% \begin{figure*}[htpb]
+%     \vspace{-2.5cm}
+% 	{
+%     % 	\includegraphics[width=\paperwidth]{graphs/rate-User10-lvl1}
+%         \noindent\makebox[\textwidth]{
+%         	\includegraphics[width=1.1\paperwidth]{graphs/rate-User10-lvl1}
+%         }
+%     	\vspace{-1.5cm}
+%     	\caption{Cenários de distribuição de streaming de vídeo adaptável para nós multiníveis.}
+%     	\label{fig:scenario-arch}
+%     }
+% \end{figure*}
+
+% \begin{figure*}[htpb]
+%     \vspace{-2.4cm}
+% 	{
+%     % 	\includegraphics[width=\paperwidth]{graphs/buffer-User10-lvl1}
+%         \noindent\makebox[\textwidth]{
+%         	\includegraphics[width=1.1\paperwidth]{graphs/buffer-User10-lvl1}
+%         }
+%     	\vspace{-1.4cm}
+%     	\caption{Cenários de distribuição de streaming de vídeo adaptável para nós multiníveis.}
+%     	\label{fig:scenario-arch}
+% 	}
+% 	\vspace{-0.1cm}
+% 	{
+%         \noindent\makebox[\textwidth]{
+%     	    \includegraphics[width=1.1\paperwidth]{graphs/hybrid-User10-lvl1}
+%         }
+% % 	\includegraphics[width=1.5\paperwidth,height=\textheight,keepaspectratio]{graphs/hybrid-User10-lvl1}
+% 	    \vspace{-1.4cm}
+% 	    \caption{Cenários de distribuição de streaming de vídeo adaptável para nós multiníveis.}
+% 	    \label{fig:scenario-arch}
+% 	}
+%     \caption{Cenários de distribuição de streaming de vídeo adaptável para nós multiníveis.}
+% \end{figure*}
+
+% É importante notar que, apesar das taxas de bits entre os mecanismos ABR serem semelhantes, as interrupções que eles podem gerar são significativamente diferentes, o que impacta diretamente no QoE dos usuários. Outro ponto a ser observado é a taxa de bits media entre diferentes níveis. No cenário com 20 usuários o nível 3 conseguiu atingir o que necessário para obter a maior representação de taxa bits, desta forma, operadores de telefonia podem buscar a implantação de caches durante horários de pico para prover a melhor experiência ao usuário.
+
+% As Figuras 4(a) e 5(a) mostram a taxa de bits media de 5 usuários para o experimento de  20 usuários, respectivamente. No cenário com 20 usuários~(Figura 4(a)) as três heurísticas ABR apresentam um impacto semelhante. Enquanto que, intuitivamente, o provisionamento do video DASH entre os níveis 1 e 2 apresentam uma diferença estritamente superior, em contrapartida, o nível 3 apresenta uma disparidade significativa em relação aos outros níveis. Para o cenário com 40 usuários a taxa de bits média entre níveis apresentam diferenças semelhantes em ordem de grandeza. 

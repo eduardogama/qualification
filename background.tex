@@ -2,13 +2,13 @@
 \section{Conceitos Gerais}
 \label{ch:background}
 
-Esta seção descreve brevemente conceitos e background tais como o paradigma Névoa/Nuvem multinível e Serviço de Video Streaming.
+Esta seção descreve brevemente conceitos e definições tais como o paradigma Névoa/Nuvem multinível e Serviço de Video Streaming.
 %This section briefly introduces background and concepts such as the \acl{SDN} paradigm and the 4G \acl{LTE} networks.
 
 %=============================================================================%
 \subsection{Computação em Névoa}
 
-A computação em névoa tem como principal objetivo preencher uma lacuna entre a nuvem e os dispositivos finais. Existem várias definições e terminologias na literatura que abordam este paradigma na literatura. Nesta proposta, vamos adotar a definição, o qual é adotado pelo OpenFogConsortium~(OpenFog), publicada pelo Instituto Nacional da Padrões e Tecnologia%\textit{National Institute of Standards and Technology}
+A computação em névoa tem como principal objetivo preencher uma lacuna entre a nuvem e os dispositivos finais. Existem várias definições e terminologias na literatura que abordam este paradigma na literatura. Nesta proposta, vamos adotar a definição, a qual é também adotada pelo OpenFogConsortium~(OpenFog), publicada pelo Instituto Nacional da Padrões e Tecnologia%\textit{National Institute of Standards and Technology}
 ~(NIST)~\cite{NIST2018-FogComputingConceptualModel}: 
 
 \begin{displayquote}
@@ -27,7 +27,7 @@ Os nós podem ser organizados em arquiteturas multiníveis - na vertical (para d
 
 Uma arquitetura em névoa verticalmente com N níveis tem como proposito: 
 \textit{i)} Aprimorar o QoE dos usuários, servindo o conteúdo solicitado de borda o mais próximo possível do usuário;
-\textit{ii)} Reduzir o congestionamente no core da rede, pois representa uma sobrecarga operacional para o adiministrador da rede;
+\textit{ii)} Reduzir o congestionamento no núcleo da rede;
 \textit{iii)} lidar eficientemente com a quantidade de dados que precisa ser processada e extrair dados significativos para criar mais inteligência em cada nível. 
 %  (iii) O tráfego enviado entre a origem e a hierarquia de servidores deve ser reduzido, pois incorre em custos para os provedores de conteúdo. 
 %
@@ -35,8 +35,8 @@ Uma arquitetura em névoa verticalmente com N níveis tem como proposito:
 %to deal efficiently with the amount of data that needs to be processed and to extract meaningful data to create more intelligence at each level. Moreover, the number of tiers impacts direclty in the QoE support.
 %O OpenFog está assumindo a liderança na padronização de névoa e definiu uma arquitetura de referência que consiste em N camadas de nós, como mostra a Figura~\ref{fig:arch-multi-lvl}
 
-Primeiramente, vamos apresentar uma arquitetura de rede com multiníveis, detalhada na Figura~\ref{fig:arch-multi-lvl}. O nível superior é composto por servidores em nuvem que podem ser localizados em um setor público ou privado. As nuvens podem ser qualquer provedor do streaming de video, por exemplo, Netflix, Amazon ou Youtube, bem como, um usuário local. % Estas nuvem operam o conteudo multimidia original sobre redes WANs.
-Os 3 níveis seguintes representam a rede névoa/nuvem organizada hierarquicamente. Este  trabalho leva em consideração os nós da borda com serviços de armazenamento e computação, bem como, é ranqueado de acordo com a área de cobertura de comunicação. Nesse ecossistema multinível, o \textit{Core Network Regional Edge} pode gerenciar a coordenação em toda a cidade, por exemplo, unidade de banda de base~(BBU) ou provedor de serviços de Internet~(ISP). Seguido pela \textit{Access Network Edge}, que suporta algumas dezenas a talvez algumas centenas de nós locais no meio da nevoa, por exemplo, estação base ou ponto de acesso. Os \textit{Gateways} de borda podem ser distribuídos em nós de névoa locais, por exemplo, computadores pessoais, laptops e smartphones, onde o nó retransmite o conteúdo do vídeo por meio de comunicação com ou sem fio. Esses dispositivos têm demandas de tráfego altas e similares, podendo cooperar entre si.% Essa conexão é feita através de algum tipo de rede local~(LAN). 
+Primeiramente, vamos apresentar uma arquitetura de rede com multiníveis, detalhada na Figura~\ref{fig:arch-multi-lvl}. O nível superior é composto por servidores em nuvem que podem ser localizados em um setor público ou privado. As nuvens podem ser qualquer provedor de streaming de video, por exemplo, Netflix, Amazon ou Youtube, bem como, um usuário local. % Estas nuvem operam o conteudo multimidia original sobre redes WANs.
+Os 3 níveis seguintes representam a rede névoa/nuvem organizada hierarquicamente. Este  trabalho leva em consideração os nós da borda com serviços de armazenamento e computação, ranqueados de acordo com a área de cobertura de comunicação. Nesse ecossistema multinível, o \textit{Core Network Regional Edge} pode gerenciar a coordenação em toda a cidade, por exemplo, unidade de banda de base~(BBU) ou provedor de serviços de Internet~(ISP). Seguido pela \textit{Access Network Edge}, que suporta algumas dezenas a talvez algumas centenas de nós locais no meio da nevoa, por exemplo, estação base ou ponto de acesso. Os \textit{Gateways} de borda podem ser distribuídos em nós de névoa locais, por exemplo, computadores pessoais, laptops e smartphones, onde o nó retransmite o conteúdo do vídeo por meio de comunicação com ou sem fio. Esses dispositivos têm demandas de tráfego altas e similares, podendo cooperar entre si.% Essa conexão é feita através de algum tipo de rede local~(LAN). 
 %É importante notar que em um ambiente multinível os servidores são organizados em uma topologia mesh em arvore.
 \vspace{0.8cm}
 \begin{figure}[htb]
@@ -57,11 +57,11 @@ Os 3 níveis seguintes representam a rede névoa/nuvem organizada hierarquicamen
 \subsection{Transmissão Adaptativa de vídeo pela Internet}
 \label{sec:has-dash}
 
-A padronização de uma arquitetura HAS prove importantes benefícios sobre sistemas de streaming tradicionais. Devido ao fato de várias empresas importantes de mídia participarem de seu desenvolvimento, este novo protocolo elimina problemas técnicos na entrega e compactação do video. Em essência, o objetivo é combinar todas as tecnologias e padrões em um, tornando o suporte a streaming contínuo em todos os dispositivos. 
+A padronização de uma arquitetura HAS provê importantes benefícios sobre sistemas de streaming tradicionais. Devido ao fato de várias empresas importantes de mídia participarem de seu desenvolvimento, este novo protocolo elimina problemas técnicos na entrega e compactação do video. Em essência, o objetivo é combinar todas as tecnologias e padrões em um, tornando o suporte a streaming contínuo em todos os dispositivos. 
 %Por sua vez, visa reduzir dores de cabeça técnicas e custos de transcodificação. 
-Os editores de conteúdo podem gerar um único conjunto de arquivos para codificação e streaming que deve ser compatível com o maior número possível de dispositivos, do smartphone a nuvem, além de plug-ins ou HTML5. Os consumidores não precisam se preocupar se seus dispositivos conseguem reproduzir o conteúdo que desejam assistir.
+Os editores de conteúdo podem gerar um único conjunto de arquivos para codificação e streaming que deve ser compatível com o maior número possível de dispositivos, do smartphone à nuvem, além de plug-ins ou HTML5. Os consumidores não precisam se preocupar se seus dispositivos conseguem reproduzir o conteúdo que desejam assistir.
 
-O objetivo desses esquemas é garantir um alto QoE para os usuários na presença de flutuações na largura de banda devido a alguns fatores, por exemplo, controle de congestionamento da rede, intensidade do sinal, perda de pacotes e assim por diante. Embora essas flutuações sejam bastante comuns na Internet pública, elas também podem ocorrer em redes mais privadas, como redes domésticas ou mesmo redes gerenciadas, onde geralmente há controle de admissão e diferentes ferramentas de QoS são usadas. 
+O objetivo desses esquemas é garantir um alto QoE para os usuários na presença de flutuações na largura de banda devido a alguns fatores, como, por exemplo, controle de congestionamento da rede, intensidade do sinal, perda de pacotes e assim por diante. Embora essas flutuações sejam bastante comuns na Internet pública, elas também podem ocorrer em redes privadas, como redes domésticas ou mesmo redes gerenciadas, onde geralmente há controle de admissão e diferentes ferramentas de QoS são usadas.
 
 % Quality Improvement for HTTP Adaptive Streaming over Mobile Networks Hung Thai Le
 %To deliver videos over the Internet, the MPEG-2 transport stream (M2TS) [74] and ISO Base Media File Format (MP4) [75] are popularly used [22]. In HAS, we only consider transmissions of video segments at the application layer. After obtaining the metadata file, the client issues a series of HTTP requests to download video segments, typically in chronological order, selecting a representation for each ofthem from the set ofavailable representations.
@@ -76,7 +76,7 @@ O objetivo desses esquemas é garantir um alto QoE para os usuários na presenç
 \begin{figure}[htb]
   \centering
   \includegraphics[scale=.5]{has-arch}
-  \caption{Arquitetura de distribuição HAS.}
+  \caption{Arquitetura de distribuição HAS~\cite{bentaleb:2018:MSys}.}
   \label{fig:has-arch}
 \end{figure}
 
@@ -92,8 +92,8 @@ No lado do servidor, assim que um arquivo de mídia~(ou fluxo) estiver pronto, e
 Além disso, o servidor gera um arquivo manifesto chamado de descritor da apresentação na mídia~(MPD), que lista as representações disponíveis, incluindo informações como o tempo do video, disponibilidade de conteúdo, tipos de mídia~(ou seja, H.264, H.265, etc.), resoluções, larguras de banda mínima e máxima e a existência de várias alternativas codificadas de componentes de multimídia, localizações dos segmentos de mídia na rede e outras características do conteúdo.
 %URLs para identificar os segmentos e seus tempos de disponibilidade. 
 
-No lado do cliente HAS, primeiramente, o reprodutor de video solicita o manifesto ao servidor HTTP e analisa as informações citadas acima. Desta forma, ele pode começar a solicitar segmentos sequencialmente e adaptar-se às condições da rede dinamicamente usando sua lógica adaptativa de taxa de bits~(ABR). Os esquemas ABR também levam em consideração o buffer de reprodução, recursos do dispositivo, preferências do visualizador, além de recursos de conteúdo, com pesos diferentes. 
-Como a QoE do espectador precisa ser determinado em tempo real durante a reprodução, geralmente, são usadas métricas objetivas, incluindo o número de interrupções, duração do atraso na inicialização, frequência e quantidade de oscilações de qualidade do vídeo. Por padrão, o HAS não exige nenhum esquema de adaptação específico, deixando aos desenvolvedores de sistemas inovar e implementar seu próprio método.
+No lado do cliente HAS, primeiramente, o reprodutor de vídeo solicita o manifesto ao servidor HTTP e analisa as informações citadas acima. Desta forma, ele pode começar a solicitar segmentos sequencialmente e adaptar-se às condições da rede dinamicamente usando sua lógica adaptativa de taxa de bits~(ABR). Os esquemas ABR também levam em consideração o buffer de reprodução, recursos do dispositivo, preferências do visualizador, além de recursos de conteúdo, com pesos diferentes. 
+Como o QoE do espectador precisa ser determinado em tempo real durante a reprodução, geralmente são usadas métricas objetivas, incluindo o número de interrupções, duração do atraso na inicialização, frequência e quantidade de oscilações de qualidade do vídeo. Por padrão, o HAS não exige nenhum esquema de adaptação específico, deixando aos desenvolvedores de sistemas inovarem e implementarem seus próprios métodos.
 
 
 %O analisa o MPD arquivo MPD , o player do cliente extrai 
@@ -142,9 +142,9 @@ O QoE é um parâmetro que representa a satisfação do ponto de vista dos usuá
 % Quality Improvement for HTTP Adaptive Streaming over Mobile Networks Hung Thai Le
 \begin{itemize}
 \vspace{-0.05cm}
-\item \textit{Atraso inicial:} Toda transmissão de video precisa de uma certa quantidade de dados iniciais antes que a decodificação e reprodução possar ser inciada, essa transferência de dados antes da reprodução do video é chamada de atraso inicial. Está fase também é conhecida como bufferização inicial. Durante esse atraso inicial o cliente não precisa preencher seu buffer com uma grande quantidade de dados, isso pode causa um longo atraso inicial. No entanto, um nível maior de buffer ajuda o cliente a evitar eficientemente os fluxos insuficientes no buffer.
+\item \textit{Atraso inicial:} Toda transmissão de video precisa de uma certa quantidade de dados iniciais antes que a decodificação e reprodução possar ser inciada. Essa transferência de dados antes da reprodução do video é chamada de atraso inicial. Está fase também é conhecida como bufferização inicial. Durante esse atraso inicial o cliente não precisa preencher seu buffer com uma grande quantidade de dados, isso pode causa um longo atraso inicial. No entanto, um nível maior de buffer ajuda o cliente a evitar eficientemente os fluxos insuficientes no buffer.
 \vspace{-0.05cm}
-\item \textit{Interrupções:} É o congelamento da reprodução do video devido ao esvaziamento do buffer. Especificamente, um fluxo insuficiente de buffer é seguido por um período de buffer, onde o cliente precisa armazenar em buffer rapidamente uma quantidade de dados de vídeo para retomar a reprodução. 
+\item \textit{Interrupções:} É o congelamento da reprodução do vídeo devido ao esvaziamento do buffer. Especificamente, um fluxo insuficiente de buffer é seguido por um período de buffer, onde o cliente precisa armazenar em buffer rapidamente uma quantidade de dados de vídeo para retomar a reprodução. 
 Em alguns serviços de streaming, um rebuffering pode ser tratado de forma semelhante a um buffer inicial. No entanto, os impactos dos dois tipos de tempo de espera são diferentes para os usuários. Ao contrário do atraso inicial, que é o tempo de espera antes do serviço e é bem conhecido, a interrupção ocorre inesperadamente no serviço e, portanto, a percepção para o usuário é muito pior.% Em [88], os autores mostram que existe uma relação exponencial entre o número de interrupções e a qualidade do vídeo. Embora achem que os usuários podem tolerar no máximo uma interrupção de alguns segundos durante uma sessão.
 \vspace{-0.05cm}
 \item \textit{Qualidade perceptual:}
@@ -154,7 +154,7 @@ No HAS, o usuário altera a qualidade do vídeo durante uma sessão, introduzind
 Em~\cite{HoBfeld2014QoMEX}, verificou-se que o tempo em cada representação individual do video tem um impacto significativo na qualidade do vídeo.
 A variação da qualidade perceptual de uma sessão é determinada pela amplitude de comutação e pela frequência de comutação entre taxa de bits. 
 %Vale ressaltar que cada comutação é representada por uma alteração de qualidade diferente de zero (por exemplo, taxa de bits de vídeo, versão de vídeo etc.) dos dois segmentos de vídeo conservadores. 
-Uma amplitude de comutação indica o grau de uma mudança na qualidade do video, enquanto que a frequência de comutação pode ser representada pelo número de variações da taxa de bits em toda a sessão.
+Uma amplitude de comutação indica o grau de uma mudança na qualidade do vídeo, enquanto que a frequência de comutação pode ser representada pelo número de variações da taxa de bits em toda a sessão.
 %\item \textit{Amplitude qualidade:}
 %\item \textit{troca de qualidade:}
 \vspace{-0.05cm}
